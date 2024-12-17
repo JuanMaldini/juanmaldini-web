@@ -1,0 +1,18 @@
+:root{
+    --colorGreen: #495A56;
+    --colorGray: #333333;
+    --colorYellow: #FFAE23;
+    --textWhite: rgb(220, 220, 220);
+
+    --shadow: 2px 2px 8px rgb(165, 165, 165);
+    --radiusCard: 24px;
+}
+
+.onedriveLine{
+    display: flex;
+    justify-content: center;
+}
+
+.ancentText{
+    color: var(--colorYellow);
+}

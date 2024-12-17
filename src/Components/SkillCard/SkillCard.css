@@ -1,0 +1,16 @@
+.skillCard{
+    background-color: var(--colorGray);
+    display: flex;
+    justify-content: space-between;
+    color: var(--textWhite);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 8px;
+    width: 200px;
+    transition: all 0.3s ease;
+    will-change: transform;
+}
+
+.skillCard:hover{
+    scale:1.02
+}

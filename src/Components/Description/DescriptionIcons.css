@@ -1,0 +1,26 @@
+.DescriptionIcons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgb(50, 50, 50);
+    margin: 32px;
+    padding: 16px;
+    border-radius: var(--radiusCard);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+.DescriptionIcons:hover{
+    scale: 1.01;
+}
+
+
+.DescriptionIcons img{
+    width: 60px;
+    margin: 8px;
+    transition: all 0.3s ease;
+}
+
+.DescriptionIcons img:hover{
+    scale: 1.1;
+}

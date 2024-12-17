@@ -1,0 +1,10 @@
+.descriptionSection{
+    background-color: black;
+}
+
+.descriptionSectionCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;    
+}
+

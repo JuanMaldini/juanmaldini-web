@@ -1,0 +1,18 @@
+.buttonType01{
+    background-color: var(--colorGreen);
+    padding: 12px 16px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: none;
+    margin: 0px 8px;
+}
+
+.buttonType01 a{
+    color: white;
+    text-decoration: none;
+}
+
+.buttonType01:hover{
+    background-color: #627973;
+    scale: 0.98;
+}
