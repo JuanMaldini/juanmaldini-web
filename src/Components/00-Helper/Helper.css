@@ -8,10 +8,7 @@
     --radiusCard: 24px;
 }
 
-.onedriveLine{
-    display: flex;
-    justify-content: center;
-}
+
 
 .ancentText{
     color: var(--colorYellow);

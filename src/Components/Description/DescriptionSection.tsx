@@ -1,9 +1,8 @@
-import Button from "../00-Button/Button.tsx";
 import DescriptionCard_01 from "./DescriptionCard_01";
 import DescriptionCard_02 from "./DescriptionCard_02";
 import DescriptionIcons from "./DescriptionIcons.tsx";
-import "./DescriptionSection.css";
-import {onedrive} from "../00-Helper/Helper.tsx";
+import "./Description.css";
+import Onedrive from "../PortfolioBar/Onedrive.tsx";
 
 type Props = {};
 
@@ -20,8 +19,8 @@ export default function DescriptionSection({}: Props) {
         <DescriptionIcons/>
       </div>
 
-      <div className="onedriveLine">
-        <Button goTo={onedrive} target="_blank" text="Portfolio"/>
+      <div>
+        <Onedrive />
       </div>
 
     </div>

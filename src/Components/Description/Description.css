@@ -1,0 +1,91 @@
+.DescriptionCard01 {
+  background-color: var(--colorGray);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.DescriptionCard02 {
+  background-color: var(--colorGray);
+}
+
+.DescriptionCard01 img {
+  border-radius: 400px;
+}
+
+.DescriptionCard01,
+.DescriptionCard02 {
+  min-width: 320px;
+  max-width: 500px;
+  width: 100%;
+  color: var(--textWhite);
+  width: 45%;
+  margin: 8px;
+  box-shadow: var(--shadow);
+  border-radius: var(--radiusCard);
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+.DescriptionCard01,
+.DescriptionCard02:hover {
+  scale: 1.007;
+}
+w
+.DescriptionCard01Icons{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    /* justify-self: flex-end; */
+    /* align-self: self-end; */
+    justify-content: center;
+    gap: 8px;
+}
+.DescriptionCard01Icons img{
+    width: 50px;
+    border-radius: 0px;
+}
+
+.DescriptionIcons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* margin: 32px; */
+  padding: 16px;
+  background-color: rgb(50, 50, 50);
+  border-radius: var(--radiusCard);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+.DescriptionIcons:hover {
+  scale: 1.01;
+}
+
+.DescriptionIcons img {
+  width: 60px;
+  margin: 8px;
+  transition: all 0.2s ease;
+}
+
+.DescriptionIcons img:hover {
+  scale: 1.1;
+}
+
+.DescriptionIconsContainer {
+  margin: 0px;
+  padding: 16px 32px;
+}
+
+.descriptionSection {
+  background-color: black;
+}
+
+.descriptionSectionCard {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}

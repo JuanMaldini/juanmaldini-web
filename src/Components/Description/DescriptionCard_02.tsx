@@ -1,5 +1,5 @@
 import Button from "../00-Button/Button"
-import "./DescriptionCard.css"
+import "./Description.css"
 
 type Props = {}
 
@@ -8,8 +8,8 @@ export default function DescriptionCard02({}: Props) {
     <div className="DescriptionCard02">
 
       <div>
-        <p className="ancentText"><h2>Hello!</h2></p>
-        <p><h3>Here is my info!</h3></p>
+        <h2><p className="ancentText">Hello!</p></h2>
+        <h3><p>Here is my info!</p></h3>
       </div>
 
       <div>

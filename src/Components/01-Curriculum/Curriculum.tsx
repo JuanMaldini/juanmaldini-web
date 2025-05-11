@@ -1,7 +1,6 @@
-import Button from "../00-Button/Button";
-import { onedrive } from "../00-Helper/Helper";
 import "./Curriculum.css";
 import SkillCard from "../SkillCard/SkillCard";
+import Onedrive from "../PortfolioBar/Onedrive";
 
 type Props = {};
 
@@ -50,10 +49,11 @@ export default function Curriculum({}: Props) {
         <SkillCard skill="Nuke" level="Beginner" />
         <SkillCard skill="Teamwork" level="Advanced" />
       </div>
-
-      <div className="onedriveLine">
-        <Button goTo={onedrive} target="_blank" text="Portfolio" />
+      
+      <div>
+        <Onedrive />
       </div>
+      
     </div>
   );
 }

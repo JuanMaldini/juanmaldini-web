@@ -1,19 +1,18 @@
-import './App.css'
-import Navbar from './Components/00-Navbar/Navbar'
-import Curriculum from './Components/01-Curriculum/Curriculum';
-import DescriptionSection from './Components/Description/DescriptionSection';
-import Footer from './Components/Z-Footer/Footer';
+import "./App.css";
+import Navbar from "./Components/00-Navbar/Navbar";
+import Aboutme from "./Components/Z-pages/Aboutme";
+import Footer from "./Components/Z-Footer/Footer";
+import Curriculum from "./Components/01-Curriculum/Curriculum";
 
 function App() {
-
   return (
     <>
-    <Navbar/>
-    {/* <DescriptionSection/> */}
-    <Curriculum/>
-    <Footer/>
+      <Navbar />
+      <Aboutme />
+      {/* <Curriculum/> */}
+      <Footer />
     </>
-  )
+  );
 }
 
 export default App;

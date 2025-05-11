@@ -1,0 +1,8 @@
+.onedrive{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding-bottom: 32px;
+    padding-top: 16px;
+}
