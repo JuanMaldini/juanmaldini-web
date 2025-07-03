@@ -1,13 +1,15 @@
 import "./SkillCard.css";
+import { SkillLevel } from "../../types";
 
 type Props = {
   skill: string;
-  level: string;
+  level: SkillLevel;
 };
 
 export default function SkillCard({ skill, level }: Props) {
   return (
-<div className="skillCard">
-  {skill} <span className="ancentText">{level}</span>
-</div>  );
+    <div className="skill-card">
+      {skill} <span className="skill-level">{level}</span>
+    </div>
+  );
 }

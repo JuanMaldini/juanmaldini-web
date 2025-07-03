@@ -1,16 +1,26 @@
-.skillCard{
-    background-color: var(--colorGray);
-    display: flex;
-    justify-content: space-between;
-    color: var(--textWhite);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin: 8px;
-    width: 200px;
-    transition: all 0.3s ease;
-    will-change: transform;
+.skill-card {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333333; /* Texto oscuro para mejor contraste con fondo blanco */
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  margin: 0.5rem 0;
+  border-left: 4px solid var(--colorYellow);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: auto;
+  width: 100%;
 }
 
-.skillCard:hover{
-    scale:1.02
+.skill-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.skill-level {
+  color: var(--colorYellow);
+  font-size: 0.9em;
+  font-weight: 500;
 }

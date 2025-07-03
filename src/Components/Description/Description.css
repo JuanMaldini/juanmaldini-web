@@ -1,50 +1,185 @@
-.DescriptionCard01 {
-  background-color: var(--colorGray);
+/* Estilos de la tarjeta de perfil */
+.profile-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 380px;
+  width: 100%;
+  margin: 1rem;
+  transition: all 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.profile-content {
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.DescriptionCard02 {
-  background-color: var(--colorGray);
+.profile-image-container {
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-.DescriptionCard01 img {
-  border-radius: 400px;
+.profile-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--colorYellow);
+  margin-bottom: 1.25rem;
+  transition: transform 0.3s ease;
 }
 
-.DescriptionCard01,
-.DescriptionCard02 {
-  min-width: 320px;
-  max-width: 500px;
+.profile-card:hover .profile-image {
+  transform: scale(1.05);
+}
+
+.profile-name {
+  font-size: 1.75rem;
+  color: #333;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.divider {
+  height: 2px;
+  width: 60px;
+  background-color: var(--colorYellow);
+  margin: 1rem 0;
+}
+
+.profile-roles {
+  text-align: center;
+  margin-bottom: 1.5rem;
   width: 100%;
-  color: var(--textWhite);
-  width: 45%;
-  margin: 8px;
-  box-shadow: var(--shadow);
-  border-radius: var(--radiusCard);
-  padding: 16px;
-  transition: all 0.3s ease;
 }
 
-.DescriptionCard01,
+.role {
+  color: #555;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+  color: #333;
+  position: relative;
+}
+
+.social-icon svg {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
+  fill: currentColor;
+  opacity: 0.8;
+}
+
+.social-icon:hover {
+  background-color: var(--colorYellow);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+
+.social-icon:hover svg {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.social-icon.portfolio-icon {
+  background-color: #fff8e1;
+}
+
+.social-icon.portfolio-icon:hover {
+  background-color: var(--colorYellow);
+}
+
+.DescriptionCard02 {
+  background-color: white;
+  min-width: 300px;
+  max-width: 400px;
+  width: 100%;
+  color: #333;
+  margin: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
 .DescriptionCard02:hover {
-  scale: 1.007;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
-w
-.DescriptionCard01Icons{
-    display: flex;
-    flex-direction: row;
+
+/* Estilos para los botones de la segunda tarjeta */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.button-group .buttonType01 {
+  background-color: var(--colorYellow);
+  color: #333;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.button-group .buttonType01:hover {
+  background-color: #e6a800;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
     width: 100%;
-    height: 100%;
-    /* justify-self: flex-end; */
-    /* align-self: self-end; */
-    justify-content: center;
-    gap: 8px;
-}
-.DescriptionCard01Icons img{
-    width: 50px;
-    border-radius: 0px;
+    gap: 0.75rem;
+  }
+  
+  .button-group .buttonType01 {
+    width: 100%;
+    padding: 0.65rem 1.25rem;
+  }
 }
 
 .DescriptionIcons {
@@ -52,31 +187,59 @@ w
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  /* margin: 32px; */
-  padding: 16px;
-  background-color: rgb(50, 50, 50);
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: var(--radiusCard);
   transition: all 0.3s ease;
   box-shadow: var(--shadow);
+  margin: 20px auto;
+  max-width: 1000px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .DescriptionIcons:hover {
-  scale: 1.01;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .DescriptionIcons img {
-  width: 60px;
-  margin: 8px;
-  transition: all 0.2s ease;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .DescriptionIcons img:hover {
-  scale: 1.1;
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  background: white;
 }
 
 .DescriptionIconsContainer {
-  margin: 0px;
-  padding: 16px 32px;
+  margin: 0;
+  padding: 16px;
+  width: 100%;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+  .DescriptionIcons {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .DescriptionIcons img {
+    width: 40px;
+    height: 40px;
+    padding: 6px;
+  }
 }
 
 .descriptionSection {
@@ -88,4 +251,8 @@ w
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 20px;
 }

@@ -1,17 +1,17 @@
+import { Outlet } from 'react-router-dom';
 import "./App.css";
 import Navbar from "./Components/00-Navbar/Navbar";
-import Aboutme from "./Components/Z-pages/Aboutme";
 import Footer from "./Components/Z-Footer/Footer";
-import Curriculum from "./Components/01-Curriculum/Curriculum";
 
 function App() {
   return (
-    <>
+    <div className="app">
       <Navbar />
-      <Aboutme />
-      {/* <Curriculum/> */}
+      <main className="main-content">
+        <Outlet />
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }
 

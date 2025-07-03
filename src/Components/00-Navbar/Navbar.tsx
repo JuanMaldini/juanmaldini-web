@@ -1,33 +1,75 @@
+import { Link, useLocation } from 'react-router-dom';
 import "../00-Helper/Helper.css";
 import Logo from "../../assets/Logo.png";
 
 type Props = {}
 
 export default function Navbar({}: Props) {
-  return (
-<nav className="navbar navbar-expand-md navbar-dark bg-dark " aria-label="Third navbar example">
-    <div className="container-fluid">
-      <div>
-        <a className="navbar-brand" href="#"><img src={Logo} alt="Logo image" width={45}/></a>
-        <a className="navbar-brand" href="#">Juan Maldini</a>
-      </div>
+  const location = useLocation();
+  
+  const isActive = (path: string) => {
+    return location.pathname === path ? 'active' : '';
+  };
 
-      <div>
-        <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+  return (
+    <nav className="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Main navigation">
+      <div className="container-fluid">
+        <div>
+          <Link className="navbar-brand" to="/">
+            <img src={Logo} alt="Logo" width={45} />
+          </Link>
+          <Link className="navbar-brand" to="/">Juan Maldini</Link>
+        </div>
+
+        <button 
+          className="navbar-toggler" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarNav" 
+          aria-controls="navbarNav" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation"
+        >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="navbar-collapse collapse" id="navbarsExample03">
-          <ul className="navbar-nav me-auto mb-2 mb-sm-0">
-            <li className="nav-item"><a className="nav-link active" aria-current="page" href="#">About Me</a></li>
-            <li className="nav-item"><a className="nav-link active" aria-current="page" href="#">Curriculum</a></li>
-            <li className="nav-item"><a className="nav-link active" aria-current="page" href="#">Projects</a></li>
-            <li className="nav-item"><a className="nav-link active" aria-current="page" href="#">Contact</a></li>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link 
+                className={`nav-link ${isActive('/') ? 'active' : ''}`} 
+                to="/"
+              >
+                About Me
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
+                className={`nav-link ${isActive('/curriculum') ? 'active' : ''}`} 
+                to="/curriculum"
+              >
+                Curriculum
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
+                className={`nav-link ${isActive('/projects') ? 'active' : ''}`} 
+                to="/projects"
+              >
+                Projects
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
+                className={`nav-link ${isActive('/contact') ? 'active' : ''}`} 
+                to="/contact"
+              >
+                Contact
+              </Link>
+            </li>
           </ul>
         </div>
-
       </div>
-    </div>
-  </nav>
-  )
+    </nav>
+  );
 }

@@ -1,8 +1,85 @@
-.onedrive{
+.portfolio-bar {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    padding-bottom: 32px;
-    padding-top: 16px;
+    background-color: #f8f9fa;
+    padding: 2rem 1.5rem;
+    margin: 2.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.portfolio-bar:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.portfolio-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.portfolio-title {
+    color: #333333;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.portfolio-description {
+    color: #666666;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+/* Estilos para el botón */
+.portfolio-content .buttonType01 {
+    background-color: var(--colorYellow);
+    color: #333;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.portfolio-content .buttonType01:hover {
+    background-color: #e6a800;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-content .buttonType01 a {
+    color: #333;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .portfolio-bar {
+        padding: 1.5rem 1rem;
+        margin: 2rem 0;
+    }
+    
+    .portfolio-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .portfolio-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+    
+    .portfolio-content .buttonType01 {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.95rem;
+    }
 }

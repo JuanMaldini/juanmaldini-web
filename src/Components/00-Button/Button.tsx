@@ -3,14 +3,17 @@ import "../00-Helper/Helper.css";
 
 type Props = {
   text: string;
-  target?:string;
+  target?: string;
   goTo: string;
+  className?: string;
 };
 
-export default function Button({ goTo, target, text }: Props) {
+export default function Button({ goTo, target, text, className = '' }: Props) {
   return (
-    <button className="buttonType01" type="button">
-      <a href={goTo} target={target}>{text}</a>
+    <button className={`buttonType01 ${className}`.trim()} type="button">
+      <a href={goTo} target={target} rel={target === '_blank' ? 'noopener noreferrer' : ''}>
+        {text}
+      </a>
     </button>
   );
 }

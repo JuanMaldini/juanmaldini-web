@@ -6,8 +6,14 @@ type Props = {};
 
 export default function PortfolioBar({}: Props) {
   return (
-    <div className="onedrive">
-      <Button goTo={OnedriveLink} target="_blank" text="Portfolio" />
+    <div className="portfolio-bar">
+      <div className="portfolio-content">
+        <Button 
+          goTo={OnedriveLink} 
+          target="_blank" 
+          text="Ver Portafolio" 
+        />
+      </div>
     </div>
   );
 }
