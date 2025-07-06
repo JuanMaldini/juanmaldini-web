@@ -7,10 +7,11 @@ type Props = {
   target?: string;
   goTo: string;
   className?: string;
+  download?: string | boolean;
   onClick?: () => void;
 };
 
-export default function Button({ goTo, target, text, className = '', onClick }: Props) {
+export default function Button({ goTo, target, text, className = '', download, onClick }: Props) {
   const handleClick = (e: React.MouseEvent) => {
     if (onClick) {
       e.preventDefault();
@@ -40,6 +41,7 @@ export default function Button({ goTo, target, text, className = '', onClick }: 
       rel={target === '_blank' ? 'noopener noreferrer' : ''} 
       className={`buttonType01 ${className}`.trim()}
       onClick={handleClick}
+      download={download}
     >
       {text}
     </a>

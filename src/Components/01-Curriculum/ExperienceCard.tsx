@@ -8,7 +8,7 @@ type ExperienceCardProps = {
 export default function ExperienceCard({ experience }: ExperienceCardProps) {
   return (
     <article className="experience-card">
-      <div className="experience-header">
+      <div className="card-header">
         <h3 className="experience-position">{experience.position}</h3>
         <div className="experience-company">{experience.company}</div>
         <div className="experience-location">{experience.location}</div>

@@ -1,9 +1,9 @@
 /* Estilos de la tarjeta de perfil */
 .profile-card {
   background-color: var(--color-card-bg);
-  border-radius: 12px;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
   overflow: hidden;
   max-width: 380px;
   width: 100%;
@@ -12,8 +12,8 @@
 }
 
 .profile-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-color: var(--color-border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .profile-content {
@@ -38,9 +38,7 @@
   transition: transform 0.3s ease;
 }
 
-.profile-card:hover .profile-image {
-  transform: scale(1.05);
-}
+/* Se eliminó el efecto de zoom en la imagen al hacer hover */
 
 .profile-name {
   font-size: 1.75rem;
@@ -121,22 +119,45 @@
 }
 
 .DescriptionCard02 {
-  background-color: white;
-  min-width: 300px;
-  max-width: 400px;
-  width: 100%;
-  color: #333;
-  margin: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
+  background-color: var(--color-card-bg);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
   padding: 2rem;
   transition: all 0.3s ease;
   flex: 1;
+  margin: 1rem;
+  max-width: 500px;
+  width: 100%;
 }
 
 .DescriptionCard02:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-color: var(--color-border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transform: none;
+}
+
+.DescriptionCard02 h2 {
+  color: var(--color-text);
+}
+
+.DescriptionCard02 h3 {
+  color: var(--color-text-secondary);
+}
+
+.DescriptionCard02 .ancentText {
+  color: var(--colorYellow);
+  font-weight: 600;
+}
+
+.DescriptionCard02 .profile-description {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.DescriptionCard02 .profile-description p {
+  margin-bottom: 1rem;
+  color: var(--color-text-secondary);
 }
 
 /* Estilos para los botones de la segunda tarjeta */
@@ -202,44 +223,43 @@
 }
 
 .DescriptionIcons {
-  /* Estilos para la sección de descripción */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
   padding: 24px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: var(--radiusCard);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
   transition: all 0.3s ease;
-  box-shadow: var(--shadow);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   margin: 20px auto;
   max-width: 1000px;
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid transparent;
 }
 
 .DescriptionIcons:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-color: var(--color-border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .DescriptionIcons img {
   width: 48px;
   height: 48px;
   object-fit: contain;
-  padding: 8px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 12px;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  filter: grayscale(30%) brightness(0.9) contrast(1.1);
+  opacity: 0.9;
 }
 
 .DescriptionIcons img:hover {
-  transform: translateY(-4px) scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  background: white;
+  transform: translateY(-4px) scale(1.15);
+  filter: grayscale(0%) brightness(1.1) contrast(1.1);
+  opacity: 1;
 }
 
 .DescriptionIconsContainer {
@@ -252,13 +272,13 @@
 @media (max-width: 768px) {
   .DescriptionIcons {
     padding: 16px;
-    gap: 12px;
+    gap: 16px;
   }
   
   .DescriptionIcons img {
-    width: 40px;
-    height: 40px;
-    padding: 6px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
   }
 }
 
@@ -266,7 +286,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 1rem 2rem;
+  padding: 2rem 1.5rem;
   background-color: var(--color-bg);
   width: 100%;
   box-sizing: border-box;
@@ -284,4 +304,19 @@
   margin: 0 auto;
   padding: 0;
   padding-top: 1rem;
+}
+
+.additional-resources {
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Asegurando que el portfolio-bar ocupe todo el ancho */
+.additional-resources .portfolio-bar {
+  max-width: 100%;
+  margin: 0;
+  border-radius: 8px;
 }

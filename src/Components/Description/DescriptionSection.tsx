@@ -2,6 +2,7 @@ import DescriptionCard_01 from "./DescriptionCard_01";
 import DescriptionCard_02 from "./DescriptionCard_02";
 import DescriptionIcons from "./DescriptionIcons.tsx";
 import "./Description.css";
+import Onedrive from "../PortfolioBar/Onedrive.tsx";
 
 type Props = {};
 
@@ -14,6 +15,9 @@ export default function DescriptionSection({}: Props) {
       </div>
       <div className="descriptionSectionIcons">
         <DescriptionIcons/>
+      </div>
+      <div className="additional-resources">
+        <Onedrive />
       </div>
     </div>
   );

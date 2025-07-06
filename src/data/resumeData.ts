@@ -195,7 +195,7 @@ export const resumeData: ResumeData = {
     },
     {
       titulo: 'Others',
-      subtitulo: '',
+      subtitulo: '2016 - 2025',
       datos: [
         'Houdini - Art Directing Cloth in Houdini',
         'Autodesk 3ds Max Master Class MaxScript Secrets Revealed',

@@ -18,304 +18,175 @@
   }
 }
 
-@media (max-width: 640px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
+/* Estilos base de la tarjeta */
+.project-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  aspect-ratio: 16/9;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Contenedor de medios */
+.media-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.project-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.project-title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+/* Hover Effects */
+.media-container:hover .project-media {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+.media-container:hover .project-overlay {
+  opacity: 1;
+}
+
+.media-container:hover .project-title {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-card {
+    border-radius: 6px;
+  }
+  
+  .project-title {
+    font-size: 1.3rem;
   }
 }
 
-/* Estilos base de la tarjeta */
-.project-card {
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: default;
-  height: 100%;
+@media (max-width: 480px) {
+  .project-title {
+    font-size: 1.1rem;
+  }
+  
+  .project-overlay {
+    padding: 15px;
+  }
+}
+
+/* Contenido de la tarjeta */
+.project-info {
+  padding: 1.25rem 1.5rem 1.5rem;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+.project-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  line-height: 1.4;
 }
 
-/* Contenedor de imagen */
-.image-container {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
-  overflow: hidden;
-  cursor: pointer;
+.project-info p {
+  margin: 0 0 12px 0;
+  font-size: 0.9rem;
+  color: #666;
+  flex-grow: 1;
 }
 
-.project-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
 }
 
-/* Contenedor de video */
-.video-container {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
-  background-color: #000;
-  overflow: hidden;
-}
-
-.project-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background-color: #000;
-  transition: opacity 0.3s ease;
-}
-
-/* Controles de video */
-.video-controls {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 2;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 8px;
+.tag {
+  background: #f0f0f0;
+  padding: 4px 8px;
   border-radius: 4px;
+  font-size: 0.8rem;
+  color: #555;
 }
 
-.video-controls.visible {
-  opacity: 1;
-}
-
-.volume-slider-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.volume-slider {
-  width: 80px;
-  height: 4px;
-  -webkit-appearance: none;
-  appearance: none;
-  background: #555;
-  outline: none;
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.volume-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 12px;
-  height: 12px;
-  background: #fff;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.volume-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-}
-
-.volume-button {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.7);
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.2s ease;
-  z-index: 2;
-}
-
-.volume-button.visible {
-  opacity: 1;
-}
-
-.volume-button:hover {
-  background: rgba(0, 0, 0, 0.9);
-  transform: scale(1.1);
-}
-
-/* Modal de imagen a pantalla completa */
-.image-fullscreen-overlay {
+/* Estilos para el modal de pantalla completa */
+.fullscreen-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  cursor: pointer;
   padding: 20px;
   box-sizing: border-box;
-  overflow: hidden;
+  cursor: pointer;
 }
 
-.fullscreen-image {
-  max-width: 100%;
-  max-height: 100%;
+.fullscreen-content {
+  max-width: 90vw;
+  max-height: 90vh;
   width: auto;
   height: auto;
-  object-fit: contain;
-  cursor: default;
-  animation: fadeIn 0.3s ease;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
-  border-radius: 4px;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* Contenido de la tarjeta */
-.project-content {
-  padding: 1.25rem 1.5rem 1.5rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.project-title {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-color);
-  transition: color 0.2s ease;
-  text-align: center;
-  line-height: 1.4;
-}
-
-.project-card:hover .project-title {
-  color: var(--color-accent);
-}
-
-/* Efectos de hover para el contenedor de video */
-.video-container:hover .volume-button {
-  opacity: 1;
-}
-
-/* Efecto de hover para el video */
-.video-container:hover .project-video {
-  opacity: 0.9;
-}
-
-/* Estilos responsivos */
-@media (max-width: 768px) {
-  .project-content {
-    padding: 1rem;
-  }
-  
-  .project-title {
-    font-size: 1rem;
-  }
-  
-  .volume-slider {
-    width: 60px;
-  }
-}
-
-/* Estilo de la tarjeta de proyecto - igual a education-card */
-.education-card {
-  background-color: var(--card-bg);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.education-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Contenedor de medios (imagen/video) */
-.project-media {
-  width: 100%;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  background: var(--color-bg-secondary);
-  position: relative;
-}
-
-/* Estilos para imágenes */
-.project-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-/* Estilos para videos */
-.video-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.project-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-/* Botón de reproducción para videos */
-.play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  opacity: 0.9;
-  transition: all 0.3s ease;
+  cursor: default;
 }
 
-.play-button svg {
-  margin-left: 5px; /* Ajuste para centrar el ícono de reproducción */
-  color: white;
-  width: 24px;
-  height: 24px;
+.fullscreen-media {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 /* Estilos para el overlay del video */

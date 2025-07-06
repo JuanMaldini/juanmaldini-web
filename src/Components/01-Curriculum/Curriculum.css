@@ -1,33 +1,45 @@
-/* Estilos generales del contenedor del currículum */
+/* General container styles */
 .curriculum-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2.5rem 1.5rem;
   color: var(--color-text);
   background-color: var(--color-bg);
+  font-family: inherit;
+  line-height: 1.7;
+  min-height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
 }
 
-/* Estilos del encabezado */
+/* Header styles */
 .curriculum-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
+  margin: 0 0 1.5rem 0;
+  padding: 0 0 1rem 0;
   border-bottom: 1px solid var(--border-color);
+  width: 100%;
+  min-height: 60px;
 }
 
-.download-cv-button {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--color-accent);
-  color: #333;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border: 1px solid var(--color-accent);
+.curriculum-header h2 {
+  margin: 0;
+  font-size: 2rem;
   font-weight: 600;
+  color: var(--color-text);
+  font-family: inherit;
+  line-height: 1.3;
+}
+
+/* Download button wrapper */
+.download-button-wrapper {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  flex-shrink: 0;
 }
 
 .download-cv-button:hover {
@@ -37,41 +49,117 @@
   color: #000;
 }
 
-/* Estilos de las pestañas */
+.download-cv-button.tab.active {
+  color: white;
+  background-color: var(--color-accent);
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(43, 108, 176, 0.2);
+}
+
+/* Tabs container */
 .tabs {
   display: flex;
   gap: 1rem;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.5rem;
+  margin: 0 0 1.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 0 0.5rem 0;
 }
 
 .tab {
-  padding: 0.75rem 1.5rem;
-  background: none;
+  padding: 0.5rem 1.25rem;
   border: none;
-  border-radius: 4px 4px 0 0;
-  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--color-text-secondary);
   font-size: 1rem;
   font-weight: 500;
-  color: var(--text-secondary);
-  transition: all 0.3s ease;
-}
-
-.tab:hover {
-  color: var(--colorYellow);
-  background-color: rgba(255, 193, 7, 0.1);
-}
-
-.tab.active {
-  color: var(--colorYellow);
-  border-bottom: 3px solid var(--colorYellow);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
   margin-bottom: -1px;
 }
 
-/* Estilos del contenido de las pestañas */
+.tab:hover {
+  color: var(--color-text);
+  border-bottom-color: var(--color-border-hover);
+}
+
+.tab.active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+  font-weight: 600;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Tab content */
 .tab-content {
   padding: 1.5rem 0;
+  width: 100%;
+  flex: 1;
+}
+
+/* Section styles */
+.experience-section,
+.education-section,
+.skills-section {
+  width: 100%;
+}
+
+.experience-section h3,
+.education-section h3,
+.skills-section h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* Lists */
+.experience-list,
+.education-list,
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tabs {
+    gap: 0.75rem;
+  }
+  
+  .tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .curriculum-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .curriculum-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .curriculum-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .tabs {
+    gap: 0.5rem;
+  }
+  
+  .tab {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
 }
 
 .tab-content h3 {
@@ -80,33 +168,41 @@
   font-size: 1.5rem;
 }
 
-/* Estilos de las tarjetas de experiencia */
+/* Card base styles */
+.experience-card,
 .experience-card {
-  background-color: var(--card-bg);
+  background-color: var(--color-card-bg);
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px; /* Altura mínima para mantener consistencia */
+  height: auto; /* Altura automática para adaptarse al contenido */
 }
 
-.experience-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.experience-card:hover,
+.education-card:hover {
+  border-color: var(--color-border);
 }
 
-.experience-header {
+.card-header {
   margin-bottom: 1rem;
 }
 
-.experience-position {
+.experience-position,
+.education-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--color-accent);
   margin: 0 0 0.5rem 0;
 }
 
-.experience-company {
+.experience-company,
+.education-subtitle {
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--colorYellow);
@@ -114,15 +210,54 @@
 }
 
 .experience-location,
-.experience-period {
+.experience-period,
+.education-detail {
   font-size: 0.9rem;
   color: var(--text-secondary);
   margin-bottom: 0.25rem;
 }
 
-.experience-description {
-  margin: 1rem 0;
+.experience-details,
+.education-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.experience-description,
+.education-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
   line-height: 1.6;
+  margin-top: 1rem;
+}
+
+.experience-header {
+  margin-bottom: 1rem;
+}
+
+.experience-position {
+  color: var(--text-primary);
+}
+
+/* Education specific overrides */
+.education-title {
+  font-size: 1.1rem;
+}
+
+.education-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Common description styles */
+.experience-description {
+  margin: 0.75rem 0;
+  flex-grow: 1; /* Hace que la descripción ocupe el espacio disponible */
+  word-wrap: break-word; /* Asegura que el texto largo se ajuste */
+  overflow-wrap: break-word; /* Para navegadores más nuevos */
+  hyphens: auto; /* Permite la división de palabras en navegadores que lo soportan */
 }
 
 .experience-technologies {
@@ -130,71 +265,92 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1rem;
+  align-items: flex-start; /* Alinea los tags en la parte superior */
 }
 
 .tech-tag {
-  background-color: var(--tag-bg);
-  color: var(--tag-text);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
   padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  white-space: normal; /* Permite que el texto se ajuste en varias líneas */
+  display: inline-block;
+  margin-bottom: 0.25rem; /* Espaciado entre líneas cuando hay salto */
+  max-width: 100%; /* Evita que los tags se salgan del contenedor */
+  word-break: break-word; /* Asegura que palabras largas se ajusten */
 }
 
 /* Estilos de las tarjetas de educación */
+.experience-card,
 .education-card {
-  background-color: var(--card-bg);
+  background: #ffffff;
+  border: 1px solid transparent;
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
 }
 
+.experience-card:hover,
 .education-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: var(--color-border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Nueva estructura */
+.experience-card,
+.education-card {
+  background: #ffffff;
+}
+
+.experience-position,
 .education-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--colorYellow);
+  color: var(--color-accent);
   margin: 0 0 0.5rem 0;
   line-height: 1.4;
 }
 
+.experience-company,
 .education-subtitle {
-  font-size: 1.05rem;
-  color: var(--text-color);
-  margin: 0 0 1rem 0;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border-color);
-  font-style: italic;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
 }
 
-.education-details {
-  margin-top: 1rem;
-}
-
+.experience-location,
+.experience-period,
 .education-detail {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
   line-height: 1.5;
-  position: relative;
-  padding-left: 1.5rem;
 }
 
-.education-detail:before {
-  content: "•";
-  position: absolute;
-  left: 0.5rem;
-  color: var(--colorYellow);
-  font-weight: bold;
-  font-size: 1.2rem;
-  line-height: 1.4;
+.experience-details,
+.education-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.experience-description,
+.education-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 1rem;
+  flex-grow: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 /* Estilos de compatibilidad con el formato antiguo */
@@ -254,18 +410,14 @@
   line-height: 1.5;
 }
 
-/* Ajustes para modo oscuro */
-[data-theme='dark'] .education-card {
-  background-color: var(--card-bg-dark);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
+
 
 /* Estilos de la sección de habilidades */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
 }
 
 /* Estilos para móviles */
@@ -286,19 +438,6 @@
   }
 }
 
-/* Estilos para modo oscuro */
-[data-theme='dark'] .experience-card,
-[data-theme='dark'] .education-card {
-  background-color: var(--card-bg-dark);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme='dark'] .tech-tag {
-  background-color: var(--tag-bg-dark);
-  color: var(--tag-text-dark);
-}
-
-/* Estilos para los cursos de Udemy */
 .udemy-course {
   color: var(--colorYellow) !important;
   font-weight: 600;

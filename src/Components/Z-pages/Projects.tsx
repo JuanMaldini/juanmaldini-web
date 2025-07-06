@@ -215,15 +215,18 @@ function Projects({}: Props) {
   }
 
   return (
-    <div className="curriculum-container" style={{ padding: '2rem' }}>
+    <div className="curriculum-container">
+      <div>
+        <small className="text-black p-0 m-0">Working on progress</small>
+      </div>
       <div className="curriculum-header">
-        <h2>Mis Proyectos</h2>
+      <h2>My Projects</h2>
       </div>
 
       <div className="tabs">
         {categories.map((category) => {
           const displayName = category === 'all' 
-            ? 'Todos' 
+            ? 'All' 
             : category
                 .replace(/[-_]/g, ' ')
                 .replace(/\b\w/g, l => l.toUpperCase());
@@ -246,23 +249,25 @@ function Projects({}: Props) {
       </div>
 
       <div className="tab-content">
-        {loading ? (
-          <div className="loading">Cargando proyectos...</div>
-        ) : error ? (
-          <div className="error">{error}</div>
-        ) : filteredProjects.length > 0 ? (
-          <div className="projects-grid">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-        ) : (
-          <div className="no-projects">
-            No se encontraron proyectos en la categoría "{activeTab}".
-            <p>Asegúrate de que la carpeta {activeTab} contenga archivos de imagen o video.</p>
-            <p>Ruta buscada: /assets/{activeTab}/</p>
-          </div>
-        )}
+        <div className="projects-section">
+          {loading ? (
+            <div className="loading">Loading projects...</div>
+          ) : error ? (
+            <div className="error">{error}</div>
+          ) : filteredProjects.length > 0 ? (
+            <div className="projects-grid">
+              {filteredProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          ) : (
+            <div className="no-projects">
+              No projects found in the "{activeTab}" category.
+              <p>Make sure the {activeTab} folder contains image or video files.</p>
+              <p>Path searched: /assets/{activeTab}/</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

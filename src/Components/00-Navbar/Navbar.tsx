@@ -32,7 +32,6 @@ const Navbar = () => {
     { path: '/', label: 'About Me' },
     { path: '/curriculum', label: 'Curriculum' },
     { path: '/projects', label: 'Projects' },
-    { path: '#', label: 'Contact' }
   ];
 
   const handleNavClick = (path: string) => {
@@ -72,9 +71,6 @@ const Navbar = () => {
             <span className="hamburger-line"></span>
           </button>
         </div>
-        <div className="text-white">
-        <small>Website Under Construction</small>
-      </div>
       </nav>
     </header>
   );

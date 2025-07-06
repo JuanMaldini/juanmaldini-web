@@ -7,6 +7,7 @@ import EducationCard from './EducationCard';
 import { ResumeData } from '../../types';
 import resumeData from '../../data/resumeData';
 import CVPdf from "../../assets/CV/Maldini, Juan Augusto_2025.pdf";
+import Button from "../00-Button/Button";
 
 type Props = {};
 
@@ -27,13 +28,14 @@ export default function Curriculum({}: Props) {
     <div className="curriculum-container">
       <div className="curriculum-header">
         <h2>My Resume</h2>
-        <a 
-          href={CVPdf} 
-          download="Maldini_Juan_Augusto_CV.pdf"
-          className="download-cv-button"
-        >
-          Download CV
-        </a>
+        <div className="download-button-wrapper">
+          <Button 
+            goTo={CVPdf}
+            text="Download CV"
+            download="Maldini_Juan_Augusto_CV.pdf"
+            className="download-cv-button"
+          />
+        </div>
       </div>
 
       <div className="tabs">
@@ -95,7 +97,6 @@ export default function Curriculum({}: Props) {
           </div>
         )}
       </div>
-      
       <div className="additional-resources">
         <Onedrive />
       </div>
