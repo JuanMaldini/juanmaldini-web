@@ -1,24 +1,97 @@
-.footer{
-    display: flex;
-    flex-direction: row;
+.footer {
+  background-color: var(--colorGreen);
+  padding: 1.5rem 0;
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+.footer-data {
+  font-size: 0.9rem;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.footer-data p {
+  margin: 0;
+  color: #fff;
+  padding: 0.5rem 0;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Adjust social icons for footer */
+:global(.footer .social-icons) {
+  margin: 0;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+}
+
+:global(.footer .social-icon) {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+:global(.footer .social-icon:hover) {
+  background-color: var(--colorYellow);
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 0 1rem;
+  }
+  
+  .footer-data {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-social {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  :global(.footer .social-icons) {
+    justify-content: center;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--colorGreen);
+  }
 }
 
-.footerData{
-    display: flex;
-    flex-direction: row;
+@media (max-width: 480px) {
+  .footer-content {
+    padding: 0 0.5rem;
+  }
+  
+  :global(.footer .social-icon) {
+    width: 32px;
+    height: 32px;
+  }
 }
-
-.footerIcons{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.footerIcons img{
-    width: 50px;
-}
-

@@ -1,20 +1,30 @@
 import Button from "../00-Button/Button"
 import "./Description.css"
+import CVPdf from "../../assets/CV/Maldini, Juan Augusto_2025.pdf"
 
 type Props = {}
 
 export default function DescriptionCard02({}: Props) {
   return (
     <div className="DescriptionCard02">
-
       <div>
         <h2><p className="ancentText">Hello!</p></h2>
         <h3><p>Here is my info!</p></h3>
       </div>
 
       <div className="button-group">
-        <Button text="Curriculum" goTo={""} className="buttonType01" />
-        <Button text="Projects" goTo={""} className="buttonType01" />
+        <a 
+          href={CVPdf} 
+          download="Maldini_Juan_Augusto_CV.pdf"
+          className="buttonType01 portfolio-btn"
+        >
+          Download CV
+        </a>
+        <Button 
+          text="Projects" 
+          goTo="#" 
+          className=""
+        />
       </div>
 
       <div className="profile-description">

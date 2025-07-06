@@ -6,14 +6,26 @@ type Props = {
   target?: string;
   goTo: string;
   className?: string;
+  onClick?: () => void;
 };
 
-export default function Button({ goTo, target, text, className = '' }: Props) {
+export default function Button({ goTo, target, text, className = '', onClick }: Props) {
+  const handleClick = (e: React.MouseEvent) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
   return (
-    <button className={`buttonType01 ${className}`.trim()} type="button">
-      <a href={goTo} target={target} rel={target === '_blank' ? 'noopener noreferrer' : ''}>
-        {text}
-      </a>
-    </button>
+    <a 
+      href={goTo} 
+      target={target} 
+      rel={target === '_blank' ? 'noopener noreferrer' : ''} 
+      className={`buttonType01 ${className}`.trim()}
+      onClick={handleClick}
+    >
+      {text}
+    </a>
   );
 }

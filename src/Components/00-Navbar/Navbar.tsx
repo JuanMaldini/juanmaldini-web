@@ -12,14 +12,15 @@ export default function Navbar({}: Props) {
   };
 
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Main navigation">
-      <div className="container-fluid">
-        <div>
-          <Link className="navbar-brand" to="/">
-            <img src={Logo} alt="Logo" width={45} />
-          </Link>
-          <Link className="navbar-brand" to="/">Juan Maldini</Link>
-        </div>
+    <>
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Main navigation">
+        <div className="container-fluid">
+          <div>
+            <Link className="navbar-brand" to="/">
+              <img src={Logo} alt="Logo" width={45} />
+            </Link>
+            <Link className="navbar-brand" to="/">Juan Maldini</Link>
+          </div>
 
         <button 
           className="navbar-toggler" 
@@ -54,7 +55,7 @@ export default function Navbar({}: Props) {
             <li className="nav-item">
               <Link 
                 className={`nav-link ${isActive('/projects') ? 'active' : ''}`} 
-                to="/projects"
+                to="#"
               >
                 Projects
               </Link>
@@ -62,14 +63,18 @@ export default function Navbar({}: Props) {
             <li className="nav-item">
               <Link 
                 className={`nav-link ${isActive('/contact') ? 'active' : ''}`} 
-                to="/contact"
+                to="#"
               >
                 Contact
               </Link>
             </li>
           </ul>
         </div>
+        </div>
+      </nav>
+      <div className="text-dark text-center py-1">
+        <small> Website Under Construction </small>
       </div>
-    </nav>
+    </>
   );
 }

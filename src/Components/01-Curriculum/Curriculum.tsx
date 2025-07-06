@@ -6,6 +6,7 @@ import ExperienceCard from './ExperienceCard';
 import EducationCard from './EducationCard';
 import { ResumeData } from '../../types';
 import resumeData from '../../data/resumeData';
+import CVPdf from "../../assets/CV/Maldini, Juan Augusto_2025.pdf";
 
 type Props = {};
 
@@ -27,8 +28,8 @@ export default function Curriculum({}: Props) {
       <div className="curriculum-header">
         <h2>My Resume</h2>
         <a 
-          href="/path/to/your/cv.pdf" 
-          download 
+          href={CVPdf} 
+          download="Maldini_Juan_Augusto_CV.pdf"
           className="download-cv-button"
         >
           Download CV

@@ -1,18 +1,43 @@
-.buttonType01{
-    background-color: var(--colorGreen);
-    padding: 12px 16px;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    border: none;
-    margin: 0px 8px;
+.buttonType01 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--colorYellow);
+  color: #333;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 0.5rem;
+  min-width: 100px;
+  text-align: center;
 }
 
 .buttonType01 a{
-    color: white;
-    text-decoration: none;
+  color: #333;
+  text-decoration: none;
 }
 
-.buttonType01:hover{
-    background-color: #627973;
-    scale: 0.98;
+.buttonType01:hover {
+  background-color: #e6a800;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  color: #000;
+}
+
+/* Estilo alternativo para el botón de portfolio */
+.buttonType01.portfolio-btn {
+  background-color: var(--colorGreen);
+  color: white;
+}
+
+.buttonType01.portfolio-btn:hover {
+  background-color: #4a8b7d;
+  color: white;
 }
