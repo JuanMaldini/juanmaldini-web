@@ -1,80 +1,83 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import "../00-Helper/Helper.css";
 import Logo from "../../assets/Logo.png";
+import "./Navbar.css";
 
-type Props = {}
-
-export default function Navbar({}: Props) {
+const Navbar = () => {
   const location = useLocation();
-  
+  const navigate = useNavigate();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    document.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
+
   const isActive = (path: string) => {
     return location.pathname === path ? 'active' : '';
   };
 
+  const navItems = [
+    { path: '/', label: 'About Me' },
+    { path: '/curriculum', label: 'Curriculum' },
+    { path: '/projects', label: 'Projects' },
+    { path: '#', label: 'Contact' }
+  ];
+
+  const handleNavClick = (path: string) => {
+    setMobileMenuOpen(false);
+    navigate(path);
+  };
+
   return (
-    <>
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Main navigation">
-        <div className="container-fluid">
-          <div>
-            <Link className="navbar-brand" to="/">
-              <img src={Logo} alt="Logo" width={45} />
-            </Link>
-            <Link className="navbar-brand" to="/">Juan Maldini</Link>
+    <header className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
+      <nav className="navbar">
+        <div className="nav-content">
+          <div className="nav-logo" onClick={() => handleNavClick('/')}>
+            <img src={Logo} alt="Logo" className="logo" />
+            <span className="logo-text">Juan Maldini</span>
           </div>
 
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarNav" 
-          aria-controls="navbarNav" 
-          aria-expanded="false" 
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+          <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+            {navItems.map((item) => (
+              <div 
+                key={item.path}
+                className={`nav-item ${isActive(item.path)}`}
+                onClick={() => handleNavClick(item.path)}
+              >
+                <span className="nav-link">{item.label}</span>
+                <div className="nav-indicator"></div>
+              </div>
+            ))}
+          </div>
 
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link 
-                className={`nav-link ${isActive('/') ? 'active' : ''}`} 
-                to="/"
-              >
-                About Me
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link 
-                className={`nav-link ${isActive('/curriculum') ? 'active' : ''}`} 
-                to="/curriculum"
-              >
-                Curriculum
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link 
-                className={`nav-link ${isActive('/projects') ? 'active' : ''}`} 
-                to="#"
-              >
-                Projects
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link 
-                className={`nav-link ${isActive('/contact') ? 'active' : ''}`} 
-                to="#"
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
+          <button 
+            className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation"
+          >
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+          </button>
         </div>
-        </div>
-      </nav>
-      <div className="text-dark text-center m-0 p-0">
+        <div className="text-white">
         <small>Website Under Construction</small>
       </div>
-    </>
+      </nav>
+    </header>
   );
-}
+};
+
+export default Navbar;

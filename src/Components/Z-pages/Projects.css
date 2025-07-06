@@ -1,0 +1,144 @@
+/* Estilos generales del contenedor de proyectos */
+.curriculum-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+/* Estilos del encabezado */
+.curriculum-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.curriculum-header h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--color-text);
+  font-weight: 600;
+  font-family: inherit;
+  line-height: 1.3;
+}
+
+/* Contenido de las pestañas */
+.tab-content {
+  padding: 1.5rem 0;
+}
+
+.projects-description {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  max-width: 800px;
+  font-family: inherit;
+}
+
+/* Estados */
+.projects-loading,
+.projects-error,
+.no-projects {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  font-family: inherit;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--colorYellow);
+  animation: spin 1s ease-in-out infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.projects-error {
+  color: #ff6b6b;
+}
+
+/* Estilos de las pestañas */
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.tab:hover {
+  color: var(--colorYellow);
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+.tab.active {
+  color: var(--colorYellow);
+  border-bottom: 3px solid var(--colorYellow);
+  margin-bottom: -1px;
+  font-weight: 500;
+  background: none;
+  box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .curriculum-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .tabs {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .projects-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Mejoras de accesibilidad */
+.tab:focus-visible {
+  outline: 2px solid var(--colorYellow);
+  outline-offset: 2px;
+}

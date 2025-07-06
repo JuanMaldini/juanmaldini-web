@@ -1,8 +1,9 @@
 /* Estilos de la tarjeta de perfil */
 .profile-card {
-  background-color: white;
+  background-color: var(--color-card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
   overflow: hidden;
   max-width: 380px;
   width: 100%;
@@ -201,6 +202,7 @@
 }
 
 .DescriptionIcons {
+  /* Estilos para la sección de descripción */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -261,16 +263,25 @@
 }
 
 .descriptionSection {
-  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem 2rem;
+  background-color: var(--color-bg);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  min-height: 100vh;
 }
 
 .descriptionSectionCard {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-  gap: 20px;
+  padding: 0;
+  padding-top: 1rem;
 }

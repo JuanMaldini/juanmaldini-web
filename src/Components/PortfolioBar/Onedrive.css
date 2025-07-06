@@ -26,20 +26,21 @@
 }
 
 .portfolio-title {
-    color: #333333;
+    color: var(--color-text);
     margin-bottom: 1rem;
     font-size: 1.5rem;
     font-weight: 600;
 }
 
 .portfolio-description {
-    color: #666666;
+    color: var(--color-text-secondary);
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
     line-height: 1.6;
     max-width: 600px;
 }
 
+/* Estilos para el botón */
 /* Estilos para el botón */
 .portfolio-content .buttonType01 {
     background-color: var(--colorYellow);
