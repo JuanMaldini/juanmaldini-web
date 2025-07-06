@@ -1,4 +1,4 @@
-import { Email, Github, LinkedIn, Whatsapp, OnedriveLink } from "../00-Helper/Helper";
+import { Email, Github, LinkedIn, OnedriveLink } from "../00-Helper/Helper";
 
 // SVG Icons with better contrast
 const icons = {

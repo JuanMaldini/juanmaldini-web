@@ -1,6 +1,5 @@
 import Button from "../00-Button/Button"
 import "./Description.css"
-import CVPdf from "../../assets/CV/Maldini, Juan Augusto_2025.pdf"
 
 type Props = {}
 
