@@ -16,10 +16,14 @@ export default function DescriptionCard01({}: Props) {
         <div className="divider"></div>
 
         <div className="profile-roles">
-          <p className="role">Web Developer</p>
           <p className="role">Unreal Engine Developer</p>
           <p className="role">3D Artist</p>
+          <p className="role">Web Developer</p>
+          <p className="role">VR</p>
+          <p className="role">Architectural Visualization</p>
           <p className="role">FX Artist</p>
+          <p className="role">IA</p>
+          <p className="role">Games</p>
         </div>
 
         <SocialIconsBar />

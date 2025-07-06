@@ -1,18 +1,20 @@
 :root {
-  /* Colores base */
+  /* Colores base - Grises pasteles suaves */
   --color-bg: #f8f9fa;         /* Fondo principal muy claro */
-  --color-bg-secondary: #e9ecef; /* Fondo secundario ligeramente más oscuro */
-  --color-text: #212529;       /* Texto principal oscuro */
-  --color-text-secondary: #495057; /* Texto secundario */
-  --color-border: #dee2e6;     /* Bordes sutiles */
+  --color-bg-secondary: #f1f3f5; /* Fondo secundario ligeramente más oscuro */
+  --color-card-bg: #ffffff;     /* Fondo de tarjetas */
+  --color-text: #2b2d42;       /* Texto principal oscuro */
+  --color-text-secondary: #6c757d; /* Texto secundario */
+  --color-border: #e9ecef;     /* Bordes sutiles */
   
-  /* Colores de acento (manteniendo los existentes) */
-  --color-accent: #007bff;     /* Azul estándar */
-  --color-accent-hover: #0056b3;
+  /* Colores de acento - Manteniendo amarillos */
+  --color-accent: #ffc107;     /* Amarillo dorado */
+  --color-accent-hover: #e6a800; /* Amarillo dorado oscuro */
   
-  /* Sombras sutiles */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  /* Sombras sutiles consistentes */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
   
   /* Espaciado */
   --spacing-xs: 0.5rem;
@@ -26,10 +28,12 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
-  line-height: 1.6;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Contenedor principal */
@@ -38,26 +42,53 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background-color: var(--color-bg);
+  transition: all 0.3s ease;
 }
 
 /* Contenido principal */
 .main-content {
   flex: 1;
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-xl) 0;
   background-color: var(--color-bg);
+  position: relative;
+  z-index: 1;
 }
 
 /* Tarjetas y contenedores */
 .card {
-  background-color: white;
+  background-color: var(--color-card-bg);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.2s ease-in-out;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(10px);
+  margin-bottom: 1.5rem;
 }
 
 .card:hover {
   box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  border-color: var(--color-border);
+}
+
+/* Efecto sutil en las tarjetas */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-accent);
+  opacity: 0.8;
+  transition: all 0.25s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+  height: 4px;
 }
 
 /* Enlaces */
@@ -85,6 +116,30 @@ button, .btn {
 
 button:hover, .btn:hover {
   background-color: var(--color-accent-hover);
+}
+
+/* Tipografía mejorada */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  line-height: 1.7;
 }
 
 /* Utilidades */

@@ -72,8 +72,8 @@ export default function Navbar({}: Props) {
         </div>
         </div>
       </nav>
-      <div className="text-dark text-center py-1">
-        <small> Website Under Construction </small>
+      <div className="text-dark text-center m-0 p-0">
+        <small>Website Under Construction</small>
       </div>
     </>
   );

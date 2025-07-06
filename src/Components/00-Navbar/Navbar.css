@@ -1,17 +1,28 @@
 nav.navbar {
-  background-color: #ffffff !important;
+  background-color: var(--color-card-bg) !important;
   padding: 0.8rem 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
   border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .navbar-brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text) !important;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  letter-spacing: -0.5px;
+}
+
+.navbar-brand:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 .navbar-brand:hover {
@@ -27,12 +38,30 @@ nav.navbar {
 }
 
 .nav-link {
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: var(--color-text) !important;
   font-weight: 500;
-  padding: 0.5rem 1rem !important;
+  padding: 0.5rem 1rem;
   margin: 0 0.2rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: all 0.2s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 60%;
 }
 
 .nav-link:hover,
