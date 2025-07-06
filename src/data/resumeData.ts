@@ -215,14 +215,15 @@ export const resumeData: ResumeData = {
     { id: '3dsmax', name: '3ds Max', level: 'Expert', category: '3d' },
     { id: 'blender', name: 'Blender', level: 'Intermediate', category: '3d' },
     { id: 'houdini', name: 'Houdini', level: 'Intermediate', category: '3d' },
-    { id: 'zbrush', name: 'ZBrush', level: 'Advanced', category: '3d' },
+    { id: 'zbrush', name: 'ZBrush', level: 'Beginner', category: '3d' },
     { id: 'rizom-uv', name: 'Rizom UV', level: 'Intermediate', category: '3d' },
     
     // Rendering
     { id: 'vray', name: 'V-Ray', level: 'Advanced', category: 'render' },
     { id: 'corona', name: 'Corona', level: 'Advanced', category: 'render' },
+    { id: 'fstorm', name: 'FStorm', level: 'Advanced', category: 'render' },
     { id: 'cycles', name: 'Cycles', level: 'Intermediate', category: 'render' },
-    { id: 'mantra', name: 'Mantra', level: 'Intermediate', category: 'render' },
+    { id: 'mantra', name: 'Mantra', level: 'Beginner', category: 'render' },
     
     // CAD & BIM
     { id: 'revit', name: 'Revit', level: 'Beginner', category: 'cad' },
