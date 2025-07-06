@@ -142,8 +142,56 @@
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.education-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Nueva estructura */
+.education-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--colorYellow);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.education-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-color);
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  font-style: italic;
+}
+
+.education-details {
+  margin-top: 1rem;
+}
+
+.education-detail {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.education-detail:before {
+  content: "•";
+  position: absolute;
+  left: 0.5rem;
+  color: var(--colorYellow);
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+/* Estilos de compatibilidad con el formato antiguo */
 .education-institution {
   font-size: 1.25rem;
   font-weight: 600;

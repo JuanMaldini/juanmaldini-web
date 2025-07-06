@@ -8,8 +8,21 @@ type EducationCardProps = {
 export default function EducationCard({ education }: EducationCardProps) {
   return (
     <article className="education-card">
-      <h3 className="education-institution">{education.institution}</h3>
-      <div className="education-degree">{education.degree}</div>
+      <h3 className="education-title">{education.titulo}</h3>
+      <h4 className="education-subtitle">{education.subtitulo}</h4>
+      <div className="education-details">
+        {education.datos.map((dato, index) => (
+          <div key={index} className="education-detail">{dato}</div>
+        ))}
+      </div>
+      
+      {/* Mantenemos compatibilidad con el formato antiguo por si acaso */}
+      {!education.titulo && education.institution && (
+        <h3 className="education-institution">{education.institution}</h3>
+      )}
+      {!education.subtitulo && education.degree && (
+        <div className="education-degree">{education.degree}</div>
+      )}
       {education.field && (
         <div className="education-field">{education.field}</div>
       )}

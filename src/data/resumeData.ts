@@ -85,135 +85,122 @@ export const resumeData: ResumeData = {
     }
   ],
   education: [
-    // Formal Education
+    // Educación formal
     {
-      institution: 'Dr. Dalmacio Vélez Sársfield',
-      degree: 'Bachelor with Orientation in Natural Sciences',
-      field: 'High School',
-      period: '2008 - 2014'
+      titulo: 'Dr. Dalmacio Vélez Sársfield',
+      subtitulo: '2008 - 2014',
+      datos: [
+        'High School - Bachelor with Orientation in Natural Sciences'
+      ]
     },
     {
-      institution: 'UNC',
-      degree: 'Architecture - Incomplete',
-      field: 'University',
-      period: '2015 - 2019'
+      titulo: 'UNC',
+      subtitulo: '2015 - 2019',
+      datos: [
+        'Architecture / incomplete'
+      ]
     },
     // Cursos y certificaciones
     {
-      institution: 'Image Campus',
-      courses: [
-        {
-          degree: 'Virtual Production',
-          field: 'Programación C++ para Videojuegos',
-          period: ''
-        }
+      titulo: 'Image Campus',
+      subtitulo: '2021',
+      datos: [
+        'Virtual Production',
+        'Programación C++ para Videojuegos',
+        'Modelado 3D para videojuegos'
       ]
     },
     {
-      institution: 'Coderhouse',
-      courses: [
-        {
-          degree: 'Desarrollo Web',
-          field: 'Diseño 3D (Blender)',
-          period: ''
-        }
+      titulo: 'Coderhouse',
+      subtitulo: '2022',
+      datos: [
+        'Desarrollo Web',
+        'Diseño 3D (Blender)'
       ]
     },
     {
-      institution: 'Hola Mundo',
-      courses: [
-        {
-          degree: 'Ultimate JavaScript',
-          field: 'Ultimate Python: de cero a programador experto',
-          description: 'Ultimate React',
-          period: ''
-        }
+      titulo: 'Hola Mundo',
+      subtitulo: '2023',
+      datos: [
+        'Ultimate JavaScript',
+        'Ultimate Python: de cero a programador experto',
+        'Ultimate React'
       ]
     },
     {
-      institution: 'DevTalles',
-      courses: [
-        {
-          degree: 'Node js de Cero a Experto',
-          field: '',
-          period: ''
-        }
+      titulo: 'DevTalles',
+      subtitulo: '2024',
+      datos: [
+        'Node js de Cero a Experto'
       ]
     },
     {
-      institution: 'Codeacademy',
-      courses: [
-        {
-          degree: 'Learn C++',
-          field: '',
-          period: ''
-        }
+      titulo: 'Codeacademy',
+      subtitulo: '2022',
+      datos: [
+        'Learn C++'
       ]
     },
     {
-      institution: 'Arash Ahadzadeh',
-      courses: [
-        {
-          degree: 'UI Design & Figma Mastery',
-          field: '',
-          period: ''
-        }
+      titulo: 'Figma',
+      subtitulo: '2024',
+      datos: [
+        'UI Design & Figma Mastery'
       ]
     },
     {
-      institution: 'Build Academia',
-      courses: [
-        {
-          degree: 'V-ray For 3DS MAX ArchViz N1',
-          field: 'V-ray For 3DS MAX Professional N2',
-          description: 'Certification by BuildGroup ChaosGroup & ItooSoftware Authorized Training Center',
-          period: ''
-        }
+      titulo: 'Build Academia',
+      subtitulo: '2018',
+      datos: [
+        'V-ray For 3DS MAX ArchViz N1',
+        'V-ray For 3DS MAX Professional N2',
+        'Certification by BuildGroup ChaosGroup & ItooSoftware Authorized Training Center'
       ]
     },
     {
-      institution: 'DVIZ',
-      courses: [
-        {
-          degree: 'Virtual Reality Course for Archviz',
-          field: '',
-          period: ''
-        }
+      titulo: 'DVIZ',
+      subtitulo: '2021',
+      datos: [
+        'Virtual Reality Course for Archviz',
+        'Advanced Blueprints for Archviz'
       ]
     },
     {
-      institution: 'Rebelway',
-      courses: [
-        {
-          degree: 'Houdini - Introduccion to FX',
-          field: '',
-          period: ''
-        }
+      titulo: 'Rebelway',
+      subtitulo: '2022',
+      datos: [
+        'Houdini - Introduccion to FX'
       ]
     },
     {
-      institution: 'Udemy',
-      courses: [
-        {
-          degree: 'Unreal Engine desde 0: Crea 3 Juegos con Blueprints y C++',
-          field: 'Unreal Engine 4 Class: Blueprints',
-          description: 'Unreal Engine 4 - Creación de materiales desde 0 a AVANZADO\n' +
-                      'Unreal Engine 5 - Learn to Make a Professional Main Menu\n' +
-                      'Master Unreal Engine 4 Desarrollo Videojuegos con Blueprints\n' +
-                      '3D Studio Max: Espacios arquitectónicos\n' +
-                      'Houdini - Procedural Japanese Castle in Unreal Engine\n' +
-                      'Houdini - Procedural House\n' +
-                      'Houdini - Master Create Stunning fx\n' +
-                      'Houdini - Art Directing Cloth in Houdini\n' +
-                      'Blender 2.9 Iluminación y Render con Cycles de 0 a EXPERTO\n' +
-                      'Blender 3D - Model and texture a stylised shield\n' +
-                      'Blender 2.9 EXPERTO en Modelado 3D desde CERO hasta Avanzado\n' +
-                      'Blender 2.9x Modelado 3D para Videojuegos FLUJO COMPLETO\n' +
-                      'Blender 2.8 EXPERTO en UV Mapping de Assets para Videojuegos',
-          period: ''
-        }
+      titulo: 'Udemy',
+      subtitulo: '2018 - 2025',
+      datos: [
+        'Unreal Engine desde 0: Crea 3 Juegos con Blueprints y C++',
+        'Unreal Engine 4 Class: Blueprints',
+        'Unreal Engine 4 - Creación de materiales desde 0 a AVANZADO',
+        'Unreal Engine 5 - Learn to Make a Professional Main Menu',
+        'Master Unreal Engine 4 Desarrollo Videojuegos con Blueprints',
+        '3D Studio Max: Espacios arquitectónicos',
+        'Houdini - Procedural Japanese Castle in Unreal Engine',
+        'Houdini - Procedural House',
+        'Houdini - Master Create Stunning fx',
+        'Houdini - Procedural Chinese knife',
+        'Blender 2.9 Iluminación y Render con Cycles de 0 a EXPERTO',
+        'Blender 3D - Model and texture a stylised shield',
+        'Blender 2.9 EXPERTO en Modelado 3D desde CERO hasta Avanzado',
+        'Blender 2.9x Modelado 3D para Videojuegos FLUJO COMPLETO',
+        'Blender 2.8 EXPERTO en UV Mapping de Assets para Videojuegos'
       ]
-    }
+    },
+    {
+      titulo: 'Others',
+      subtitulo: '',
+      datos: [
+        'Houdini - Art Directing Cloth in Houdini',
+        'Autodesk 3ds Max Master Class MaxScript Secrets Revealed',
+      ]
+    },
   ],
   skills: [
     // Languages

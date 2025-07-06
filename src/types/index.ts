@@ -19,13 +19,16 @@ export interface Course {
 
 export interface Education {
   id?: string;  // Haciendo el id opcional
-  institution: string;
-  // Para compatibilidad hacia atrás
+  titulo: string;        // Título principal (ej: nombre de la institución)
+  subtitulo: string;     // Subtítulo (ej: título obtenido o área de estudio)
+  datos: string[];       // Array de strings con información adicional
+  
+  // Mantenemos estos campos para compatibilidad hacia atrás
+  institution?: string;
   degree?: string;
   field?: string;
   period?: string;
   description?: string;
-  // Nueva propiedad para múltiples cursos
   courses?: Course[];
 }
 

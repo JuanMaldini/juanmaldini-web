@@ -75,16 +75,6 @@ export default function SocialIconsBar({
         {icons.portfolio}
       </a>
       <a 
-        href={Whatsapp} 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="social-icon" 
-        aria-label="WhatsApp"
-        data-component-name="SocialIcon-WhatsApp"
-      >
-        {icons.whatsapp}
-      </a>
-      <a 
         href={Email()} 
         target="_blank" 
         rel="noopener noreferrer" 
