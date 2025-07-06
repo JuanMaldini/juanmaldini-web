@@ -2,13 +2,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--colorYellow);
-  color: #333;
+  background-color: var(--color-accent);
+  color: white;
   font-weight: 500;
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
   transition: all 0.3s ease;
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
   font-size: 0.95rem;
@@ -19,15 +19,16 @@
   text-align: center;
 }
 
-.buttonType01 a{
-  color: #333;
+.buttonType01 a {
+  color: white;
   text-decoration: none;
 }
 
 .buttonType01:hover {
-  background-color: #e6a800;
+  background-color: var(--color-accent-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  color: white;
   color: #000;
 }
 
