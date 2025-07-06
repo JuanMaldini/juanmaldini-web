@@ -13,13 +13,11 @@ export default function DescriptionCard02({}: Props) {
       </div>
 
       <div className="button-group">
-        <a 
-          href={CVPdf} 
-          download="Maldini_Juan_Augusto_CV.pdf"
-          className="buttonType01 portfolio-btn"
-        >
-          Download CV
-        </a>
+        <Button 
+          text="Curriculum" 
+          goTo="/curriculum" 
+          className=""
+        />
         <Button 
           text="Projects" 
           goTo="#" 
