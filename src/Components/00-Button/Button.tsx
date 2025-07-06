@@ -1,5 +1,6 @@
 import "../00-Button/Button.css";
 import "../00-Helper/Helper.css";
+import { Link } from "react-router-dom";
 
 type Props = {
   text: string;
@@ -16,6 +17,21 @@ export default function Button({ goTo, target, text, className = '', onClick }: 
       onClick();
     }
   };
+
+  // Check if it's an internal link (starts with /)
+  const isInternalLink = !goTo.startsWith('http') && !goTo.startsWith('#') && !goTo.startsWith('mailto:');
+  
+  if (isInternalLink) {
+    return (
+      <Link 
+        to={goTo} 
+        className={`buttonType01 ${className}`.trim()}
+        onClick={onClick}
+      >
+        {text}
+      </Link>
+    );
+  }
 
   return (
     <a 
