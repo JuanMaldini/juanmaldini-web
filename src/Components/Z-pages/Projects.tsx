@@ -217,7 +217,7 @@ function Projects({}: Props) {
   return (
     <div className="curriculum-container">
       <div>
-        <small className="text-black p-0 m-0">Working on progress</small>
+        <small className="text-black p-0 m-0">Website under construction</small>
       </div>
       <div className="curriculum-header">
       <h2>My Projects</h2>
