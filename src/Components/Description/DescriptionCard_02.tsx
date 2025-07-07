@@ -19,7 +19,7 @@ export default function DescriptionCard02({}: Props) {
         />
         <Button 
           text="Projects" 
-          goTo="#"
+          goTo="/projects"
           className=""
         />
       </div>

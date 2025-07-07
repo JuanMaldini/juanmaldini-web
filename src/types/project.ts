@@ -2,10 +2,14 @@ export type Project = {
   id: string;
   title: string;
   description: string;
-  image: string;
-  video?: string; // URL opcional para videos
+  image: string;          // Imagen principal/miniatura
+  video?: string;         // URL opcional para el video principal
+  additionalMedia?: {     // Medios adicionales (imágenes o videos)
+    type: 'image' | 'video';
+    url: string;
+  }[];
   tags: string[];
-  type: 'image' | 'video';
+  type: 'image' | 'video'; // Tipo basado en el medio principal
   category: string;
   date?: string;
   link?: string;

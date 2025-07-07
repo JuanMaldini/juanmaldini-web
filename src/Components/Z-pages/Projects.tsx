@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import "./Projects.css";
-import ProjectCard from "../Projects/ProjectCard";
+import ProjectCard, { VideoProvider } from "../Projects/ProjectCard";
 import "../Projects/ProjectCard.css"; // Importamos los estilos de las tarjetas
 import { Project } from "../../types/project";
+import Onedrive from '../PortfolioBar/Onedrive';
 
 type Props = {};
 
@@ -137,43 +138,40 @@ function Projects({}: Props) {
           const files = await listFilesInFolder(targetFolder);
           console.log(`Archivos encontrados en ${targetFolder}:`, files);
           
-          // Convertir archivos a proyectos
-          const projectsData = await Promise.all(
-            files.map(async (file) => {
-              const extension = file.split('.').pop()?.toLowerCase() || '';
-              const isVideo = ['mp4', 'webm'].includes(extension);
-              const nameWithoutExt = file.replace(/\.[^/.]+$/, '');
-              
-              // Construir la URL del recurso con un parámetro de caché
-              const cacheBuster = new Date().getTime();
-              const filePath = `${getAssetUrl(targetFolder, file)}?v=${cacheBuster}`;
-              console.log(`Creando proyecto para archivo: ${filePath}`);
-              
-              // Generar un título legible a partir del nombre del archivo
-              const formattedTitle = nameWithoutExt
-                .replace(/[-_]/g, ' ')  // Reemplazar guiones y guiones bajos con espacios
-                .replace(/([a-z])([A-Z])/g, '$1 $2')  // Separar palabras en camelCase
-                .replace(/\b\w/g, l => l.toUpperCase())  // Capitalizar primera letra de cada palabra
-                .trim();
-              
-              return {
-                id: `${targetFolder}-${file}-${cacheBuster}`,  // Incluir timestamp en el ID
-                title: formattedTitle,
-                description: `Proyecto creado con ${targetFolder.replace('_', ' ')}`,
-                tags: [targetFolder],
-                type: isVideo ? ('video' as const) : ('image' as const),
-                image: isVideo ? '' : filePath,
-                video: isVideo ? filePath : undefined,
-                category: targetFolder.replace('_', ' '),
-                date: new Date().toLocaleDateString('es-ES', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })
-              } as Project;
-            })
-          );
-          
+          // Crear un proyecto por cada archivo (imagen o video) sin agrupar por nombre base
+          const projectsData = files.map((file, index) => {
+            const extension = file.split('.').pop()?.toLowerCase() || '';
+            const isVideo = ['mp4', 'webm', 'mov', 'avi'].includes(extension);
+            const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(extension);
+            const nameWithoutExt = file.replace(/\.[^/.]+$/, '');
+            const cacheBuster = new Date().getTime();
+            const filePath = `${getAssetUrl(targetFolder, file)}?v=${cacheBuster}`;
+
+            // Generar un título legible a partir del nombre del archivo
+            const formattedTitle = nameWithoutExt
+              .replace(/[-_]/g, ' ')
+              .replace(/([a-z])([A-Z])/g, '$1 $2')
+              .replace(/\b\w/g, l => l.toUpperCase())
+              .trim();
+
+            return {
+              id: `${targetFolder}-${nameWithoutExt}-${index}`,
+              title: formattedTitle,
+              description: `Proyecto creado con ${targetFolder.replace('_', ' ')}`,
+              tags: [targetFolder],
+              type: isVideo ? 'video' : 'image',
+              image: isImage ? filePath : undefined,
+              video: isVideo ? filePath : undefined,
+              additionalMedia: undefined,
+              category: targetFolder.replace('_', ' '),
+              date: new Date().toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })
+            } as Project;
+          });
+
           setProjects(projectsData);
           console.log('Proyectos cargados:', projectsData);
         }
@@ -215,61 +213,64 @@ function Projects({}: Props) {
   }
 
   return (
-    <div className="curriculum-container">
-      <div>
-        <small className="text-black p-0 m-0">Website under construction</small>
-      </div>
+    <VideoProvider>
+      <div className="curriculum-container">
+
       <div className="curriculum-header">
-      <h2>My Projects</h2>
+        <h2>My Projects</h2>
       </div>
 
-      <div className="tabs">
-        {categories.map((category) => {
-          const displayName = category === 'all' 
-            ? 'All' 
-            : category
-                .replace(/[-_]/g, ' ')
-                .replace(/\b\w/g, l => l.toUpperCase());
-                
-          return (
-            <button 
-              key={category}
-              className={`tab ${activeTab === category ? 'active' : ''}`}
-              onClick={() => {
-                setActiveTab(category);
-                if (category !== 'all') {
-                  setCurrentFolder(category);
-                }
-              }}
-            >
-              {displayName}
-            </button>
-          );
-        })}
-      </div>
+        <div className="tabs">
+          {categories.map((category) => {
+            const displayName = category === 'all' 
+              ? 'All' 
+              : category
+                  .replace(/[-_]/g, ' ')
+                  .replace(/\b\w/g, l => l.toUpperCase());
+                  
+            return (
+              <button 
+                key={category}
+                className={`tab ${activeTab === category ? 'active' : ''}`}
+                onClick={() => {
+                  setActiveTab(category);
+                  if (category !== 'all') {
+                    setCurrentFolder(category);
+                  }
+                }}
+              >
+                {displayName}
+              </button>
+            );
+          })}
+        </div>
 
-      <div className="tab-content">
-        <div className="projects-section">
-          {loading ? (
-            <div className="loading">Loading projects...</div>
-          ) : error ? (
-            <div className="error">{error}</div>
-          ) : filteredProjects.length > 0 ? (
-            <div className="projects-grid">
-              {filteredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          ) : (
-            <div className="no-projects">
-              No projects found in the "{activeTab}" category.
-              <p>Make sure the {activeTab} folder contains image or video files.</p>
-              <p>Path searched: /assets/{activeTab}/</p>
-            </div>
-          )}
+        <div className="tab-content">
+          <div className="projects-section">
+            {loading ? (
+              <div className="loading">Loading projects...</div>
+            ) : error ? (
+              <div className="error">{error}</div>
+            ) : filteredProjects.length > 0 ? (
+              <div className="projects-grid">
+                {filteredProjects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </div>
+            ) : (
+              <div className="no-projects">
+                No projects found in the "{activeTab}" category.
+                <p>Make sure the {activeTab} folder contains image or video files.</p>
+                <p>Path searched: /assets/{activeTab}/</p>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="additional-resources">
+          <Onedrive />
         </div>
       </div>
-    </div>
+    </VideoProvider>
   );
 }
 
