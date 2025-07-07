@@ -1,11 +1,11 @@
 :root {
   /* Colores base - Grises oscurecidos */
-  --color-bg: #f0f2f5;         /* Fondo principal gris claro oscurecido */
-  --color-bg-secondary: #e1e4e8; /* Fondo secundario gris claro */
-  --color-card-bg: #ffffff;     /* Fondo de tarjetas blanco */
-  --color-text: #2d3748;       /* Texto principal oscuro */
-  --color-text-secondary: #4a5568; /* Texto secundario */
-  --color-border: #cbd5e0;     /* Bordes grises claros */
+  --color-bg: hsl(0, 0%, 90%);         /* Fondo principal gris claro oscurecido */
+  --color-bg-secondary: #d4d4d4; /* Fondo secundario gris claro */
+  --color-card-bg: #ffffffcb;     /* Fondo de tarjetas blanco */
+  --color-text: #000000;       /* Texto principal oscuro */
+  --color-text-secondary: #000000; /* Texto secundario */
+  --color-border: #ffc107;     /* Bordes grises claros */
   
   /* Colores de acento */
   --color-accent: #ffc107;     /* Amarillo acento */

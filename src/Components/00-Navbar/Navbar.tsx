@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import "../00-Helper/Helper.css";
-import Logo from "../../assets/Logo.png";
+import Logo from "../../../public/assets/Logo.png";
 import "./Navbar.css";
 
 const Navbar = () => {

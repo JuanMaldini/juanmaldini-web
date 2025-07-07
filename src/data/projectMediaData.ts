@@ -22,14 +22,12 @@ export const projectMediaData = [
   { path: "/assets/Blender/Blender_modelling.mp4", category: "Blender" },
   { path: "/assets/Blender/Classroom test.jpg", category: "Blender" },
   { path: "/assets/Blender/Motion.mp4", category: "Blender" },
-  { path: "/assets/Blender.png", category: "Blender" },
 
   // Houdini
   { path: "/assets/Houdini/Fractures.mp4", category: "Houdini" },
   { path: "/assets/Houdini/HDA_Bridge.mp4", category: "Houdini" },
   { path: "/assets/Houdini/House_Generator.mp4", category: "Houdini" },
   { path: "/assets/Houdini/Portal.mp4", category: "Houdini" },
-  { path: "/assets/Houdini.png", category: "Houdini" },
 
   // Unreal Engine
   { path: "/assets/Unreal Engine/00-Reel2022.mp4", category: "Unreal Engine" },

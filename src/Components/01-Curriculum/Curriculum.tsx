@@ -6,7 +6,7 @@ import ExperienceCard from './ExperienceCard';
 import EducationCard from './EducationCard';
 import { ResumeData } from '../../types';
 import resumeData from '../../data/resumeData';
-import CVPdf from "../../assets/CV/Maldini, Juan Augusto_2025.pdf";
+const CVPdf = "../../../public/assets/CV/Maldini, Juan Augusto_2025.pdf";
 import Button from "../00-Button/Button";
 
 type Props = {};

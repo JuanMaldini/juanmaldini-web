@@ -38,27 +38,37 @@ interface MediaItem {
   url: string;
 }
 
+
+
 const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
   const { playingVideo, setPlayingVideo, hasUserInteracted, setUserInteracted } = useContext(VideoContext);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [manuallyPaused, setManuallyPaused] = React.useState(false);
   const [currentMediaIndex, setCurrentMediaIndex] = React.useState(0);
-  const [showCornerIcon, setShowCornerIcon] = React.useState(false);
+
+
   
   // Determinar si el proyecto tiene un video principal
   const hasVideo = !!project.video;
   const isVideo = project.type === 'video' || hasVideo;
-  
-  // Crear array de todos los medios (principal + adicionales)
-  const allMedia: MediaItem[] = [
-    { type: hasVideo ? 'video' : 'image', url: hasVideo ? project.video! : project.image },
-    ...(project.additionalMedia || [])
-  ];
-  
+
+  // Si hay additionalMedia, mantener navegación, si no, usar solo el principal
+  const allMedia: MediaItem[] = project.additionalMedia && project.additionalMedia.length > 0
+    ? [
+        ...(project.image ? [{ type: 'image' as const, url: project.image }] : []),
+        ...(project.video ? [{ type: 'video' as const, url: project.video }] : []),
+        ...project.additionalMedia
+      ]
+    : [
+        project.type === 'video' && project.video
+          ? { type: 'video', url: project.video }
+          : { type: 'image', url: project.image }
+      ];
+
   // Obtener el medio actual
   const currentMedia = allMedia[currentMediaIndex];
   const isCurrentVideo = currentMedia?.type === 'video';
-  
+
   // Verificar si hay medios adicionales
   const hasAdditionalMedia = allMedia.length > 1;
   
@@ -174,57 +184,28 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
           className="main-media"
         >
           {isCurrentVideo ? (
-            <div
-              className="video-wrapper"
-              style={{ position: 'relative', width: '100%', height: '100%' }}
-              onClick={handleInteraction}
-              tabIndex={0}
-              onMouseEnter={() => setShowCornerIcon(true)}
-              onMouseLeave={() => setShowCornerIcon(false)}
-            >
-              <video 
-                ref={videoRef}
-                src={currentMedia.url}
-                className="project-media"
-                loop
-                playsInline
-                muted={!hasUserInteracted}
-                preload="metadata"
-                onLoadedMetadata={() => console.log(`Metadatos cargados para: ${project.id}`)}
-                onPlay={() => console.log(`Reproducción iniciada: ${project.id}`)}
-                onPause={() => console.log(`Reproducción pausada: ${project.id}`)}
-                onError={(e) => {
-                  const video = e.target as HTMLVideoElement;
-                  console.error(`Error en video ${project.id}:`, video.error);
-                }}
-              />
-              {/* Ícono de Play/Pause solo como indicador en la esquina superior derecha, solo en hover */}
-              {showCornerIcon && (
-                <span className="video-play-corner-icon" aria-label={playingVideo === project.id && !manuallyPaused ? 'Pausar video' : 'Reproducir video'}>
-                  {playingVideo === project.id && !manuallyPaused ? (
-                    <svg width="22" height="22" viewBox="0 0 48 48" fill="none">
-                      <rect x="13" y="12" width="7" height="24" rx="2" fill="#fff" />
-                      <rect x="27" y="12" width="7" height="24" rx="2" fill="#fff" />
-                    </svg>
-                  ) : (
-                    <svg width="22" height="22" viewBox="0 0 48 48" fill="none">
-                      <polygon points="16,12 38,24 16,36" fill="#fff" />
-                    </svg>
-                  )}
-                </span>
-              )}
-            </div>
+            <video
+              ref={videoRef}
+              src={currentMedia.url}
+              className="project-media"
+              controls
+              loop
+              playsInline
+              muted={!hasUserInteracted}
+              preload="metadata"
+              style={{ width: '100%', height: '100%', background: '#111' }}
+            />
           ) : (
-            <img 
-              src={currentMedia.url} 
-              alt={project.title} 
-              className="project-media" 
+            <img
+              src={currentMedia.url}
+              alt={project.title}
+              className="project-media"
               loading="lazy"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
           )}
         </div>
         
-        {/* Miniaturas de navegación */}
         {hasAdditionalMedia && (
           <div className="additional-media">
             {allMedia.map((media, index) => (

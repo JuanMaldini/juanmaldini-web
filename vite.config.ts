@@ -7,6 +7,8 @@ import fs from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// [MIGRATION COMPLETE] The copyAssets function is now commented out as all assets are served from public/assets.
+/*
 // Copiar archivos estáticos de src/assets a public/assets
 function copyAssets() {
   const srcAssets = path.resolve(__dirname, 'src/assets');
@@ -44,9 +46,10 @@ function copyAssets() {
     copyRecursiveSync(srcAssets, destAssets);
   }
 }
+*/
 
 // Ejecutar la copia al iniciar
-copyAssets();
+// copyAssets();
 
 // https://vite.dev/config/
 export default defineConfig({

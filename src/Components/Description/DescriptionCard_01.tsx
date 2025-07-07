@@ -1,5 +1,5 @@
 import "./Description.css";
-import profile from "../../assets/Maldini, Juan Augusto.jpg";
+import profile from "../../../public/assets/Maldini, Juan Augusto.jpg";
 import SocialIconsBar from "../Shared/SocialIconsBar";
 
 type Props = {};
