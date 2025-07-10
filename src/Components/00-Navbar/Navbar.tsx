@@ -42,13 +42,11 @@ const Navbar = () => {
   return (
     <header className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
       <nav className="navbar">
-        <div className="nav-content">
-          <div className="nav-logo" onClick={() => handleNavClick('/')}>
+  <div className="nav-logo" onClick={() => handleNavClick('/')}>
             <img src={Logo} alt="Logo" className="logo" />
             <span className="logo-text">Juan Maldini</span>
-          </div>
-
-          <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+  </div>
+  <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
             {navItems.map((item) => (
               <div 
                 key={item.path}
@@ -59,19 +57,17 @@ const Navbar = () => {
                 <div className="nav-indicator"></div>
               </div>
             ))}
-          </div>
-
-          <button 
-            className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle navigation"
-          >
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-          </button>
-        </div>
-      </nav>
+  </div>
+  <button 
+    className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}
+    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+    aria-label="Toggle navigation"
+    >
+    <span className="hamburger-line"></span>
+    <span className="hamburger-line"></span>
+    <span className="hamburger-line"></span>
+  </button>
+</nav>
     </header>
   );
 };

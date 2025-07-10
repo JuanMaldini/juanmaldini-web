@@ -13,30 +13,28 @@ function Projects({}: Props) {
   const categories = ['all', ...Array.from(new Set(projectMediaData.map(item => item.category)))];
   const [activeTab, setActiveTab] = useState<string>('all');
 
-  // Mapeo de los datos estáticos a objetos Project
-  const allProjects: Project[] = projectMediaData.map((item, idx): Project => {
-    const fileName = item.path.split('/').pop() || '';
-    const nameWithoutExt = fileName.replace(/\.[^/.]+$/, '');
-    const ext = item.path.split('.').pop()?.toLowerCase() || '';
-    const isVideo = ['mp4', 'webm', 'mov'].includes(ext);
-    const isImage = ['jpg', 'jpeg', 'png', 'gif'].includes(ext);
-    return {
-      id: `${item.category}-${nameWithoutExt}-${idx}`,
-      title: nameWithoutExt
-        .replace(/[-_]/g, ' ')
-        .replace(/([a-z])([A-Z])/g, '$1 $2')
-        .replace(/\b\w/g, (l: string) => l.toUpperCase())
-        .trim(),
-      description: `Proyecto de ${item.category}`,
-      tags: [item.category],
-      type: isVideo ? 'video' : 'image',
-      image: isImage ? item.path : '',
-      video: isVideo ? item.path : '',
-      category: item.category,
-      date: '',
-      link: '',
-    };
-  });
+  // Cada item de projectMediaData será un Project individual
+  const allProjects: Project[] = projectMediaData.map((item, idx) => {
+  const ext = item.path.split('.').pop()?.toLowerCase() || '';
+  const type = ['mp4', 'webm', 'mov'].includes(ext) ? 'video' : 'image';
+  // Nombre del archivo sin carpeta ni extensión
+  const fileName = item.path.split('/').pop()?.replace(/\.[^/.]+$/, '') || 'Untitled';
+  return {
+    id: `${(item.category || 'project').replace(/\s+/g, '_').toLowerCase()}_${idx}`,
+    title: fileName,
+    description: item.category ? `Proyecto de ${item.category}` : '',
+    tags: item.category ? [item.category] : [],
+    type,
+    category: item.category || '',
+    media: [{
+      url: item.path,
+      type,
+      title: fileName
+    }],
+    date: '',
+    link: '',
+  };
+});
 
   // Filtrar y ordenar proyectos
   const filteredProjects = activeTab === 'all'
@@ -48,12 +46,9 @@ function Projects({}: Props) {
     <VideoProvider>
       <div className="curriculum-container">
         <div className="curriculum-header">
-          <ul className="nolist">
-            <li><h2>My Projects</h2></li>
-            <li><small>Website under development.</small></li>
-          </ul>  
-          
-        </div>
+  <h2>My Projects</h2>
+  <small>Website under development.</small>
+</div>
         <div className="tabs">
           {categories.map((category: string) => {
             const displayName = category === 'all'

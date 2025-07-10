@@ -33,49 +33,22 @@ interface ProjectCardProps {
   project: Project;
 }
 
-interface MediaItem {
-  type: 'image' | 'video';
-  url: string;
-}
-
-
-
 const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
   const { playingVideo, setPlayingVideo, hasUserInteracted, setUserInteracted } = useContext(VideoContext);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [manuallyPaused, setManuallyPaused] = React.useState(false);
   const [currentMediaIndex, setCurrentMediaIndex] = React.useState(0);
 
-
-  
-  // Determinar si el proyecto tiene un video principal
-  const hasVideo = !!project.video;
-  const isVideo = project.type === 'video' || hasVideo;
-
-  // Si hay additionalMedia, mantener navegación, si no, usar solo el principal
-  const allMedia: MediaItem[] = project.additionalMedia && project.additionalMedia.length > 0
-    ? [
-        ...(project.image ? [{ type: 'image' as const, url: project.image }] : []),
-        ...(project.video ? [{ type: 'video' as const, url: project.video }] : []),
-        ...project.additionalMedia
-      ]
-    : [
-        project.type === 'video' && project.video
-          ? { type: 'video', url: project.video }
-          : { type: 'image', url: project.image }
-      ];
-
-  // Obtener el medio actual
+  // Usar el array de medios del proyecto
+  const allMedia = project.media;
   const currentMedia = allMedia[currentMediaIndex];
   const isCurrentVideo = currentMedia?.type === 'video';
-
-  // Verificar si hay medios adicionales
   const hasAdditionalMedia = allMedia.length > 1;
   
   // Manejar reproducción cuando cambia playingVideo o manualmente
   useEffect(() => {
     const video = videoRef.current;
-    if (!isVideo || !video) return;
+    if (!isCurrentVideo || !video) return;
 
     const isPlaying = playingVideo === project.id && !manuallyPaused;
     console.log(`Video ${project.id} - Estado: ${isPlaying ? 'play' : 'pause'}`);
@@ -124,7 +97,7 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
         video.pause();
       }
     };
-  }, [playingVideo, isVideo, project.id, hasUserInteracted, manuallyPaused]);
+  }, [playingVideo, , project.id, hasUserInteracted, manuallyPaused]);
   
   // Manejar interacciones
   const handleInteraction = (e: React.MouseEvent | React.TouchEvent) => {
@@ -198,12 +171,16 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
           ) : (
             <img
               src={currentMedia.url}
-              alt={project.title}
+              alt={currentMedia.title || project.title}
               className="project-media"
               loading="lazy"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
           )}
+          {/* Mostrar el título del medio actual */}
+          <div className="media-title" style={{textAlign:'center', marginTop:'0.5rem', fontSize:'0.95rem', color:'#555'}}>
+            {currentMedia.title}
+          </div>
         </div>
         
         {hasAdditionalMedia && (
@@ -213,6 +190,7 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
                 key={`${project.id}-media-${index}`} 
                 className={`additional-media-item ${index === currentMediaIndex ? 'active' : ''}`}
                 onClick={(e) => handleThumbnailClick(index, e)}
+                title={media.title}
               >
                 {media.type === 'video' ? (
                   <video
@@ -226,11 +204,15 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
                 ) : (
                   <img 
                     src={media.url} 
-                    alt={`${project.title} - ${index + 1}`} 
+                    alt={media.title || `${project.title} - ${index + 1}`} 
                     className="project-media-thumbnail"
                     loading="lazy"
                   />
                 )}
+                {/* Mostrar el título de cada miniatura */}
+                <div className="media-title" style={{textAlign:'center', fontSize:'0.8rem', color:'#888'}}>
+                  {media.title}
+                </div>
               </div>
             ))}
           </div>
