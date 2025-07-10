@@ -46,8 +46,10 @@ function Projects({}: Props) {
     <VideoProvider>
       <div className="curriculum-container">
         <div className="curriculum-header">
-  <h2>My Projects</h2>
-  <small>Website under development.</small>
+          <div>
+            <h2>My Projects</h2>
+            <small>Website under development.</small>
+          </div>
 </div>
         <div className="tabs">
           {categories.map((category: string) => {
