@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import "./Projects.css";
 import ProjectCard, { VideoProvider } from "../Projects/ProjectCard";
+import ProjectImageCard from "../Projects/ProjectImageCard";
+import ProjectVideoCard from "../Projects/ProjectVideoCard";
 import "../Projects/ProjectCard.css";
 import { Project } from "../../types/project";
 import Onedrive from '../PortfolioBar/Onedrive';
@@ -71,9 +73,15 @@ function Projects({}: Props) {
           <div className="projects-section">
             {sortedProjects.length > 0 ? (
               <div className="projects-grid">
-                {sortedProjects.map((project: Project) => (
-                  <ProjectCard key={project.id} project={project} />
-                ))}
+                {sortedProjects.map((project: Project) => {
+                  if (project.type === 'image') {
+                    return <ProjectImageCard key={project.id} project={project} />;
+                  }
+                  if (project.type === 'video') {
+                    return <ProjectVideoCard key={project.id} project={project} />;
+                  }
+                  return null;
+                })}
               </div>
             ) : (
               <div className="no-projects">
