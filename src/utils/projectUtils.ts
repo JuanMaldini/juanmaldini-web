@@ -75,7 +75,11 @@ export const processProjectFile = (filePath: string): Omit<Project, 'id'> | null
   return {
     title,
     description: '', // Se puede extraer de un archivo de metadatos
-    image: `/assets/projects/${category}/${fileName}`,
+    media: [{
+      url: `/assets/projects/${category}/${fileName}`,
+      type,
+      title
+    }],
     tags: [],
     type,
     category,
