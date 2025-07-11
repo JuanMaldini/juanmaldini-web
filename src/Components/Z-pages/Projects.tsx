@@ -6,6 +6,7 @@ import "../Projects/ProjectCard.css";
 import { Project } from "../../types/project";
 import Onedrive from '../PortfolioBar/Onedrive';
 import { projectMediaData } from '../../data/projectMediaData';
+import { VideoProvider } from '../Projects/ProjectCard';
 
 type Props = {};
 
