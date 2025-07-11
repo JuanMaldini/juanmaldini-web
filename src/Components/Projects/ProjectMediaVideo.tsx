@@ -22,6 +22,7 @@ export default function ProjectMediaVideo({
         playsInline
         autoPlay={false}
         controls
+        preload="metadata"
         style={{ 
           width: '100%', 
           height: '100%', 
@@ -29,7 +30,13 @@ export default function ProjectMediaVideo({
           overflow: 'hidden',
           objectFit: 'cover'
         }}
-      />
+        onError={(e) => {
+          console.error('Error loading video:', e);
+        }}
+      >
+        <source src={sources[0].url} type={sources[0].type} />
+        Your browser does not support the video tag.
+      </video>
     </div>
   );
 }
