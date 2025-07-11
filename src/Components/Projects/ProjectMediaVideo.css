@@ -1,0 +1,51 @@
+/* Personalización de los controles del reproductor */
+:global(.media-theme-yt .yt-controls) {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Ocultar botones específicos */
+:global(.media-theme-yt .yt-settings) {
+  display: none !important;
+}
+
+:global(.media-theme-yt .yt-captions) {
+  display: none !important;
+}
+
+:global(.media-theme-yt .yt-minimize) {
+  display: none !important;
+}
+
+:global(.media-theme-yt .yt-overlay) {
+  display: none !important;
+}
+
+/* Mantener el botón de maximizar */
+:global(.media-theme-yt .yt-maximize) {
+  position: relative;
+  margin-left: auto;
+}
+
+/* Mantener los controles básicos */
+:global(.media-theme-yt .yt-volume) {
+  display: block !important;
+}
+
+:global(.media-theme-yt .yt-play-pause) {
+  display: block !important;
+}
+
+:global(.media-theme-yt .yt-progress) {
+  display: block !important;
+  flex: 1;
+  margin: 0 16px;
+}

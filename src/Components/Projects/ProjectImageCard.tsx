@@ -1,5 +1,6 @@
 import React from 'react';
 import { Project } from '../../types/project';
+import ProjectMediaImage from './ProjectMediaImage';
 import './ProjectCard.css';
 
 interface ProjectImageCardProps {
@@ -23,14 +24,19 @@ const ProjectImageCard: React.FC<ProjectImageCardProps> = ({ project }) => {
     <>
       <article className="project-card">
         <div className="media-container">
-          <img
-            src={encodeURI(image.url)}
-            alt={project.title}
-            className="project-media"
-            loading="lazy"
-            style={{ cursor: 'pointer' }}
-            onClick={handleImageClick}
-          />
+          {/* Nuevo renderizado de imagen compatible */}
+          <div onClick={handleImageClick} style={{ display: 'inline-block', cursor: 'pointer' }}>
+            <ProjectMediaImage
+              sources={[
+                image.url.replace(/\.png$/i, '.webp'),
+                image.url.replace(/\.png$/i, '.jpg'),
+                image.url
+              ]}
+              alt={project.title}
+              className="project-media"
+              style={{ cursor: 'pointer' }}
+            />
+          </div>
         </div>
         <div className="project-info">
           <h3>{project.title}</h3>

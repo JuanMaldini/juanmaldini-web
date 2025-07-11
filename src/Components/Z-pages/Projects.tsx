@@ -38,11 +38,10 @@ function Projects({}: Props) {
   };
 });
 
-  // Filtrar y ordenar proyectos
+  // Filtrar proyectos manteniendo el orden original
   const filteredProjects = activeTab === 'all'
     ? allProjects
     : allProjects.filter((p: Project) => p.category === activeTab);
-  const sortedProjects = filteredProjects.sort((a: Project, b: Project) => a.title.localeCompare(b.title));
 
   return (
     <VideoProvider>
@@ -50,7 +49,6 @@ function Projects({}: Props) {
         <div className="curriculum-header">
           <div>
             <h2>My Projects</h2>
-            <small>Website under development.</small>
           </div>
 </div>
         <div className="tabs">
@@ -71,9 +69,9 @@ function Projects({}: Props) {
         </div>
         <div className="tab-content">
           <div className="projects-section">
-            {sortedProjects.length > 0 ? (
+            {filteredProjects.length > 0 ? (
               <div className="projects-grid">
-                {sortedProjects.map((project: Project) => {
+                {filteredProjects.map((project: Project) => {
                   if (project.type === 'image') {
                     return <ProjectImageCard key={project.id} project={project} />;
                   }

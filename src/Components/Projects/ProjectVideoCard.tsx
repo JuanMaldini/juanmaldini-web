@@ -1,6 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { Project } from '../../types/project';
 import './ProjectCard.css';
+import './ProjectVideoCard.css';
+import ProjectMediaVideo from './ProjectMediaVideo';
 
 interface ProjectVideoCardProps {
   project: Project;
@@ -8,37 +10,25 @@ interface ProjectVideoCardProps {
 
 const ProjectVideoCard: React.FC<ProjectVideoCardProps> = ({ project }) => {
   const video = project.media[0];
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const handlePlayPause = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const vid = videoRef.current;
-    if (!vid) return;
-    if (vid.paused) {
-      vid.play();
-      setIsPlaying(true);
-    } else {
-      vid.pause();
-      setIsPlaying(false);
-    }
-  };
 
   return (
     <article className="project-card">
       <div className="media-container">
-        <video
-          ref={videoRef}
-          src={encodeURI(video.url)}
-          className="project-media"
-          controls
-          poster={project.media[0]?.url.replace(/\.(mp4|webm|mov|avi)$/i, '.jpg')}
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
-        />
-        <button className="video-play-pause-btn" onClick={handlePlayPause}>
-          {isPlaying ? '⏸' : '▶️'}
-        </button>
+        <div className="video-wrapper">
+          <ProjectMediaVideo
+            sources={[
+              { url: video.url, type: 'video/mp4' },
+            ]}
+            poster={project.media[1]?.url}
+            loop
+            style={{
+              borderRadius: '10px',
+              width: '100%',
+              height: '100%',
+              aspectRatio: '16/9'
+            }}
+          />
+        </div>
       </div>
       <div className="project-info">
         <h3>{project.title}</h3>
