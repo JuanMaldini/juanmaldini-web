@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import "./Projects.css";
-import ProjectCard, { VideoProvider } from "../Projects/ProjectCard";
 import ProjectImageCard from "../Projects/ProjectImageCard";
 import ProjectVideoCard from "../Projects/ProjectVideoCard";
 import "../Projects/ProjectCard.css";
