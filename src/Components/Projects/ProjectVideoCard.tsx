@@ -11,13 +11,30 @@ interface ProjectVideoCardProps {
 const ProjectVideoCard: React.FC<ProjectVideoCardProps> = ({ project }) => {
   const video = project.media[0];
 
+  // Helper function to get MIME type from file extension
+  const getMimeType = (url: string): string => {
+    const extension = url.split('.').pop()?.toLowerCase();
+    switch (extension) {
+      case 'mp4':
+        return 'video/mp4';
+      case 'mov':
+        return 'video/quicktime';
+      case 'webm':
+        return 'video/webm';
+      case 'avi':
+        return 'video/x-msvideo';
+      default:
+        return 'video/mp4'; // fallback
+    }
+  };
+
   return (
     <article className="project-card">
       <div className="media-container">
         <div className="video-wrapper">
           <ProjectMediaVideo
             sources={[
-              { url: video.url, type: 'video/mp4' },
+              { url: video.url, type: getMimeType(video.url) },
             ]}
             poster={project.media[1]?.url}
             loop

@@ -21,6 +21,7 @@ const ProjectMediaImage: React.FC<ProjectMediaImageProps> = ({
     const img = new Image();
     img.onload = () => setIsLoaded(true);
     img.onerror = () => {
+      console.error('Error loading image:', currentSource);
       // Intentar con la siguiente fuente disponible
       const currentIndex = sources.indexOf(currentSource);
       if (currentIndex < sources.length - 1) {
@@ -28,10 +29,11 @@ const ProjectMediaImage: React.FC<ProjectMediaImageProps> = ({
         setIsLoaded(false);
       }
     };
-    img.src = currentSource;
+    img.src = encodeURI(currentSource);
   }, [currentSource, sources]);
 
   const handleImageError = () => {
+    console.error('Error loading image:', currentSource);
     // Intentar con la siguiente fuente disponible
     const currentIndex = sources.indexOf(currentSource);
     if (currentIndex < sources.length - 1) {
@@ -59,7 +61,7 @@ const ProjectMediaImage: React.FC<ProjectMediaImageProps> = ({
       
       {/* La imagen real */}
       <img
-        src={currentSource}
+        src={encodeURI(currentSource)}
         alt={alt}
         style={{
           ...style,

@@ -97,7 +97,7 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
         video.pause();
       }
     };
-  }, [playingVideo, , project.id, hasUserInteracted, manuallyPaused]);
+  }, [playingVideo, project.id, hasUserInteracted, manuallyPaused, isCurrentVideo]);
   
   // Manejar interacciones
   const handleInteraction = (e: React.MouseEvent | React.TouchEvent) => {
@@ -159,7 +159,7 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
           {isCurrentVideo ? (
             <video
               ref={videoRef}
-              src={currentMedia.url}
+              src={encodeURI(currentMedia.url)}
               className="project-media"
               controls
               loop
@@ -167,14 +167,20 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
               muted={!hasUserInteracted}
               preload="metadata"
               style={{ width: '100%', height: '100%', background: '#111' }}
+              onError={(e) => {
+                console.error('Error loading video:', currentMedia.url, e);
+              }}
             />
           ) : (
             <img
-              src={currentMedia.url}
+              src={encodeURI(currentMedia.url)}
               alt={currentMedia.title || project.title}
               className="project-media"
               loading="lazy"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              onError={(e) => {
+                console.error('Error loading image:', currentMedia.url, e);
+              }}
             />
           )}
           {/* Mostrar el título del medio actual */}
@@ -194,19 +200,25 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
               >
                 {media.type === 'video' ? (
                   <video
-                    src={media.url}
+                    src={encodeURI(media.url)}
                     className="project-media-thumbnail"
                     loop
                     playsInline
                     muted
                     preload="metadata"
+                    onError={(e) => {
+                      console.error('Error loading video thumbnail:', media.url, e);
+                    }}
                   />
                 ) : (
                   <img 
-                    src={media.url} 
+                    src={encodeURI(media.url)} 
                     alt={media.title || `${project.title} - ${index + 1}`} 
                     className="project-media-thumbnail"
                     loading="lazy"
+                    onError={(e) => {
+                      console.error('Error loading image thumbnail:', media.url, e);
+                    }}
                   />
                 )}
                 {/* Mostrar el título de cada miniatura */}
