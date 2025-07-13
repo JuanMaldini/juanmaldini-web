@@ -1,7 +1,7 @@
 /* General container styles */
 .curriculum-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   padding: 2rem 1.5rem;
   color: var(--color-text);
   background-color: var(--color-bg);
@@ -10,6 +10,16 @@
   min-height: calc(100vh - 4rem);
   display: flex;
   flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Inner content wrapper for centering */
+.curriculum-container > * {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 /* Header styles */
@@ -87,14 +97,8 @@
 
 .tab:hover {
   color: var(--color-text);
-  border-bottom-color: var(--color-border-hover);
-}
+  border-bottom: 3px solid var(--colorYellow);
 
-.tab.active {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
-  font-weight: 600;
-  background: transparent;
 }
 
 /* Tab content */
@@ -209,12 +213,10 @@
 }
 
 .tab:hover {
-  color: var(--colorYellow);
   background-color: rgba(255, 193, 7, 0.1);
 }
 
 .tab.active {
-  color: var(--colorYellow);
   border-bottom: 3px solid var(--colorYellow);
   margin-bottom: -1px;
   font-weight: 500;

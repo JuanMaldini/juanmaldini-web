@@ -38,6 +38,7 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [manuallyPaused, setManuallyPaused] = React.useState(false);
   const [currentMediaIndex, setCurrentMediaIndex] = React.useState(0);
+  const [userMutedState, setUserMutedState] = React.useState<boolean | null>(null);
 
   // Usar el array de medios del proyecto
   const allMedia = project.media;
@@ -56,35 +57,45 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
     const handlePlay = async () => {
       if (!isPlaying) {
         console.log(`Pausando video: ${project.id}`);
-        // No hacemos nada al pausar, dejamos que el video mantenga su posición
         return;
       }
 
-      // Si el usuario ya interactuó globalmente, intentar con sonido
-      if (hasUserInteracted) {
-        try {
-          video.muted = false;
-          await video.play();
-          console.log(`Video ${project.id} reproduciéndose con sonido`);
-        } catch (err) {
-          // Si falla, fallback a muted
-          console.warn(`No se pudo reproducir con sonido por hover, probando silenciado:`, err);
+      // Solo cambiar el mute si el usuario no ha interactuado manualmente con los controles
+      if (userMutedState === null) {
+        // Si el usuario ya interactuó globalmente, intentar con sonido
+        if (hasUserInteracted) {
+          try {
+            video.muted = false;
+            await video.play();
+            console.log(`Video ${project.id} reproduciéndose con sonido`);
+          } catch (err) {
+            // Si falla, fallback a muted
+            console.warn(`No se pudo reproducir con sonido por hover, probando silenciado:`, err);
+            video.muted = true;
+            try {
+              await video.play();
+              console.log(`Video ${project.id} reproduciéndose silenciado (fallback)`);
+            } catch (e) {
+              console.error('No se pudo reproducir el video ni silenciado:', e);
+            }
+          }
+        } else {
+          // Si nunca hubo interacción, siempre muted
           video.muted = true;
           try {
             await video.play();
-            console.log(`Video ${project.id} reproduciéndose silenciado (fallback)`);
+            console.log(`Video ${project.id} reproduciéndose silenciado (primer hover)`);
           } catch (e) {
-            console.error('No se pudo reproducir el video ni silenciado:', e);
+            console.error('No se pudo reproducir el video silenciado:', e);
           }
         }
       } else {
-        // Si nunca hubo interacción, siempre muted
-        video.muted = true;
+        // Si el usuario ya configuró el mute manualmente, respetarlo
         try {
           await video.play();
-          console.log(`Video ${project.id} reproduciéndose silenciado (primer hover)`);
+          console.log(`Video ${project.id} reproduciéndose con mute configurado por usuario`);
         } catch (e) {
-          console.error('No se pudo reproducir el video silenciado:', e);
+          console.error('No se pudo reproducir el video:', e);
         }
       }
     };
@@ -97,7 +108,23 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
         video.pause();
       }
     };
-  }, [playingVideo, , project.id, hasUserInteracted, manuallyPaused]);
+  }, [playingVideo, project.id, hasUserInteracted, manuallyPaused, userMutedState]);
+
+  // Detectar cuando el usuario interactúa con los controles del video
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!isCurrentVideo || !video) return;
+
+    const handleVolumeChange = () => {
+      setUserMutedState(video.muted);
+    };
+
+    video.addEventListener('volumechange', handleVolumeChange);
+    
+    return () => {
+      video.removeEventListener('volumechange', handleVolumeChange);
+    };
+  }, [isCurrentVideo]);
   
   // Manejar interacciones
   const handleInteraction = (e: React.MouseEvent | React.TouchEvent) => {
@@ -164,7 +191,7 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
               controls
               loop
               playsInline
-              muted={!hasUserInteracted}
+              muted={userMutedState !== null ? userMutedState : !hasUserInteracted}
               preload="metadata"
               style={{ width: '100%', height: '100%', background: '#111' }}
             />

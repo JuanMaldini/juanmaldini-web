@@ -50,7 +50,7 @@ function Projects({}: Props) {
           <div>
             <h2>My Projects</h2>
           </div>
-</div>
+        </div>
         <div className="tabs">
           {categories.map((category: string) => {
             const displayName = category === 'all'

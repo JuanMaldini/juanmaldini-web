@@ -1,16 +1,16 @@
 :root {
   /* Colores base - Grises oscurecidos */
-  --color-bg: hsl(0, 0%, 90%);         /* Fondo principal gris claro oscurecido */
-  --color-bg-secondary: #d4d4d4; /* Fondo secundario gris claro */
-  --color-card-bg: #ffffffcb;     /* Fondo de tarjetas blanco */
+  --color-bg: hsl(0, 0%, 83%);         /* Fondo principal gris claro oscurecido */
+  --color-bg-secondary: hsl(0, 0%, 95%); /* Fondo secundario gris claro */
+  --color-card-bg: hsl(0, 0%, 95%);     /* Fondo de tarjetas blanco */
   --color-text: #000000;       /* Texto principal oscuro */
   --color-text-secondary: #000000; /* Texto secundario */
-  --color-border: #ffc107;     /* Bordes grises claros */
+  --color-border: var(--color-accent-hover);     /* Bordes usan acento hover */
   
   /* Colores de acento */
   --color-accent: #ffc107;     /* Amarillo acento */
   --color-accent-hover: #e6a800; /* Amarillo acento oscuro */
-  --color-yellow: #ffc107;     /* Variable adicional para compatibilidad */
+  --color-yellow: var(--color-accent);           /* Amarillo igual a acento */
   
   /* Sombras sutiles consistentes */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -25,11 +25,11 @@
   --spacing-xl: 3rem;
 }
 
-/* Estilos base */
+/* Fondo principal */
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-secondary);
   color: var(--color-text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
@@ -40,60 +40,46 @@ body {
   flex-direction: column;
 }
 
-/* Contenedor principal */
-.app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: var(--color-bg);
-  transition: all 0.3s ease;
+/* Tipografía */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
-/* Contenido principal */
-.main-content {
-  flex: 1;
-  background-color: var(--color-bg);
-  padding-top: 0;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-}
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
 
-/* Tarjetas y contenedores */
-.card {
-  background-color: var(--color-card-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  position: relative;
-  backdrop-filter: blur(10px);
+p {
+  margin-top: 0;
   margin-bottom: 1.5rem;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  line-height: 1.7;
 }
 
-.card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
-  border-color: var(--color-border);
+/* Enlaces */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
 }
 
-/* Efecto sutil en las tarjetas */
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--color-accent);
-  opacity: 0.8;
-  transition: all 0.25s ease;
+a:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
 }
 
-.card:hover::before {
-  opacity: 1;
-  height: 4px;
+/* Responsive: solo tipografía */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
 }
 
 /* Enlaces */
