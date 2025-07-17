@@ -47,5 +47,5 @@ export const projectMediaData = [
   { path: "/assets/Unreal_Engine/Meteorite.mp4", category: "Unreal Engine"},
   { path: "/assets/Unreal_Engine/Portal.mp4", category: "Unreal Engine"},
   { path: "/assets/Unreal_Engine/Sofa Set.mp4", category: "Unreal Engine"},
-  { path: "finishing", category: "Max Script"},
+  { path: "/assets/Max Script/MaxScript_Ceiling.mp4", category: "Max Script"},
 ];
