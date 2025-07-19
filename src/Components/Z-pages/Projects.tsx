@@ -15,36 +15,32 @@ function Projects({}: Props) {
   const categories = ['all', ...Array.from(new Set(projectMediaData.map(item => item.category)))];
   const [activeTab, setActiveTab] = useState<string>('all');
 
-  // Cada item de projectMediaData será un Project individual
+  // Cada item de projectMediaData será un Project individual - SIMPLIFICADO
   const allProjects: Project[] = projectMediaData.map((item, idx) => {
-  const ext = item.path.split('.').pop()?.toLowerCase() || '';
-  const type = ['mp4', 'webm', 'mov'].includes(ext) ? 'video' : 'image';
-  // Nombre del archivo sin carpeta ni extensión (preservando espacios)
-  const fileName = item.path.split('/').pop()?.replace(/\.[^/.]+$/, '') || 'Untitled';
-  // ID seguro sin espacios para el DOM
-  const safeCategory = (item.category || 'project').replace(/\s+/g, '_').toLowerCase();
-  return {
-    id: `${safeCategory}_${idx}`,
-    title: fileName,
-    description: item.category ? `Proyecto de ${item.category}` : '',
-    tags: item.category ? [item.category] : [],
-    type,
-    category: item.category || '',
-    media: [{
-      url: item.path,
-      type,
-      title: fileName
-    }],
-    date: '',
-    link: '',
-  };
-});
+    const isVideo = item.path.includes('.mp4');
+    const fileName = item.path.split('/').pop()?.replace('.mp4', '').replace('.jpg', '').replace('.png', '') || 'Untitled';
+    
+    return {
+      id: `project_${idx}`,
+      title: fileName,
+      description: `Proyecto de ${item.category}`,
+      tags: [item.category],
+      type: isVideo ? 'video' : 'image',
+      category: item.category,
+      media: [{
+        url: item.path,
+        type: isVideo ? 'video' : 'image',
+        title: fileName
+      }],
+      date: '',
+      link: '',
+    };
+  });
 
-  // Filtrar proyectos manteniendo el orden original
-  // Comparación exacta de categorías (respetando espacios y mayúsculas)
+  // Filtrado simple y directo
   const filteredProjects = activeTab === 'all'
     ? allProjects
-    : allProjects.filter((p: Project) => p.category === activeTab);
+    : allProjects.filter(project => project.category === activeTab);
 
   return (
     <VideoProvider>

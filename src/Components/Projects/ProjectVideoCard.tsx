@@ -2,7 +2,6 @@ import React from 'react';
 import { Project } from '../../types/project';
 import './ProjectCard.css';
 import './ProjectVideoCard.css';
-import ProjectMediaVideo from './ProjectMediaVideo';
 
 interface ProjectVideoCardProps {
   project: Project;
@@ -15,11 +14,10 @@ const ProjectVideoCard: React.FC<ProjectVideoCardProps> = ({ project }) => {
     <article className="project-card">
       <div className="media-container">
         <div className="video-wrapper">
-          <ProjectMediaVideo
-            sources={[
-              { url: video.url, type: 'video/mp4' },
-            ]}
-            poster={project.media[1]?.url}
+          <video
+            src={video.url}
+            controls
+            muted
             loop
             style={{
               borderRadius: '10px',
