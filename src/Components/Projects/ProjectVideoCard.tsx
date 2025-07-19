@@ -17,14 +17,13 @@ const ProjectVideoCard: React.FC<ProjectVideoCardProps> = ({ project }) => {
           <video
             src={video.url}
             controls
-            muted
-            loop
             style={{
               borderRadius: '10px',
               width: '100%',
               height: '100%',
               aspectRatio: '16/9'
             }}
+            typeof="video/mp4"
           />
         </div>
       </div>
