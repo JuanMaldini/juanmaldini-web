@@ -3,6 +3,8 @@ import App from './App';
 import Curriculum from './Components/01-Curriculum/Curriculum';
 import Aboutme from './Components/Z-pages/Aboutme';
 import Projects from './Components/Z-pages/Projects';
+import VideoTest from './Components/VideoTest';
+import VideoTestSrc from './Components/VideoTestSrc';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: "projects",
         element: <Projects />
+      },
+      {
+        path:"videotest",
+        element:<VideoTest/>
+      },
+      {
+        path:"VideoTestSrc",
+        element:<VideoTestSrc/>
       }
     ]
   }

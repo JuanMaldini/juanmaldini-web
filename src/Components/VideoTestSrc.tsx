@@ -1,0 +1,10 @@
+export default function VideoTest({}) {
+  return (
+    <div>
+      <video controls>
+        <source src="../../src/projects/Max Script/MaxScript_Ceiling.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  );
+}
