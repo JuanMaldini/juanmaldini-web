@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import "./Projects.css";
-import ProjectImageCard from "../Projects/ProjectImageCard";
-import ProjectVideoCard from "../Projects/ProjectVideoCard";
+import ProjectCard from "../Projects/ProjectCard";
 import "../Projects/ProjectCard.css";
 import { Project } from "../../types/project";
 import Onedrive from '../PortfolioBar/Onedrive';
@@ -71,15 +70,9 @@ function Projects({}: Props) {
           <div className="projects-section">
             {filteredProjects.length > 0 ? (
               <div className="projects-grid">
-                {filteredProjects.map((project: Project) => {
-                  if (project.type === 'image') {
-                    return <ProjectImageCard key={project.id} project={project} />;
-                  }
-                  if (project.type === 'video') {
-                    return <ProjectVideoCard key={project.id} project={project} />;
-                  }
-                  return null;
-                })}
+                {filteredProjects.map((project: Project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
               </div>
             ) : (
               <div className="no-projects">

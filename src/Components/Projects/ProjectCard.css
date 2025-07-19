@@ -142,29 +142,6 @@
   }
 }
 
-/* Contenido de la tarjeta */
-.project-info {
-  padding: 1.25rem 1.5rem 1.5rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.project-info h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-color);
-  line-height: 1.4;
-}
-
-.project-info p {
-  margin: 0 0 12px 0;
-  font-size: 0.9rem;
-  color: #666;
-  flex-grow: 1;
-}
-
 .project-tags {
   display: flex;
   flex-wrap: wrap;
