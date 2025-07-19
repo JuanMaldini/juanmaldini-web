@@ -19,10 +19,12 @@ function Projects({}: Props) {
   const allProjects: Project[] = projectMediaData.map((item, idx) => {
   const ext = item.path.split('.').pop()?.toLowerCase() || '';
   const type = ['mp4', 'webm', 'mov'].includes(ext) ? 'video' : 'image';
-  // Nombre del archivo sin carpeta ni extensión
+  // Nombre del archivo sin carpeta ni extensión (preservando espacios)
   const fileName = item.path.split('/').pop()?.replace(/\.[^/.]+$/, '') || 'Untitled';
+  // ID seguro sin espacios para el DOM
+  const safeCategory = (item.category || 'project').replace(/\s+/g, '_').toLowerCase();
   return {
-    id: `${(item.category || 'project').replace(/\s+/g, '_').toLowerCase()}_${idx}`,
+    id: `${safeCategory}_${idx}`,
     title: fileName,
     description: item.category ? `Proyecto de ${item.category}` : '',
     tags: item.category ? [item.category] : [],
@@ -39,6 +41,7 @@ function Projects({}: Props) {
 });
 
   // Filtrar proyectos manteniendo el orden original
+  // Comparación exacta de categorías (respetando espacios y mayúsculas)
   const filteredProjects = activeTab === 'all'
     ? allProjects
     : allProjects.filter((p: Project) => p.category === activeTab);
@@ -53,9 +56,10 @@ function Projects({}: Props) {
         </div>
         <div className="tabs">
           {categories.map((category: string) => {
-            const displayName = category === 'all'
-              ? 'All'
-              : category.replace(/[-_]/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase());
+            // Para categorías que ya tienen formato correcto, no las transformamos
+            const displayName = category === 'all' 
+              ? 'All' 
+              : category; // Usar la categoría tal como está en los datos
             return (
               <button
                 key={category}

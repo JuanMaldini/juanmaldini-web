@@ -46,6 +46,9 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
   const isCurrentVideo = currentMedia?.type === 'video';
   const hasAdditionalMedia = allMedia.length > 1;
   
+  // Detectar si es un embed de OneDrive
+  const isEmbed = currentMedia?.url.includes('1drv.ms') || false;
+  
   // Manejar reproducción cuando cambia playingVideo o manualmente
   useEffect(() => {
     const video = videoRef.current;
@@ -184,17 +187,33 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
           className="main-media"
         >
           {isCurrentVideo ? (
-            <video
-              ref={videoRef}
-              src={currentMedia.url}
-              className="project-media"
-              controls
-              loop
-              playsInline
-              muted={userMutedState !== null ? userMutedState : !hasUserInteracted}
-              preload="metadata"
-              style={{ width: '100%', height: '100%', background: '#111' }}
-            />
+            isEmbed ? (
+              <iframe
+                src={currentMedia.url}
+                className="project-media"
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  border: 'none',
+                  borderRadius: '8px'
+                }}
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                title={currentMedia.title || project.title}
+              />
+            ) : (
+              <video
+                ref={videoRef}
+                src={currentMedia.url}
+                className="project-media"
+                controls
+                loop
+                playsInline
+                muted={userMutedState !== null ? userMutedState : !hasUserInteracted}
+                preload="metadata"
+                style={{ width: '100%', height: '100%', background: '#111' }}
+              />
+            )
           ) : (
             <img
               src={currentMedia.url}
@@ -220,14 +239,33 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project }) => {
                 title={media.title}
               >
                 {media.type === 'video' ? (
-                  <video
-                    src={media.url}
-                    className="project-media-thumbnail"
-                    loop
-                    playsInline
-                    muted
-                    preload="metadata"
-                  />
+                  media.url.includes('1drv.ms') ? (
+                    <div 
+                      className="project-media-thumbnail embed-thumbnail"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: '#000',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#fff',
+                        fontSize: '0.8rem',
+                        textAlign: 'center'
+                      }}
+                    >
+                      🎬<br/>Video
+                    </div>
+                  ) : (
+                    <video
+                      src={media.url}
+                      className="project-media-thumbnail"
+                      loop
+                      playsInline
+                      muted
+                      preload="metadata"
+                    />
+                  )
                 ) : (
                   <img 
                     src={media.url} 
