@@ -1,6 +1,6 @@
 import './ProjectGrid.css';
 import ProjectCard from './ProjectCard';
-import { Project } from '../../types/project';
+import { Project } from '../../data/types';
 
 type ProjectGridProps = {
   projects: Project[];

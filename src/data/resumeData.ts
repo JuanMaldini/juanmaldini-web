@@ -1,9 +1,8 @@
-import { ResumeData } from '../types';
+import { ResumeData } from './types';
 
 export const resumeData: ResumeData = {
   experiences: [
     {
-      id: 'vanishing-point',
       position: 'Unreal Engine Developer',
       company: 'Vanishing Point 3D',
       location: 'Buenos Aires, Argentina',
@@ -12,7 +11,6 @@ export const resumeData: ResumeData = {
       technologies: ['3ds Max', 'Blender', 'Houdini', 'Unreal Engine', 'FStorm', 'MaxScript', 'Illustrator', 'Photoshop', 'Git', 'GitHub', 'Visual Studio']
     },
     {
-      id: 'in2real',
       position: 'Unreal Engine Developer',
       company: 'In2Real',
       location: 'Remote',
@@ -21,7 +19,6 @@ export const resumeData: ResumeData = {
       technologies: ['Unreal Engine', 'Git', 'Plastic SCM', 'C++', 'Python', 'Blueprint']
     },
     {
-      id: 'byzantian',
       position: '3D Artist & Unreal Engine Generalist',
       company: 'Byzantian Interactive, Inc.',
       location: 'Remote',
@@ -30,7 +27,6 @@ export const resumeData: ResumeData = {
       technologies: ['3ds Max', 'Blender', 'Houdini', 'Unreal Engine', 'After Effects', 'Illustrator', 'Git', 'GitHub']
     },
     {
-      id: 'xl-consulting',
       position: '3D Construction Visualizer & BIM Consultant',
       company: 'XL Consulting',
       location: 'Remote',
@@ -39,7 +35,6 @@ export const resumeData: ResumeData = {
       technologies: ['3ds Max', 'Unreal Engine', 'After Effects', 'Illustrator', 'Git', 'GitHub', 'Python', 'Visual Studio']
     },
     {
-      id: 'hito',
       position: 'Unreal Engine VR Developer',
       company: 'HITO',
       location: 'Hybrid',
@@ -48,7 +43,6 @@ export const resumeData: ResumeData = {
       technologies: ['3ds Max', 'Blender', 'Unreal Engine', 'Illustrator', 'Git', 'GitHub', 'Visual Studio']
     },
     {
-      id: '3dus',
       position: '3D Artist - Unreal Engine Developer',
       company: '3DUS',
       location: 'Córdoba, Argentina',
@@ -57,7 +51,6 @@ export const resumeData: ResumeData = {
       technologies: ['3ds Max', 'Blender', 'Houdini', 'Unreal Engine', 'Corona Renderer', 'V-Ray', 'Itoo Software', 'After Effects', 'Illustrator', 'Photoshop', 'Git', 'GitHub', 'Visual Studio']
     },
     {
-      id: '3dm-digital',
       position: '3D Artist',
       company: '3DM Digital',
       location: 'Buenos Aires, Argentina',
@@ -66,7 +59,6 @@ export const resumeData: ResumeData = {
       technologies: ['3ds Max', 'Corona Renderer', 'V-Ray', 'Itoo Software', 'After Effects', 'Illustrator', 'Photoshop']
     },
     {
-      id: 'arktura',
       position: '3D Artist',
       company: 'Arktura',
       location: 'Remote',
@@ -75,7 +67,6 @@ export const resumeData: ResumeData = {
       technologies: ['3ds Max', 'Corona Renderer', 'V-Ray', 'Itoo Software', 'Photoshop']
     },
     {
-      id: 'archelier-studio',
       position: '3D Artist',
       company: 'Archelier Studio',
       location: 'Córdoba, Argentina',
@@ -203,59 +194,42 @@ export const resumeData: ResumeData = {
     },
   ],
   skills: [
-    // Languages
-    { id: 'spanish', name: 'Spanish', level: 'Native', category: 'language' },
-    { id: 'english', name: 'English', level: 'Advanced', category: 'language' },
-    { id: 'italian', name: 'Italian', level: 'Beginner', category: 'language' },
-    
-    // 3D Software & Engines
-    { id: 'unreal', name: 'Unreal Engine', level: 'Advanced', category: '3d' },
-    { id: 'niagara', name: 'Niagara', level: 'Intermediate', category: '3d' },
-    { id: 'blueprints', name: 'Blueprints', level: 'Advanced', category: '3d' },
-    { id: '3dsmax', name: '3ds Max', level: 'Expert', category: '3d' },
-    { id: 'blender', name: 'Blender', level: 'Intermediate', category: '3d' },
-    { id: 'houdini', name: 'Houdini', level: 'Intermediate', category: '3d' },
-    { id: 'zbrush', name: 'ZBrush', level: 'Beginner', category: '3d' },
-    { id: 'rizom-uv', name: 'Rizom UV', level: 'Intermediate', category: '3d' },
-    
-    // Rendering
-    { id: 'vray', name: 'V-Ray', level: 'Advanced', category: 'render' },
-    { id: 'corona', name: 'Corona', level: 'Advanced', category: 'render' },
-    { id: 'fstorm', name: 'FStorm', level: 'Advanced', category: 'render' },
-    { id: 'cycles', name: 'Cycles', level: 'Intermediate', category: 'render' },
-    { id: 'mantra', name: 'Mantra', level: 'Beginner', category: 'render' },
-    
-    // CAD & BIM
-    { id: 'revit', name: 'Revit', level: 'Beginner', category: 'cad' },
-    { id: 'autocad', name: 'AutoCAD', level: 'Intermediate', category: 'cad' },
-    
-    // Web Development
-    { id: 'html', name: 'HTML', level: 'Intermediate', category: 'web' },
-    { id: 'css', name: 'CSS', level: 'Intermediate', category: 'web' },
-    { id: 'javascript', name: 'JavaScript', level: 'Intermediate', category: 'web' },
-    { id: 'react', name: 'React', level: 'Intermediate', category: 'web' },
-    { id: 'node', name: 'Node', level: 'Intermediate', category: 'web' },
-    { id: 'bootstrap', name: 'Bootstrap', level: 'Intermediate', category: 'web' },
-    
-    // Programming
-    { id: 'python', name: 'Python', level: 'Intermediate', category: 'programming' },
-    { id: 'cplusplus', name: 'C++', level: 'Beginner', category: 'programming' },
-    
-    // Version Control
-    { id: 'git', name: 'Git', level: 'Intermediate', category: 'tools' },
-    { id: 'github', name: 'GitHub', level: 'Intermediate', category: 'tools' },
-    { id: 'perforce', name: 'Perforce', level: 'Beginner', category: 'tools' },
-    
-    // 2D Software
-    { id: 'photoshop', name: 'Photoshop', level: 'Intermediate', category: '2d' },
-    { id: 'illustrator', name: 'Illustrator', level: 'Intermediate', category: '2d' },
-    { id: 'after-effects', name: 'After Effects', level: 'Intermediate', category: '2d' },
-    { id: 'figma', name: 'Figma', level: 'Advanced', category: '2d' },
-    { id: 'nuke', name: 'Nuke', level: 'Beginner', category: '2d' },
-    
-    // Other
-    { id: 'teamwork', name: 'Teamwork', level: 'Advanced', category: 'soft' },
-    { id: 'linux', name: 'Linux', level: 'Beginner', category: 'os' }
+    { skill: 'Spanish', level: 'Native'},
+    { skill: 'English', level: 'Advanced'},
+    { skill: 'Italian', level: 'Beginner'},
+    { skill: 'Unreal Engine', level: 'Advanced'},
+    { skill: 'Niagara', level: 'Intermediate'},
+    { skill: 'Blueprints', level: 'Advanced'},
+    { skill: '3ds Max', level: 'Expert'},
+    { skill: 'Blender', level: 'Intermediate'},
+    { skill: 'Houdini', level: 'Intermediate'},
+    { skill: 'ZBrush', level: 'Beginner'},
+    { skill: 'Rizom UV', level: 'Intermediate'},
+    { skill: 'V-Ray', level: 'Advanced'},
+    { skill: 'Corona', level: 'Advanced'},
+    { skill: 'FStorm', level: 'Advanced'},
+    { skill: 'Cycles', level: 'Intermediate'},
+    { skill: 'Mantra', level: 'Beginner'},
+    { skill: 'Revit', level: 'Beginner'},
+    { skill: 'AutoCAD', level: 'Intermediate'},
+    { skill: 'HTML', level: 'Intermediate'},
+    { skill: 'CSS', level: 'Intermediate'},
+    { skill: 'JavaScript', level: 'Intermediate'},
+    { skill: 'React', level: 'Intermediate'},
+    { skill: 'Node', level: 'Intermediate'},
+    { skill: 'Bootstrap', level: 'Intermediate'},
+    { skill: 'Python', level: 'Intermediate'},
+    { skill: 'C++', level: 'Beginner'},
+    { skill: 'Git', level: 'Intermediate'},
+    { skill: 'GitHub', level: 'Intermediate'},
+    { skill: 'Perforce', level: 'Beginner'},
+    { skill: 'Photoshop', level: 'Intermediate'},
+    { skill: 'Illustrator', level: 'Intermediate'},
+    { skill: 'After Effects', level: 'Intermediate'},
+    { skill: 'Figma', level: 'Advanced'},
+    { skill: 'Nuke', level: 'Beginner'},
+    { skill: 'Teamwork', level: 'Advanced'},
+    { skill: 'Linux', level: 'Beginner'}
   ]
 };
 

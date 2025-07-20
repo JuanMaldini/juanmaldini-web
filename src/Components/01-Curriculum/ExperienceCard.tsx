@@ -1,4 +1,4 @@
-import { Experience } from '../../types';
+import { Experience } from '../../data/types';
 import './Curriculum.css';
 
 type ExperienceCardProps = {

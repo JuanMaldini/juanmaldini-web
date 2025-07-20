@@ -1,5 +1,5 @@
 import "./SkillCard.css";
-import { SkillLevel } from "../../types";
+import { SkillLevel } from "../../data/types";
 
 type Props = {
   skill: string;
