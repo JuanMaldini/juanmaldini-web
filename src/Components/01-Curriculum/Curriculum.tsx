@@ -4,7 +4,7 @@ import SkillCard from "../SkillCard/SkillCard";
 import Onedrive from "../PortfolioBar/Onedrive";
 import ExperienceCard from './ExperienceCard';
 import EducationCard from './EducationCard';
-import { ResumeData } from '../../types';
+import { ResumeData } from '../../data/types';
 import resumeData from '../../data/resumeData';
 const CVPdf = "../../../public/assets/CV/Maldini, Juan Augusto_2025.pdf";
 import Button from "../00-Button/Button";
@@ -65,7 +65,7 @@ export default function Curriculum({}: Props) {
             <h3>Professional Experience</h3>
             <div className="experience-list">
               {data.experiences.map((exp) => (
-                <ExperienceCard key={exp.id} experience={exp} />
+                <ExperienceCard key={exp.position} experience={exp} />
               ))}
             </div>
           </div>
@@ -76,7 +76,7 @@ export default function Curriculum({}: Props) {
             <h3>Education & Certifications</h3>
             <div className="education-list">
               {data.education.map((edu) => (
-                <EducationCard key={edu.id} education={edu} />
+                <EducationCard key={edu.titulo} education={edu} />
               ))}
             </div>
           </div>
@@ -88,8 +88,8 @@ export default function Curriculum({}: Props) {
             <div className="skills-grid">
               {data.skills.map((skill) => (
                 <SkillCard 
-                  key={skill.id} 
-                  skill={skill.name} 
+                  key={skill.skill} 
+                  skill={skill.skill} 
                   level={skill.level}
                 />
               ))}

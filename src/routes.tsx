@@ -4,6 +4,7 @@ import Curriculum from './Components/01-Curriculum/Curriculum';
 import Aboutme from './Components/Z-pages/Aboutme';
 import Projects from './Components/Z-pages/Projects';
 
+
 const router = createBrowserRouter([
   {
     path: "/",

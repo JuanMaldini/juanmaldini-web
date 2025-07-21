@@ -64,7 +64,6 @@
   list-style-type:none;
 }
 
-/* Tabs container */
 .tabs {
   display: flex;
   gap: 0.5rem;

@@ -1,4 +1,4 @@
-import { Education } from '../../types';
+import { Education } from '../../data/types';
 import './Curriculum.css';
 
 type EducationCardProps = {
