@@ -24,25 +24,31 @@ const Navbar = () => {
     };
   }, [scrolled]);
 
-  const isActive = (path: string) => {
+  const isActive = (path: string, isExternal: boolean = false) => {
+    if (isExternal) return '';
     return location.pathname === path ? 'active' : '';
   };
 
   const navItems = [
-    { path: '/', label: 'About Me' },
-    { path: '/curriculum', label: 'Curriculum' },
-    { path: '/projects', label: 'Projects' },
+    { path: '/', label: 'About Me', isExternal: false },
+    { path: '/curriculum', label: 'Curriculum', isExternal: false },
+    { path: '/projects', label: 'Projects', isExternal: false },
+    { path: 'https://vizor3d.com', label: 'Vizor 3D', isExternal: true },
   ];
 
-  const handleNavClick = (path: string) => {
+  const handleNavClick = (path: string, isExternal: boolean = false) => {
     setMobileMenuOpen(false);
-    navigate(path);
+    if (isExternal) {
+      window.open(path, '_blank', 'noopener,noreferrer');
+    } else {
+      navigate(path);
+    }
   };
 
   return (
     <header className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
       <nav className="navbar">
-  <div className="nav-logo" onClick={() => handleNavClick('/')}>
+  <div className="nav-logo" onClick={() => handleNavClick('/', false)}>
             <img src={Logo} alt="Logo" className="logo" />
             <span className="logo-text">Juan Maldini</span>
   </div>
@@ -50,8 +56,8 @@ const Navbar = () => {
             {navItems.map((item) => (
               <div 
                 key={item.path}
-                className={`nav-item ${isActive(item.path)}`}
-                onClick={() => handleNavClick(item.path)}
+                className={`nav-item ${isActive(item.path, item.isExternal)}`}
+                onClick={() => handleNavClick(item.path, item.isExternal)}
               >
                 <span className="nav-link">{item.label}</span>
                 <div className="nav-indicator"></div>
