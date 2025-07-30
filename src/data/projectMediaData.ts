@@ -48,4 +48,6 @@ export const projectMediaData = [
   { path: "/assets/Unreal_Engine/Portal.mp4", category: "Unreal Engine"},
   { path: "/assets/Unreal_Engine/Sofa Set.mp4", category: "Unreal Engine"},
   { path: "/assets/Max Script/MaxScript_Ceiling.mp4", category: "Max Script"},
+
+  { path: "/assets/Python/Bump_to_normal.mp4", category: "Python"},
 ];
