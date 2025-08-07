@@ -19,13 +19,28 @@ export default function Button({ goTo, target, text, className = '', download, o
     }
   };
 
+  // Si la prop download está presente, siempre usar <a> para descarga
+  if (download) {
+    return (
+      <a
+        href={goTo}
+        target={target}
+        rel={target === '_blank' ? 'noopener noreferrer' : ''}
+        className={`buttonType01 ${className}`.trim()}
+        onClick={handleClick}
+        download={download}
+      >
+        {text}
+      </a>
+    );
+  }
+
   // Check if it's an internal link (starts with /)
   const isInternalLink = !goTo.startsWith('http') && !goTo.startsWith('#') && !goTo.startsWith('mailto:');
-  
   if (isInternalLink) {
     return (
-      <Link 
-        to={goTo} 
+      <Link
+        to={goTo}
         className={`buttonType01 ${className}`.trim()}
         onClick={onClick}
       >
@@ -35,13 +50,12 @@ export default function Button({ goTo, target, text, className = '', download, o
   }
 
   return (
-    <a 
-      href={goTo} 
-      target={target} 
-      rel={target === '_blank' ? 'noopener noreferrer' : ''} 
+    <a
+      href={goTo}
+      target={target}
+      rel={target === '_blank' ? 'noopener noreferrer' : ''}
       className={`buttonType01 ${className}`.trim()}
       onClick={handleClick}
-      download={download}
     >
       {text}
     </a>

@@ -33,6 +33,7 @@ const Navbar = () => {
     { path: '/', label: 'About Me', isExternal: false },
     { path: '/curriculum', label: 'Curriculum', isExternal: false },
     { path: '/projects', label: 'Projects', isExternal: false },
+    { path: '/qrcode', label: 'QR Code', isExternal: false },
     { path: 'https://vizor3d.com', label: 'Vizor 3D', isExternal: true },
   ];
 
