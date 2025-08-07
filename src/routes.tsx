@@ -3,8 +3,7 @@ import App from './App';
 import Curriculum from './Components/01-Curriculum/Curriculum';
 import Aboutme from './Components/Z-pages/Aboutme';
 import Projects from './Components/Z-pages/Projects';
-import CurriculumWeb from './pages/CurriculumWeb';
-
+import QRCodePage from './Components/qrcode/qrcode';
 
 const router = createBrowserRouter([
   {
@@ -24,8 +23,8 @@ const router = createBrowserRouter([
         element: <Projects />
       },
       {
-        path: "CurriculumWeb",
-        element: <CurriculumWeb />
+        path: "qrcode",
+        element: <QRCodePage />
       }
     ]
   }
