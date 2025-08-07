@@ -67,7 +67,7 @@ const QRCodePage = () => {
       />
       <div style={{ margin: "0 auto", maxWidth: qrSize, width: "100%" }}>
         <label style={{ display: 'block', marginBottom: 8 }}>
-          Tamaño:
+          Size:
           <select
             value={qrSize}
             onChange={e => setQrSize(Number(e.target.value))}
@@ -79,7 +79,7 @@ const QRCodePage = () => {
           </select>
         </label>
         <label style={{ display: 'block', marginBottom: 8 }}>
-          Formato:
+          Format:
           <select value={format} onChange={e => setFormat(e.target.value as any)} style={{ marginLeft: 8 }}>
             <option value="svg">SVG</option>
             <option value="png">PNG</option>
