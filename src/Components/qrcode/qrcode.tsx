@@ -8,11 +8,11 @@ const QRCodePage = () => {
   const [value, setValue] = useState("");
   const [qrSize, setQrSize] = useState(256);
   const [format, setFormat] = useState<'svg' | 'png' | 'jpg'>('png');
-  const qrRef = useRef<SVGSVGElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const handleDownload = () => {
-    const svg = qrRef.current;
-    if (!svg) return;
+    const svg = containerRef.current?.querySelector('svg') as SVGSVGElement | null;
+    if (!svg || !value) return;
     if (format === 'svg') {
       const serializer = new XMLSerializer();
       const source = serializer.serializeToString(svg);
@@ -38,8 +38,11 @@ const QRCodePage = () => {
         canvas.height = qrSize;
         const ctx = canvas.getContext('2d');
         if (ctx) {
-          ctx.fillStyle = '#fff';
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          // Para JPG fondo blanco; para PNG transparencia
+          if (format === 'jpg') {
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+          }
           ctx.drawImage(img, 0, 0, qrSize, qrSize);
           const mime = format === 'jpg' ? 'image/jpeg' : 'image/png';
           const dataUrl = canvas.toDataURL(mime);
@@ -65,37 +68,42 @@ const QRCodePage = () => {
         onChange={e => setValue(e.target.value)}
         placeholder="Url"
       />
-      <div style={{ margin: "0 auto", maxWidth: qrSize, width: "100%" }}>
-        <label style={{ display: 'block', marginBottom: 8 }}>
-          Size:
-          <select
-            value={qrSize}
-            onChange={e => setQrSize(Number(e.target.value))}
-            style={{ marginLeft: 8 }}
-          >
-            <option value={256}>256 px</option>
-            <option value={512}>512 px</option>
-            <option value={1024}>1024 px</option>
-          </select>
-        </label>
-        <label style={{ display: 'block', marginBottom: 8 }}>
-          Format:
-          <select value={format} onChange={e => setFormat(e.target.value as any)} style={{ marginLeft: 8 }}>
-            <option value="svg">SVG</option>
-            <option value="png">PNG</option>
-            <option value="jpg">JPG</option>
-          </select>
-        </label>
+      <div ref={containerRef} style={{ margin: "0 auto", maxWidth: qrSize, width: "100%",  }}>
         <QRCode
-          ref={qrRef}
           size={qrSize}
           style={{ height: "auto", maxWidth: "100%", width: "100%" }}
           value={value}
+          // Para PNG queremos fondo transparente, para SVG dejamos blanco por defecto
+          bgColor={format === 'png' ? 'transparent' : undefined}
           viewBox={`0 0 ${qrSize} ${qrSize}`}
         />
-        <button className="buttonType01" style={{ marginTop: 16 }} onClick={handleDownload}>
-          Download
-        </button>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 16 }}>
+
+          <button className="buttonType01" style={{ marginTop: 16 }} onClick={handleDownload} disabled={!value} title={!value ? 'Ingresa un valor para generar el QR' : 'Descargar'}>
+            Download
+          </button>
+
+          <label style={{ display: 'block', marginBottom: 8 }}>
+            <select
+              value={qrSize}
+              onChange={e => setQrSize(Number(e.target.value))}
+              style={{ marginLeft: 8 }}
+            >
+              <option value={256}>256 px</option>
+              <option value={512}>512 px</option>
+              <option value={1024}>1024 px</option>
+            </select>
+          </label>
+
+          <label style={{ display: 'block', marginBottom: 8 }}>
+            <select value={format} onChange={e => setFormat(e.target.value as any)} style={{ marginLeft: 8 }}>
+              <option value="svg">SVG</option>
+              <option value="png">PNG</option>
+              <option value="jpg">JPG</option>
+            </select>
+          </label>
+        </div>
+
       </div>
     </div>
   );
