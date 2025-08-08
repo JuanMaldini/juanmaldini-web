@@ -4,8 +4,9 @@ import './ProjectCard.css';
 
 interface ProjectCardProps {
   project: Project;
+  onImageClick?: (url: string) => void;
 }
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onImageClick }) => {
   const media = project.media[0];
   return (
     <article className="project-card">
@@ -18,6 +19,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         ) : (
           <img
             src={media.url}
+            alt={project.id}
+            className="project-media"
+            style={{ cursor: onImageClick ? 'zoom-in' : 'default' }}
+            onClick={() => onImageClick?.(media.url)}
           />
         )}
       </div>

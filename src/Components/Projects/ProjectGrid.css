@@ -5,6 +5,29 @@
   width: 100%;
 }
 
+/* Lightbox minimal */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.lightbox-image {
+  max-width: 95vw;
+  max-height: 95vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
 /* Estilos para pantallas medianas */
 @media (min-width: 768px) and (max-width: 1023px) {
   .projects-grid {

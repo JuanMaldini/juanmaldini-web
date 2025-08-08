@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import "./Projects.css";
-import ProjectCard from "../Projects/ProjectCard";
-import "../Projects/ProjectCard.css";
+import ProjectGrid from "../Projects/ProjectGrid";
 import { Project } from "../../data/types";
 import Onedrive from '../PortfolioBar/Onedrive';
 import { projectMediaData } from '../../data/projectMediaData';
@@ -58,11 +57,7 @@ function Projects({}: Props) {
         <div className="tab-content">
           <div className="projects-section">
             {filteredProjects.length > 0 ? (
-              <div className="projects-grid">
-                {filteredProjects.map((project: Project) => (
-                  <ProjectCard key={project.id} project={project} />
-                ))}
-              </div>
+              <ProjectGrid projects={filteredProjects} />
             ) : (
               <div className="no-projects">
                 No projects found in the "{activeTab}" category.
