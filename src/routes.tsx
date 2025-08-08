@@ -4,7 +4,7 @@ import Curriculum from './Components/01-Curriculum/Curriculum';
 import Aboutme from './Components/Z-pages/Aboutme';
 import Projects from './Components/Z-pages/Projects';
 import QRCodePage from './Components/qrcode/qrcode';
-
+import CurriculumWeb from './pages/CurriculumWeb';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "qrcode",
         element: <QRCodePage />
+      },
+      {
+        path: "curriculumweb",
+        element: <CurriculumWeb />
       }
     ]
   }

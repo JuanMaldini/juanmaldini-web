@@ -6,7 +6,6 @@ import ExperienceCard from './ExperienceCard';
 import EducationCard from './EducationCard';
 import { ResumeData } from '../../data/types';
 import resumeData from '../../data/resumeData';
-const CVPdf = "/assets/CV/Maldini_Juan_Augusto.pdf";
 import Button from "../00-Button/Button";
 
 type Props = {};
@@ -30,9 +29,8 @@ export default function Curriculum({}: Props) {
         <h2>My Resume</h2>
         <div className="download-button-wrapper">
           <Button 
-            goTo={CVPdf}
-            text="Download CV"
-            download="Maldini_Juan_Augusto.pdf"
+            goTo="/curriculumweb"
+            text="Curriculum"
             className="download-cv-button"
           />
         </div>

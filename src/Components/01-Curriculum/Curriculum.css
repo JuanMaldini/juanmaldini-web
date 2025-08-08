@@ -1,14 +1,13 @@
 /* General container styles */
 .curriculum-container {
-  max-width: none;
-  margin: 0;
-  padding: 2.5rem 1.5rem;
+  padding: 22.5rem 1.5rem;
   color: var(--color-text);
   font-family: inherit;
   line-height: 1.7;
   min-height: calc(100vh - 4rem);
   display: flex;
   flex-direction: column;
+  align-items: center;
   transition: all 0.3s ease;
   background-color: var(--color-bg);
   width: 100%;

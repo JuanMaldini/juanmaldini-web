@@ -5,7 +5,6 @@ export const Email = () => {
   return `mailto:${email}?subject=${subject}&body=${body}`;
 };
 
-
 export const Github = "https://github.com/Juanmaldini";
 export const LinkedIn = "https://www.linkedin.com/in/juan-augusto-maldini/";
 export const OnedriveLink = "https://1drv.ms/f/s!Ar8ey5uaisekpYhIykoMKDQu1EiUAg";
