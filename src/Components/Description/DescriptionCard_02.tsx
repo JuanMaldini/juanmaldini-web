@@ -1,9 +1,7 @@
-import Button from "../00-Button/Button"
-import "./Description.css"
+import Button from "../00-Button/Button";
+import "./Description.css";
 
-type Props = {}
-
-export default function DescriptionCard02({}: Props) {
+export default function DescriptionCard02() {
   return (
     <div className="DescriptionCard02">
       <div>
@@ -30,5 +28,5 @@ export default function DescriptionCard02({}: Props) {
         <p>I am always looking for new opportunities to expand my knowledge and collaborate with talented teams. Open to relocation to continue advancing my career.</p>
       </div>
     </div>
-  )
+  );
 }

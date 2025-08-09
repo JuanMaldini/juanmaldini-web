@@ -1,12 +1,10 @@
 import DescriptionCard_01 from "./DescriptionCard_01";
 import DescriptionCard_02 from "./DescriptionCard_02";
-import DescriptionIcons from "./DescriptionIcons.tsx";
+import DescriptionIcons from "./DescriptionIcons";
 import "./Description.css";
-import Onedrive from "../PortfolioBar/Onedrive.tsx";
+import Onedrive from "../PortfolioBar/Onedrive";
 
-type Props = {};
-
-export default function DescriptionSection({}: Props) {
+export default function DescriptionSection() {
   return (
     <div className="descriptionSection">
       <div className="descriptionSectionCard">

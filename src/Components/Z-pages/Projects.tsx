@@ -6,9 +6,7 @@ import { Project } from "../../data/types";
 import Onedrive from '../PortfolioBar/Onedrive';
 import { projectMediaData } from '../../data/projectMediaData';
 
-type Props = {};
-
-function Projects({}: Props) {
+function Projects() {
   // Obtener todas las categorías únicas
   const categories = ['all', ...Array.from(new Set(projectMediaData.map(item => item.category)))];
   const [activeTab, setActiveTab] = useState<string>('all');

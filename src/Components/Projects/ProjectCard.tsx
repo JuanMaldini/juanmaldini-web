@@ -5,20 +5,21 @@ import './ProjectCard.css';
 interface ProjectCardProps {
   project: Project;
 }
+
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const media = project.media[0];
+
+  if (!media) {
+    return null;
+  }
+
   return (
     <article className="project-card">
       <div className="media-container">
         {media.type === 'video' ? (
-          <video
-            src={media.url}
-            controls
-          />
+          <video src={media.url} controls />
         ) : (
-          <img
-            src={media.url}
-          />
+          <img src={media.url} alt={`${project.category} project`} />
         )}
       </div>
     </article>

@@ -2,9 +2,7 @@ import "./Description.css";
 import profile from "../../../public/assets/Maldini, Juan Augusto.jpg";
 import SocialIconsBar from "../Shared/SocialIconsBar";
 
-type Props = {};
-
-export default function DescriptionCard01({}: Props) {
+export default function DescriptionCard01() {
   return (
     <div className="profile-card">
       <div className="profile-content">

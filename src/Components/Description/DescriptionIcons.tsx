@@ -31,9 +31,7 @@ import figma from "../../../public/assets/Figma.png";
 import ae from "../../../public/assets/AE.png";
 import nuke from "../../../public/assets/Nuke.png";
 
-type Props = {};
-
-export default function DescriptionIcons({}: Props) {
+export default function DescriptionIcons() {
   return (
     <div className="DescriptionIconsContainer">
       <div className="DescriptionIcons">

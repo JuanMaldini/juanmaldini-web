@@ -9,9 +9,7 @@ import resumeData from '../../data/resumeData';
 const CVPdf = "/assets/CV/Maldini_Juan_Augusto.pdf";
 import Button from "../00-Button/Button";
 
-type Props = {};
-
-export default function Curriculum({}: Props) {
+export default function Curriculum() {
   const [data, setData] = useState<ResumeData | null>(null);
   const [activeTab, setActiveTab] = useState<'experience' | 'education' | 'skills'>('experience');
 

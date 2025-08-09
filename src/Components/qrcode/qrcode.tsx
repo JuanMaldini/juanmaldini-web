@@ -80,7 +80,11 @@ const QRCodePage = () => {
         </label>
         <label style={{ display: 'block', marginBottom: 8 }}>
           Format:
-          <select value={format} onChange={e => setFormat(e.target.value as any)} style={{ marginLeft: 8 }}>
+          <select
+            value={format}
+            onChange={e => setFormat(e.target.value as 'svg' | 'png' | 'jpg')}
+            style={{ marginLeft: 8 }}
+          >
             <option value="svg">SVG</option>
             <option value="png">PNG</option>
             <option value="jpg">JPG</option>
