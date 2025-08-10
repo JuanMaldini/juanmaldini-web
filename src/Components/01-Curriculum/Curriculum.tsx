@@ -7,7 +7,7 @@ import EducationCard from './EducationCard';
 import { ResumeData } from '../../data/types';
 import resumeData from '../../data/resumeData';
 import Button from "../00-Button/Button";
-const CVPdf = "/assets/CV/Maldini_Juan_Augusto.pdf";
+// const CVPdf = "/assets/CV/Maldini_Juan_Augusto.pdf";
 
 type Props = {};
 
