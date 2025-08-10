@@ -1,8 +1,9 @@
 import Button from '@/Components/00-Button/Button';
 import './CurriculumWeb.css';
 import Profile from '../../public/assets/Maldini, Juan Augusto.jpg';
-import { titulo, location as cvLocation, email as cvEmail, phone as cvPhone, aboutMe } from '@/data/resumeData';
+import resumeData, { titulo, location as cvLocation, email as cvEmail, phone as cvPhone, aboutMe } from '@/data/resumeData';
 const CVPdf = "/assets/CV/Maldini_Juan_Augusto.pdf";
+const { experiences, education, skills } = resumeData;
 
 export default function CurriculumWeb() {
   return (
@@ -38,13 +39,44 @@ export default function CurriculumWeb() {
                 <h3>About me</h3>
                 <p>{aboutMe}</p>
                 <h3>Skills & Technologies</h3>
-
+                      {skills.map((skills) => (
+                        <div
+                          key={`${skills.skill}`}
+                        >
+                          <div className="div1">{skills.skill}</div>
+                        </div>
+                      ))}
               </div>
             </div>
-            <div className="cv-cell cell--br" > {/*startiing to .map the experience in resumedata.ts*/}
+            <div className="cv-cell cell--br" >
                 <div className="experience-section">
+
                     <h3>Professional Experience</h3>
+
+                      {experiences.map((exp) => (
+                        <div
+                          className="cv-card-experience"
+                          key={`${exp.company}-${exp.position}-${exp.period}`}
+                        >
+                          <div className="div1">{exp.position} - {exp.company}</div>
+                          <div className="div2">{exp.period}</div>
+                          <div className="div3">{exp.location}</div>
+                          <div className="div4">{exp.description}</div>
+                        </div>
+                      ))}
+
                     <h3>Education</h3>
+                      {education.map((exp) => (
+                        <div
+                          className="cv-card-experience"
+                          key={`${exp.titulo}-${exp.subtitulo}`}
+                        >
+                          <div className="div1">{exp.titulo}</div>
+                          <div className="div2">{exp.subtitulo}</div>
+                          <div className="div4">{Array.isArray(exp.datos) ? exp.datos.join(' • ') : exp.datos}</div>
+                        </div>
+                      ))}
+
                 </div>
                     
             </div>

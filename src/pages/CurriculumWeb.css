@@ -1,35 +1,58 @@
-/* Wrapper centers page on screen */
-.cv-wrapper {
-  /* Screen centering */
-  min-height: 100svh;
-  display: grid;
-  place-items: center;
-  background-color: var(--color-bg); /* neutral canvas */
-  padding: 16px; /* breathing room on small screens */
+.cv-card-experience {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+}
+    
+.div1 {
+    grid-column: span 2 / span 2;
 }
 
-/* A4 page base: 210mm x 297mm */
+.div2 {
+    grid-column: span 2 / span 2;
+    grid-column-start: 3;
+    display: flex;
+    justify-content: end;
+}
+
+.div3 {
+    grid-column: span 4 / span 4;
+    grid-row-start: 2;
+}
+
+.div4 {
+    grid-column: span 4 / span 4;
+    grid-row: span 3 / span 3;
+    grid-row-start: 3;
+}
+        
+
+.cv-wrapper {
+  min-height: 100svh;
+  place-items: center;
+  background-color: var(--color-bg);
+  padding: 16px;
+}
+
 .cv-page {
   width: 210mm;
-  height: 297mm; /* fixed height so grid rows (1fr) get space */
+  height: 297mm;
   background: #ffffff;
   color: #111;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
   border-radius: 6px;
   padding: 0px;
   box-sizing: border-box;
-
-  /* Grid sizing tokens */
-  --x: 45mm;   /* top row height */
-  --x2: 50mm;  /* left column width */
+  --x: 50mm;
+  --x2: 60mm;
 }
 
-/* Simple 2x2 grid: left column fixed (--x2), top row fixed (--x) */
 .cv-grid {
   display: grid;
   grid-template-columns: var(--x2) 1fr;
   grid-template-rows: var(--x) 1fr;
-  height: 100%; /* ensure bottom row is visible */
+  height: 100%;
 }
 
 .cv-col {
@@ -38,7 +61,6 @@
   gap: 6mm;
 }
 
-/* Color blocks (no text) */
 .cv-cell {
   width: 100%;
   height: 100%;
@@ -51,26 +73,23 @@
   display: flex;
 }
 .cv-about__inner {
-  padding: 6mm;
+  padding: 8px;
   color: #111;
 }
 .cv-about__inner h3 {
-  margin: 0 0 3mm 0;
   font-size: 12pt;
 }
 .cv-about__inner p {
-  margin: 0;
-  font-size: 10.5pt;
+  font-size: 10pt;
   line-height: 1.45;
 }
 
-/* Header styles */
 .cv-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  padding: 6mm;
+  padding: 8px;
   gap: 2mm;
 }
 .cv-header h1 {
@@ -88,11 +107,10 @@
   color: #222;
 }
 
-/* Print styles: fit A4 and remove screen visuals */
 @media print {
   @page {
     size: A4 portrait;
-    margin: 0; /* We'll control margins inside the page via padding */
+    margin: 0;
   }
 
   html, body, #root {
@@ -110,13 +128,11 @@
   .cv-page {
     box-shadow: none;
     border-radius: 0;
-    /* Keep same internal padding as screen (acts as print margin) */
     width: 210mm;
-    height: 297mm; /* fixed for print as well */
-  }
+    height: 297mm;
+    }
 }
 
-/* Responsive fallback for small screens: scale down the page */
 @media (max-width: 900px) {
   .cv-page {
     transform-origin: top center;
