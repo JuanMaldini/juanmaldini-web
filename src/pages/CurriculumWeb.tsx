@@ -10,7 +10,7 @@ export default function CurriculumWeb() {
     <div className="cv-wrapper">
         <div className="curriculum-header">
         <h2>My Resume</h2>
-        <h6>Under Maintenance - Download the original</h6>
+        <h6>Under development - Download the original</h6>
         <div className="download-button-wrapper">
             <Button 
             className="download-cv-button"

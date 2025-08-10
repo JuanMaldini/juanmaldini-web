@@ -9,7 +9,6 @@ import resumeData from '../../data/resumeData';
 import Button from "../00-Button/Button";
 const CVPdf = "/assets/CV/Maldini_Juan_Augusto.pdf";
 
-
 type Props = {};
 
 export default function Curriculum({}: Props) {
@@ -31,18 +30,18 @@ export default function Curriculum({}: Props) {
         <h2>My Resume</h2>
         <div className="download-button-wrapper">
           
-          {/* <Button 
+          <Button 
             goTo="/curriculumweb"
             text="Curriculum"
             className="download-cv-button"
-          /> */}
+          />
 
-          <Button 
+          {/* <Button 
           className="download-cv-button"
           goTo={CVPdf}
           text="Download CV"
           download="Maldini_Juan_Augusto.pdf"
-          />
+          /> */}
 
         </div>
       </div>
