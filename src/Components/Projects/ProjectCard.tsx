@@ -15,6 +15,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onImageClick }) => {
           <video
             src={media.url}
             controls
+            playsInline
+            preload="metadata"
+            crossOrigin="anonymous"
+
           />
         ) : (
           <img
