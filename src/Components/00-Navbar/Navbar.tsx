@@ -34,7 +34,7 @@ const Navbar = () => {
     { path: '/curriculum', label: 'Curriculum', isExternal: false },
     { path: '/projects', label: 'Projects', isExternal: false },
     { path: '/qrcode', label: 'QR Code', isExternal: false },
-    { path: 'vizor3d.com/', label: 'Vizor 3D', isExternal: true },
+    { path: 'https://www.vizor3d.com/', label: 'Vizor 3D', isExternal: true },
   ];
 
   const handleNavClick = (path: string, isExternal: boolean = false) => {
