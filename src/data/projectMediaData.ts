@@ -24,8 +24,9 @@ export const projectMediaData = [
 
   { path: "/assets/Unreal_Engine/Image Campus-Reality Glitch.mp4", category: "Unreal Engine" },
   { path: "/assets/Unreal_Engine/Reel Unreal.mp4", category: "Unreal Engine" },
-  { path: "/assets/Unreal_Engine/Reel 2022.mp4", category: "Unreal Engine" },
-  { path: "/assets/Unreal_Engine/Reel 2023.mp4", category: "Unreal Engine" },
+  // Removed due to >100MB GitHub limit. Host externally or compress before re-adding:
+  // { path: "/assets/Unreal_Engine/Reel 2022.mp4", category: "Unreal Engine" },
+  // { path: "/assets/Unreal_Engine/Reel 2023.mp4", category: "Unreal Engine" },
   { path: "/assets/Unreal_Engine/Scene Manager.mp4", category: "Unreal Engine" },
   { path: "/assets/Unreal_Engine/Automotive Truck.mp4", category: "Unreal Engine" },
   { path: "/assets/Unreal_Engine/Ezerril Backstage.mp4", category: "Unreal Engine" },
