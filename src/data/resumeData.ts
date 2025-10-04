@@ -5,7 +5,7 @@ export const titulo = '3D Artist / Unreal Engine Developer / Web Developer';
 export const location = 'Buenos Aires, Argentina';
 export const email = 'juan.maldini@outlook.com';
 export const phone = '+54 9 3576 474180';
-export const aboutMe = `As a 3D Artist and Developer with over 7 years of experience, I am passionate about integrating creative and technical skills. While my background is rooted in Unreal Engine and 3D, I am currently expanding my expertise into web development and broader areas of digital production. My experience in virtual production, development, modeling, VFX, and AI technologies has equipped me with a unique skill set to tackle complex projects and adapt to evolving industry trends. I am always looking for new opportunities to expand my knowledge and collaborate with talented teams. I am open to relocation to continue advancing my career.`;
+export const aboutMe = `As a 3D Artist and Developer with over 10 years of experience, I am passionate about integrating creative and technical skills. While my background is rooted in Unreal Engine and 3D, I am currently expanding my expertise into web development and broader areas of digital production. My experience in virtual production, development, modeling, VFX, and AI technologies has equipped me with a unique skill set to tackle complex projects and adapt to evolving industry trends. I am always looking for new opportunities to expand my knowledge and collaborate with talented teams. I am open to relocation to continue advancing my career.`;
 
 export const resumeData: ResumeData = {
   experiences: [
