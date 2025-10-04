@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import "./Curriculum.css";
 import SkillCard from "../SkillCard/SkillCard";
 import Onedrive from "../PortfolioBar/Onedrive";
-import ExperienceCard from './ExperienceCard';
-import EducationCard from './EducationCard';
-import { ResumeData } from '../../data/types';
-import resumeData from '../../data/resumeData';
+import ExperienceCard from "./ExperienceCard";
+import EducationCard from "./EducationCard";
+import { ResumeData } from "../../data/types";
+import resumeData from "../../data/resumeData";
 import Button from "../00-Button/Button";
 // const CVPdf = "/assets/CV/Maldini_Juan_Augusto.pdf";
 
@@ -13,7 +13,16 @@ type Props = {};
 
 export default function Curriculum({}: Props) {
   const [data, setData] = useState<ResumeData | null>(null);
-  const [activeTab, setActiveTab] = useState<'experience' | 'education' | 'skills'>('experience');
+  const [activeTab, setActiveTab] = useState<
+    "experience" | "education" | "skills"
+  >("experience");
+  const handleBottomTabClick = (tab: "experience" | "education" | "skills") => {
+    setActiveTab(tab);
+    const el = document.getElementById("tab-content");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   useEffect(() => {
     // En un caso real, aquí harías una llamada a una API
@@ -29,46 +38,37 @@ export default function Curriculum({}: Props) {
       <div className="curriculum-header">
         <h2>My Resume</h2>
         <div className="download-button-wrapper">
-          
-          <Button 
+          <Button
             goTo="/curriculumweb"
             text="Curriculum"
             className="download-cv-button"
           />
-
-          {/* <Button 
-          className="download-cv-button"
-          goTo={CVPdf}
-          text="Download CV"
-          download="Maldini_Juan_Augusto.pdf"
-          /> */}
-
         </div>
       </div>
 
-      <div className="tabs">
-        <button 
-          className={`tab ${activeTab === 'experience' ? 'active' : ''}`}
-          onClick={() => setActiveTab('experience')}
+      <div id="tab-content" className="tabs">
+        <button
+          className={`tab ${activeTab === "experience" ? "active" : ""}`}
+          onClick={() => setActiveTab("experience")}
         >
           Experience
         </button>
-        <button 
-          className={`tab ${activeTab === 'education' ? 'active' : ''}`}
-          onClick={() => setActiveTab('education')}
+        <button
+          className={`tab ${activeTab === "education" ? "active" : ""}`}
+          onClick={() => setActiveTab("education")}
         >
           Education
         </button>
-        <button 
-          className={`tab ${activeTab === 'skills' ? 'active' : ''}`}
-          onClick={() => setActiveTab('skills')}
+        <button
+          className={`tab ${activeTab === "skills" ? "active" : ""}`}
+          onClick={() => setActiveTab("skills")}
         >
           Skills
         </button>
       </div>
 
       <div className="tab-content">
-        {activeTab === 'experience' && (
+        {activeTab === "experience" && (
           <div className="experience-section">
             <h3>Professional Experience</h3>
             <div className="experience-list">
@@ -79,7 +79,7 @@ export default function Curriculum({}: Props) {
           </div>
         )}
 
-        {activeTab === 'education' && (
+        {activeTab === "education" && (
           <div className="education-section">
             <h3>Education & Certifications</h3>
             <div className="education-list">
@@ -90,14 +90,14 @@ export default function Curriculum({}: Props) {
           </div>
         )}
 
-        {activeTab === 'skills' && (
+        {activeTab === "skills" && (
           <div className="skills-section">
             <h3>Skills & Technologies</h3>
             <div className="skills-grid">
               {data.skills.map((skill) => (
-                <SkillCard 
-                  key={skill.skill} 
-                  skill={skill.skill} 
+                <SkillCard
+                  key={skill.skill}
+                  skill={skill.skill}
                   level={skill.level}
                 />
               ))}
@@ -105,6 +105,29 @@ export default function Curriculum({}: Props) {
           </div>
         )}
       </div>
+
+      <div className="tabs">
+        <button
+          className={`tab ${activeTab === "experience" ? "active" : ""}`}
+          onClick={() => handleBottomTabClick("experience")}
+        >
+          {" "}
+          Experience
+        </button>
+        <button
+          className={`tab ${activeTab === "education" ? "active" : ""}`}
+          onClick={() => handleBottomTabClick("education")}
+        >
+          Education
+        </button>
+        <button
+          className={`tab ${activeTab === "skills" ? "active" : ""}`}
+          onClick={() => handleBottomTabClick("skills")}
+        >
+          Skills
+        </button>
+      </div>
+
       <div className="additional-resources">
         <Onedrive />
       </div>
