@@ -37,15 +37,15 @@ export default function CurriculumWeb() {
             <div className="cv-cell cell--bl cv-about">
               <div className="cv-about__inner">
                 <h3>About me</h3>
-                <p>{aboutMe}</p>
+                {aboutMe.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
                 <h3>Skills & Technologies</h3>
-                      {skills.map((skills) => (
-                        <div
-                          key={`${skills.skill}`}
-                        >
-                          <div className="div1">{skills.skill}</div>
-                        </div>
-                      ))}
+                <div className="cv-skills">
+                  {skills.map((s) => (
+                    <span className="cv-skill" key={s.skill}>{s.skill} • {s.level}</span>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="cv-cell cell--br" >
@@ -73,7 +73,17 @@ export default function CurriculumWeb() {
                         >
                           <div className="div1">{exp.titulo}</div>
                           <div className="div2">{exp.subtitulo}</div>
-                          <div className="div4">{Array.isArray(exp.datos) ? exp.datos.join(' • ') : exp.datos}</div>
+                          <div className="div4">
+                            {Array.isArray(exp.datos) ? (
+                              <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                                {exp.datos.map((d, i) => (
+                                  <li key={i}>{d}</li>
+                                ))}
+                              </ul>
+                            ) : (
+                              exp.datos
+                            )}
+                          </div>
                         </div>
                       ))}
 

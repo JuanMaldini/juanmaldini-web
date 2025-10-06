@@ -37,7 +37,8 @@
 
 .cv-page {
   width: 210mm;
-  height: 297mm;
+  /* Let content define height on screen; keep a minimum A4 look */
+  min-height: 297mm;
   background: #ffffff;
   color: #111;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
@@ -51,7 +52,8 @@
 .cv-grid {
   display: grid;
   grid-template-columns: var(--x2) 1fr;
-  grid-template-rows: var(--x) 1fr;
+  /* Top row fixed header height, second row auto-expands */
+  grid-template-rows: var(--x) auto;
   height: 100%;
 }
 
@@ -129,7 +131,7 @@
     box-shadow: none;
     border-radius: 0;
     width: 210mm;
-    height: 297mm;
+    height: 297mm; /* fixed height for print */
     }
 }
 
