@@ -43,7 +43,11 @@ export default function CurriculumWeb() {
                 <h3>Skills & Technologies</h3>
                 <div className="cv-skills">
                   {skills.map((s) => (
-                    <span className="cv-skill" key={s.skill}>{s.skill} • {s.level}</span>
+                    <div className="cv-skill-line" key={s.skill}>
+                      <span className="name">{s.skill}</span>
+                      <span className="leader" aria-hidden="true" />
+                      <span className="level">{s.level}</span>
+                    </div>
                   ))}
                 </div>
               </div>

@@ -12,6 +12,7 @@
 .navbar {
   padding: 1rem 5%;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   max-width: 100%;
@@ -42,10 +43,11 @@
 .nav-links {
   display: flex;
   gap: 1.2rem;
-  align-items: center;
 }
 
 .nav-item {
+  display: flex;
+  align-content: center;
   position: relative;
   padding: 0.5rem 0;
   cursor: pointer;
@@ -57,12 +59,7 @@
   font-weight: 500;
   font-size: 0.95rem;
   padding: 0.5rem 0.75rem;
-  border-radius: 6px;
   transition: all 0.2s ease;
-  display: inline-block;
-  background: none !important;
-  position: relative;
-  overflow: hidden;
 }
 
 .nav-item:hover .nav-link {
