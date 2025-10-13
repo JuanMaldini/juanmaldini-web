@@ -6,31 +6,53 @@
   padding: 8px 0;
   border-bottom: 1px solid #eee;
 }
-.cv-card-experience:last-child { border-bottom: none; }
-  
-.div1 { grid-column: 1; font-weight: 600; }
-.div2 { grid-column: 2; justify-self: end; align-self: start; }
-.div3 { grid-column: 1 / -1; }
-.div4 { grid-column: 1 / -1; line-height: 1.4; }
+.cv-card-experience:last-child {
+  border-bottom: none;
+}
+
+.div1 {
+  grid-column: 1;
+  font-weight: 600;
+}
+.div2 {
+  grid-column: 2;
+  justify-self: end;
+  align-self: start;
+}
+.div3 {
+  grid-column: 1 / -1;
+}
+.div4 {
+  grid-column: 1 / -1;
+  line-height: 1.4;
+}
 
 /* Avoid text overflow in grid content */
-.div1, .div3, .div4, .cv-contact, .cv-role {
+.div1,
+.div3,
+.div4,
+.cv-contact,
+.cv-role {
   white-space: normal;
   overflow-wrap: anywhere;
   word-break: break-word;
 }
-        
 
+.nowrap {
+  display: flex;
+  flex-wrap: nowrap;
+}
 .cv-wrapper {
   min-height: 100svh;
-  place-items: center;
+  display: grid; /* ensure place-items works */
+  place-items: start center; /* top aligned, horizontally centered */
   background-color: var(--color-bg);
   padding: 16px;
+  overflow-x: hidden; /* avoid sideways scroll; we'll scale the page instead */
 }
 
 .cv-page {
-  width: 100%;
-  max-width: 210mm;
+  width: 210mm; /* fixed A4 width */
   /* Let content define height on screen; keep a minimum A4 look */
   min-height: 297mm;
   background: #ffffff;
@@ -41,12 +63,24 @@
   box-sizing: border-box;
   --x: 50mm;
   --x2: 60mm;
+  /* Auto-fit scale: keep A4 width, scale down to fit viewport width */
+  --page-width: 210mm;
+  --page-padding: 32px; /* account for wrapper padding */
+  --scale: clamp(
+    0.3,
+    calc((100vw - var(--page-padding)) / var(--page-width)),
+    1
+  );
+  margin: 0 auto;
+  transform: scale(var(--scale));
+  transform-origin: top center;
+  will-change: transform;
 }
 
 .cv-grid {
   display: grid;
-  grid-template-columns: 28% 1fr; /* keep two columns always */
-  grid-template-rows: auto auto; /* header row adapts to content */
+  grid-template-columns: var(--x2) 1fr; /* left column fixed in mm */
+  grid-template-rows: var(--x) auto; /* header (top row) fixed height in mm */
   height: auto; /* let content define grid height */
 }
 
@@ -94,11 +128,11 @@
   margin: 0;
 }
 .cv-role {
-  font-size: 11pt;
+  font-size: 12pt; /* slightly larger for readability */
   margin: 0;
 }
 .cv-contact {
-  font-size: 10pt;
+  font-size: 11pt; /* slightly larger */
   margin: 0;
   color: #222;
 }
@@ -109,7 +143,9 @@
     margin: 0;
   }
 
-  html, body, #root {
+  html,
+  body,
+  #root {
     height: auto;
     background: transparent;
   }
@@ -125,25 +161,70 @@
     box-shadow: none;
     border-radius: 0;
     width: 210mm;
-    height: 297mm; /* fixed height for print */
-    }
+    /* Let print height be dynamic based on content */
+    transform: none;
+  }
 }
 
 /* Education list spacing inside cards */
-.cv-card-experience .div4 ul { margin: 2mm 0 0 0; padding: 0; }
-.cv-card-experience .div4 li { margin: 0.5mm 0; }
+.cv-card-experience .div4 ul {
+  margin: 2mm 0 0 0;
+  padding: 0;
+}
+.cv-card-experience .div4 li {
+  margin: 0.5mm 0;
+}
 
 /* Skills with underscore leaders */
-.cv-skills { display: flex; flex-direction: column; gap: 2mm; }
-.cv-skill-line { display: flex; align-items: baseline; gap: 6px; min-width: 0; }
-.cv-skill-line .name { font-size: 10pt; color: #222; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cv-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+}
+.cv-skill-line {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+  padding: 1mm 0; /* no negative margins; stay inside column */
+  border-radius: 0;
+  box-sizing: border-box;
+}
+.cv-skill-line .name {
+  font-size: 10pt;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .cv-skill-line .leader {
   flex: 1 1 auto;
   min-width: 0;
   height: 1px;
   align-self: center;
-  background: repeating-linear-gradient(to right, #777 0 6px, transparent 6px 10px);
+  background: repeating-linear-gradient(
+    to right,
+    #777 0 6px,
+    transparent 6px 10px
+  );
 }
-.cv-skill-line .level { font-size: 9.5pt; color: #333; white-space: nowrap; }
+.cv-skill-line .level {
+  font-size: 9.5pt;
+  color: #333;
+  white-space: nowrap;
+}
+
+/* Alternate background per line: one gray, one clear */
+.cv-skills .cv-skill-line:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.035);
+}
 
 /* Keep two columns on all widths without transforms */
+
+/* Add some top spacing so About and Experience start below photo/header visually */
+.cv-about__inner {
+  margin-top: 4mm;
+}
+.experience-section {
+  margin-top: 4mm;
+}
