@@ -23,6 +23,7 @@ export default function DescriptionCard01({}: Props) {
           <p className="role">FX Artist</p>
           <p className="role">VR</p>
           <p className="role">IA</p>
+          <p className="role">AWS</p>
           <p className="role">Games</p>
         </div>
 
