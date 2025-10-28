@@ -51,9 +51,9 @@
 }
 
 :global(.footer .social-icon) {
-  background-color: var(--color-card-bg);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background-color: var(--color-icon-bg);
+  border-color: var(--color-icon-border);
+  color: var(--color-icon-foreground);
   width: 36px;
   height: 36px;
   flex-shrink: 0;
@@ -61,7 +61,7 @@
 
 :global(.footer .social-icon:hover) {
   background-color: var(--colorYellow);
-  color: #000;
+  color: var(--color-button-text);
   transform: translateY(-2px);
 }
 
@@ -74,18 +74,18 @@
     gap: 0.5rem; /* Reducir el espacio vertical entre elementos */
     min-height: unset; /* Evitar que se haga más alto */
   }
-  
+
   .footer-data {
     width: 100%;
     margin-bottom: 0.5rem; /* Menos margen inferior */
   }
-  
+
   .footer-social {
     justify-content: center;
     width: 100%;
     margin-bottom: 0.5rem; /* Menos margen inferior */
   }
-  
+
   :global(.footer .social-icons) {
     justify-content: center;
     flex-wrap: wrap;
@@ -96,7 +96,7 @@
   .footer-content {
     padding: 0 0.5rem;
   }
-  
+
   :global(.footer .social-icon) {
     width: 32px;
     height: 32px;

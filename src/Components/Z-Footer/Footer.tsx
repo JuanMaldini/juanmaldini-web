@@ -1,10 +1,8 @@
 import "./Footer.css";
-import "../00-Helper/Helper.css"
+import "../00-Helper/Helper.css";
 import SocialIconsBar from "../Shared/SocialIconsBar";
 
-type Props = {};
-
-export default function Footer({}: Props) {
+export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">

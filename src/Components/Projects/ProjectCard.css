@@ -60,7 +60,7 @@
   padding: 8px;
   gap: 8px;
   height: 60px;
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--color-chip-bg);
   overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
@@ -107,7 +107,6 @@
 
 /* Efecto hover para la tarjeta */
 
-
 /* Ajustes para móviles */
 @media (max-width: 768px) {
   .additional-media {
@@ -115,7 +114,7 @@
     padding: 6px;
     gap: 6px;
   }
-  
+
   .additional-media-item {
     width: 70px;
   }
@@ -126,7 +125,7 @@
   .project-card {
     border-radius: 6px;
   }
-  
+
   .project-title {
     font-size: 1.3rem;
   }
@@ -136,7 +135,7 @@
   .project-title {
     font-size: 1.1rem;
   }
-  
+
   .project-overlay {
     padding: 15px;
   }
@@ -150,11 +149,11 @@
 }
 
 .tag {
-  background: #f0f0f0;
+  background: var(--color-chip-bg);
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.8rem;
-  color: #555;
+  color: var(--color-chip-text);
 }
 
 /* Estilos para el modal de pantalla completa */
@@ -297,7 +296,7 @@
   position: relative;
   max-width: 90%;
   max-height: 90%;
-  background-color: #fff;
+  background-color: var(--color-card-bg);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -421,7 +420,7 @@
 
 /* Efecto de hover en la tarjeta */
 .project-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;

@@ -42,7 +42,7 @@
 
 .profile-name {
   font-size: 1.75rem;
-  color: #333;
+  color: var(--color-text);
   margin: 0 0 0.5rem 0;
   font-weight: 600;
   text-align: center;
@@ -62,7 +62,7 @@
 }
 
 .role {
-  color: #555;
+  color: var(--color-text-secondary);
   margin: 0.5rem 0;
   font-size: 1rem;
   font-weight: 400;
@@ -83,10 +83,10 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: #f8f9fa;
+  background-color: var(--color-icon-bg);
   transition: all 0.3s ease;
-  border: 1px solid #e9ecef;
-  color: #333;
+  border: 1px solid var(--color-icon-border);
+  color: var(--color-icon-foreground);
   position: relative;
 }
 
@@ -102,7 +102,7 @@
   background-color: var(--colorYellow);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: #000;
+  color: var(--color-button-text);
 }
 
 .social-icon:hover svg {
@@ -111,7 +111,7 @@
 }
 
 .social-icon.portfolio-icon {
-  background-color: #fff8e1;
+  background-color: var(--color-accent-soft);
 }
 
 .social-icon.portfolio-icon:hover {
@@ -181,7 +181,7 @@
 
 .button-group .buttonType01 {
   background-color: var(--colorYellow);
-  color: #333;
+  color: var(--color-button-text);
   font-weight: 500;
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
@@ -200,7 +200,7 @@
 }
 
 .button-group .buttonType01:hover {
-  background-color: #e6a800;
+  background-color: var(--color-accent-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -214,7 +214,7 @@
     margin: 1rem -0.5rem;
     width: calc(100% + 1rem);
   }
-  
+
   .button-group .buttonType01 {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
@@ -274,7 +274,7 @@
     padding: 16px;
     gap: 16px;
   }
-  
+
   .DescriptionIcons img {
     width: 36px;
     height: 36px;

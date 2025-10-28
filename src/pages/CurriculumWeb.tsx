@@ -18,7 +18,7 @@ export default function CurriculumWeb() {
     const fileName = `CV-MALDINI JUAN-${year}.pdf`;
     try {
       await exportCvPdf(fileName);
-    } catch (e) {
+    } catch {
       // If generation fails, fallback to original static PDF
       const a = document.createElement("a");
       a.href = CVPdf;

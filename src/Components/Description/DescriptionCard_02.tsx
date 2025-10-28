@@ -2,9 +2,7 @@ import Button from "../00-Button/Button";
 import "./Description.css";
 import { aboutMe } from "../../data/resumeData";
 
-type Props = {};
-
-export default function DescriptionCard02({}: Props) {
+export default function DescriptionCard02() {
   return (
     <div className="DescriptionCard02">
       <div>

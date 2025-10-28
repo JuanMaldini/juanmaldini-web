@@ -6,6 +6,7 @@
 import html2pdf from "html2pdf.js";
 
 export async function exportCvPdf(fileName: string) {
+  type PdfOptions = import("html2pdf.js").Html2PdfOptions;
   const src = document.querySelector(".cv-page") as HTMLElement | null;
   if (!src) return;
 
@@ -31,23 +32,16 @@ export async function exportCvPdf(fileName: string) {
   document.body.appendChild(container);
 
   try {
-    const opt = {
+    const opt: PdfOptions = {
       margin: 0,
       filename: fileName,
       image: { type: "jpeg", quality: 0.95 },
       html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff" },
-      jsPDF: {
-        unit: "mm" as const,
-        format: "a4" as const,
-        orientation: "portrait" as const,
-      },
-      pagebreak: { mode: ["css", "legacy"] as const },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+      pagebreak: { mode: ["css", "legacy"] },
     };
 
-    await html2pdf()
-      .from(clone)
-      .set(opt as any)
-      .save();
+    await html2pdf().from(clone).set(opt).save();
   } finally {
     // Cleanup
     document.body.removeChild(container);

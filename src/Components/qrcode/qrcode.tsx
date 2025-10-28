@@ -1,16 +1,25 @@
-import { useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import QRCode from "react-qr-code";
 import "./qrcode.css";
 import "../00-Button/Button.css";
+
+type QRFormat = "svg" | "png" | "jpg";
 
 const QRCodePage = () => {
   const [value, setValue] = useState("");
   const defaultQR = "juanmaldini.com"; // QR por defecto visible antes del input
   const [qrSize, setQrSize] = useState(256);
-  const [format, setFormat] = useState<"svg" | "png" | "jpg">("png");
+  const [format, setFormat] = useState<QRFormat>("png");
   const containerRef = useRef<HTMLDivElement | null>(null);
   const effectiveValue =
     value && value.trim().length > 0 ? value.trim() : defaultQR;
+
+  const handleFormatChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const nextValue = event.target.value;
+    if (nextValue === "svg" || nextValue === "png" || nextValue === "jpg") {
+      setFormat(nextValue);
+    }
+  };
 
   const handleDownload = () => {
     const svg = containerRef.current?.querySelector(
@@ -105,10 +114,7 @@ const QRCodePage = () => {
           </label>
 
           <label className="qrcode-control">
-            <select
-              value={format}
-              onChange={(e) => setFormat(e.target.value as any)}
-            >
+            <select value={format} onChange={handleFormatChange}>
               <option value="svg">SVG</option>
               <option value="png">PNG</option>
               <option value="jpg">JPG</option>

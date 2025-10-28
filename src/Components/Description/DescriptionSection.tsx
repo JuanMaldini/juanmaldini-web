@@ -4,17 +4,15 @@ import DescriptionIcons from "./DescriptionIcons.tsx";
 import "./Description.css";
 import Onedrive from "../PortfolioBar/Onedrive.tsx";
 
-type Props = {};
-
-export default function DescriptionSection({}: Props) {
+export default function DescriptionSection() {
   return (
     <div className="descriptionSection">
       <div className="descriptionSectionCard">
-        <DescriptionCard_01/>
-        <DescriptionCard_02/>
+        <DescriptionCard_01 />
+        <DescriptionCard_02 />
       </div>
       <div className="descriptionSectionIcons">
-        <DescriptionIcons/>
+        <DescriptionIcons />
       </div>
       <div className="additional-resources">
         <Onedrive />
