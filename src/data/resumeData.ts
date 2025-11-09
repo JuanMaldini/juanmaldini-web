@@ -29,12 +29,12 @@ export const aboutMe: string[] = [
 export const resumeData: ResumeData = {
   experiences: [
     {
-      position: "Unreal Engine Developer",
+      position: "Technical Artist & Unreal Engine Developer",
       company: "Vanishing Point 3D",
       location: "Buenos Aires, Argentina",
       period: "04/2025 - Present",
       description:
-        "As a 3D Artist, I create product visualization projects, contributing both artistic and technical solutions. I am involved in the development of interactive 3D environments for digital platforms to enhance product presentation. I have also developed interactive applications in Unreal Engine using Blueprint and C++, and implemented automation scripts in 3ds Max to optimize production workflows.",
+        "As an Unreal Engine Developer, I design and develop interactive 3D applications and product configurators that integrate real-time visualization with backend systems. My work involves creating immersive environments and digital experiences where clients can explore, customize, and manage their products online. These applications connect with AWS services for authentication, data storage, and API communication, ensuring responsive interaction between Unreal Engine’s Pixel Streaming and web frontends. I also handle 3D modeling and visualization tasks using 3ds Max, Blender, and Houdini, combining artistic and technical workflows to deliver efficient and high-quality results.",
       technologies: [
         "3ds Max",
         "Blender",
@@ -46,6 +46,7 @@ export const resumeData: ResumeData = {
         "Photoshop",
         "Git",
         "GitHub",
+        "AWS",
         "Visual Studio",
       ],
     },
