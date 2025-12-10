@@ -9,3 +9,4 @@ export const Github = "https://github.com/Juanmaldini";
 export const LinkedIn = "https://www.linkedin.com/in/juan-augusto-maldini/";
 export const OnedriveLink = "https://1drv.ms/f/s!Ar8ey5uaisekpYhIykoMKDQu1EiUAg";
 export const Whatsapp = "https://wa.me/5493576474180";
+export const Discord = "https://discord.com/users/406236129516322817";
