@@ -2,6 +2,7 @@ export const projectMediaData = [
   { path: "/assets/3D_Max/01.jpg", category: "3D Max" },
   { path: "/assets/3D_Max/02.jpg", category: "3D Max" },
   { path: "/assets/3D_Max/Apto01-01.jpg", category: "3D Max" },
+  { path: "/assets/3D_Max/01-FP.jpg", category: "3D Max" },
   { path: "/assets/3D_Max/Apto01-03.jpg", category: "3D Max" },
   { path: "/assets/3D_Max/Arnaudo front.jpg", category: "3D Max" },
   { path: "/assets/3D_Max/Arnaudo's House - 02.jpg", category: "3D Max" },
