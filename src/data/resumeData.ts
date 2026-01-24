@@ -266,7 +266,7 @@ export const resumeData: ResumeData = {
     },
     {
       titulo: "Udemy",
-      subtitulo: "2018 - 2025",
+      subtitulo: "2018 - 2026",
       datos: [
         "Unreal Engine desde 0: Crea 3 Juegos con Blueprints y C++",
         "Unreal Engine 4 Class: Blueprints",
@@ -283,6 +283,7 @@ export const resumeData: ResumeData = {
         "Blender 2.9 EXPERTO en Modelado 3D desde CERO hasta Avanzado",
         "Blender 2.9x Modelado 3D para Videojuegos FLUJO COMPLETO",
         "Blender 2.8 EXPERTO en UV Mapping de Assets para Videojuegos",
+        "Unreal Engine Blueprint Automation",
       ],
     },
     {
