@@ -37,6 +37,7 @@ const Navbar = () => {
     { path: "/projects", label: "Projects", isExternal: false },
     { path: "/qrcode", label: "QR Code", isExternal: false },
     { path: "https://www.vizor3d.com/", label: "Vizor 3D", isExternal: true },
+    { path: "https://www.woloviz.com/", label: "Woloviz", isExternal: true },
   ];
 
   const handleNavClick = (path: string, isExternal: boolean = false) => {
