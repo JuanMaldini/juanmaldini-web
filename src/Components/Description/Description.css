@@ -257,7 +257,7 @@
 }
 
 .DescriptionIcons img:hover {
-  transform: translateY(-4px) scale(1.15);
+  transform: scale(1.15);
   filter: grayscale(0%) brightness(1.1) contrast(1.1);
   opacity: 1;
 }

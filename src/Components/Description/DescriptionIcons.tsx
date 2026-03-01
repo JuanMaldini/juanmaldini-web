@@ -19,6 +19,9 @@ import c from "../../../public/assets/C++.png";
 import bootstrap from "../../../public/assets/bootstrap.png";
 import react from "../../../public/assets/react.png";
 import node from "../../../public/assets/node.png";
+import docker from "../../../public/assets/docker.svg";
+import aws from "../../../public/assets/aws.svg";
+import cloudflare from "../../../public/assets/cloudflare.svg";
 import wix from "../../../public/assets/Wix.png";
 import linux from "../../../public/assets/Linux.png";
 import github from "../../../public/assets/github-b.png";
@@ -46,7 +49,7 @@ export default function DescriptionIcons() {
         <img src={revit} alt="Revit icon" />
         <img src={autocad} alt="Autocad icon" />
         <img src={polycam} alt="Polycam icon" />
-        <img src={sketchfab} alt="AutocadSketchfab icon" />
+        <img src={sketchfab} alt="Sketchfab icon" />
         <img src={html} alt="HTML icon" />
         <img src={css} alt="CSS icon" />
         <img src={python} alt="Python icon" />
@@ -55,7 +58,10 @@ export default function DescriptionIcons() {
         <img src={bootstrap} alt="Bootstrap icon" />
         <img src={react} alt="React icon" />
         <img src={node} alt="Node icon" />
-        <img src={wix} alt="wix icon" />
+        <img src={docker} alt="Docker icon" />
+        <img src={aws} alt="AWS icon" />
+        <img src={cloudflare} alt="Cloudflare icon" />
+        <img src={wix} alt="Wix icon" />
         <img src={linux} alt="Linux icon" />
         <img src={github} alt="Github icon" />
         <img src={git} alt="Git icon" />
