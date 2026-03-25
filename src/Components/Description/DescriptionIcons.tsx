@@ -33,6 +33,8 @@ import illustrator from "../../../public/assets/Illustrator.png";
 import figma from "../../../public/assets/Figma.png";
 import ae from "../../../public/assets/AE.png";
 import nuke from "../../../public/assets/Nuke.png";
+import Dokploy from "../../../public/assets/Icons/dokploy-dark.svg";
+import n8n from "../../../public/assets/Icons/n8n-icon.svg";
 
 export default function DescriptionIcons() {
   return (
@@ -59,6 +61,8 @@ export default function DescriptionIcons() {
         <img src={react} alt="React icon" />
         <img src={node} alt="Node icon" />
         <img src={docker} alt="Docker icon" />
+        <img src={Dokploy} alt="Dokploy icon" />
+        <img src={n8n} alt="n8n icon" />
         <img src={aws} alt="AWS icon" />
         <img src={cloudflare} alt="Cloudflare icon" />
         <img src={wix} alt="Wix icon" />
