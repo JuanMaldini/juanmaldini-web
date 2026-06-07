@@ -1,6 +1,5 @@
 export const projectMediaData = [
   { path: "/assets/3D_Max/01.webp", category: "3D Max" },
-  { path: "/assets/3D_Max/02.webp", category: "3D Max" },
   { path: "/assets/3D_Max/Apto01-01.webp", category: "3D Max" },
   { path: "/assets/3D_Max/01-FP.webp", category: "3D Max" },
   { path: "/assets/3D_Max/Apto01-03.webp", category: "3D Max" },

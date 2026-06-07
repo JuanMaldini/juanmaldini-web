@@ -103,8 +103,9 @@
 .education-section h3,
 .skills-section h3 {
   font-size: 1.4rem;
-  margin-bottom: 1.5rem;
   font-weight: 500;
+  margin: 0;
+  padding: 0 0 1rem 0;
 }
 
 /* Lists */
@@ -138,17 +139,14 @@
 .experience-card,
 .education-card {
   background: var(--color-card-bg);
-  border: 1px solid;
-  border-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgba(255, 255, 255, 0);
   border-radius: 8px;
   padding: 1.5rem;
-  margin-bottom: 1.5rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   transition: all 0.2s ease;
-  min-height: 200px;
-  height: auto;
+  flex-shrink: 0;
 }
 
 .experience-card:hover,
@@ -201,15 +199,10 @@
   font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-top: 1rem;
-  flex-grow: 1;
+  margin: 0.75rem 0;
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-
-.experience-description {
-  margin: 0.75rem 0;
 }
 
 /* Education specific overrides */
@@ -222,21 +215,12 @@
   color: var(--text-secondary);
 }
 
-/* Common description styles */
-.experience-description {
-  margin: 0.75rem 0;
-  flex-grow: 1; /* Hace que la descripción ocupe el espacio disponible */
-  word-wrap: break-word; /* Asegura que el texto largo se ajuste */
-  overflow-wrap: break-word; /* Para navegadores más nuevos */
-  hyphens: auto; /* Permite la división de palabras en navegadores que lo soportan */
-}
-
 .experience-technologies {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 1rem;
-  align-items: flex-start; /* Alinea los tags en la parte superior */
+  margin-top: 0.75rem;
+  align-items: flex-start;
 }
 
 .tech-tag {
