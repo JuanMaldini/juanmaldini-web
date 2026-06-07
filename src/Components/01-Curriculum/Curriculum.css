@@ -108,11 +108,21 @@
 }
 
 /* Lists */
+.experience-section,
+.education-section,
+.skills-section {
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
 .experience-list,
-.education-list{
+.education-list {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  flex: 1;
+  min-height: 0;
 }
 
 .skills-grid {
@@ -120,6 +130,8 @@
   flex-wrap: wrap;
   flex-direction: row;
   gap: 1rem;
+  flex: 1;
+  align-content: flex-start;
 }
 
 /* Experience/Education Cards */

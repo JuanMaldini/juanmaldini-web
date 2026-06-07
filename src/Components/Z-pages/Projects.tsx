@@ -5,28 +5,29 @@ import { Project } from "../../data/types";
 import Onedrive from "../PortfolioBar/Onedrive";
 import { projectMediaData } from "../../data/projectMediaData";
 
+const externalProjects = [
+  { label: "HYWorld", url: "https://hyworldweb.vercel.app/" },
+  { label: "Woloviz", url: "https://www.woloviz.com/" },
+  { label: "Vizor 3D", url: "https://www.vizor3d.com/" },
+  { label: "QR Code", url: "/qrcode" },
+];
+
 function Projects() {
-  // Obtener todas las categorías únicas
   const categories = [
     "all",
     ...Array.from(new Set(projectMediaData.map((item) => item.category))),
   ];
   const [activeTab, setActiveTab] = useState<string>("all");
 
-  // Cada item de projectMediaData será un Project individual - SIMPLIFICADO
   const allProjects: Project[] = projectMediaData.map((item, idx) => {
-    const isVideo = item.path.includes(".mp4") || item.path.includes(".mov");
+    const isVideo =
+      item.path.includes(".mp4") || item.path.includes(".mov");
 
     return {
       id: `project_${idx}`,
       type: isVideo ? "video" : "image",
       category: item.category,
-      media: [
-        {
-          url: item.path,
-          type: isVideo ? "video" : "image",
-        },
-      ],
+      media: [{ url: item.path, type: isVideo ? "video" : "image" }],
     };
   });
 
@@ -37,11 +38,25 @@ function Projects() {
 
   return (
     <div className="curriculum-container">
-      <div className="curriculum-header">
-        <div>
+      <div className="curriculum-header projects-header">
+        <div className="projects-title-row">
           <h2>My Projects</h2>
+          <div className="external-badges">
+            {externalProjects.map((p) => (
+              <a
+                key={p.label}
+                href={p.url}
+                target={p.url.startsWith("http") ? "_blank" : "_self"}
+                rel="noopener noreferrer"
+                className="external-badge"
+              >
+                {p.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
+
       <div className="tabs">
         {categories.map((category: string) => {
           const displayName = category === "all" ? "All" : category;
@@ -56,6 +71,7 @@ function Projects() {
           );
         })}
       </div>
+
       <div className="tab-content">
         <div className="projects-section">
           {filteredProjects.length > 0 ? (
@@ -71,6 +87,7 @@ function Projects() {
           )}
         </div>
       </div>
+
       <div className="additional-resources">
         <Onedrive />
       </div>

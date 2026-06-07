@@ -35,9 +35,6 @@ const Navbar = () => {
     { path: "/", label: "About Me", isExternal: false },
     { path: "/curriculum", label: "Curriculum", isExternal: false },
     { path: "/projects", label: "Projects", isExternal: false },
-    { path: "/qrcode", label: "QR Code", isExternal: false },
-    { path: "https://www.vizor3d.com/", label: "Vizor 3D", isExternal: true },
-    { path: "https://www.woloviz.com/", label: "Woloviz", isExternal: true },
   ];
 
   const handleNavClick = (path: string, isExternal: boolean = false) => {
@@ -74,15 +71,10 @@ const Navbar = () => {
             className="theme-toggle"
             onClick={toggleTheme}
             aria-pressed={theme === "dark"}
-            aria-label={
-              theme === "dark" ? "Activar modo claro" : "Activar modo oscuro"
-            }
+            aria-label={theme === "dark" ? "Activar modo claro" : "Activar modo oscuro"}
           >
             <span className="theme-toggle__icon" aria-hidden="true">
               {theme === "dark" ? "☀️" : "🌙"}
-            </span>
-            <span className="theme-toggle__text">
-              {theme === "dark" ? "Light" : "Dark"}
             </span>
           </button>
           <button
