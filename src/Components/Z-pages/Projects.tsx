@@ -90,4 +90,10 @@ function Projects() {
       </div>
 
       <div className="additional-resources">
-        <Onedri
+        <Onedrive />
+      </div>
+    </div>
+  );
+}
+
+export default Projects;
