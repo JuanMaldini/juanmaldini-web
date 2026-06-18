@@ -7,6 +7,7 @@ import { projectMediaData } from "../../data/projectMediaData";
 
 const externalProjects = [
   { label: "HYWorld", url: "https://hyworldweb.vercel.app/" },
+  { label: "Taggings", url: "https://taggings.vercel.app/" },
   { label: "Woloviz", url: "https://www.woloviz.com/" },
   { label: "Vizor 3D", url: "https://www.vizor3d.com/" },
   { label: "QR Code", url: "/qrcode" },
@@ -89,10 +90,4 @@ function Projects() {
       </div>
 
       <div className="additional-resources">
-        <Onedrive />
-      </div>
-    </div>
-  );
-}
-
-export default Projects;
+        <Onedri
