@@ -25,6 +25,7 @@ import cloudflare from "../../../public/assets/cloudflare.svg";
 import wix from "../../../public/assets/Wix.png";
 import linux from "../../../public/assets/Linux.png";
 import github from "../../../public/assets/github-b.png";
+import gitlab from "../../../public/assets/Icons/gitlab.svg";
 import git from "../../../public/assets/Git.png";
 import vs from "../../../public/assets/VS.png";
 import perforce from "../../../public/assets/Perforce.png";
@@ -68,6 +69,7 @@ export default function DescriptionIcons() {
         <img src={wix} alt="Wix icon" />
         <img src={linux} alt="Linux icon" />
         <img src={github} alt="Github icon" />
+        <img src={gitlab} alt="GitLab icon" />
         <img src={git} alt="Git icon" />
         <img src={vs} alt="Visual Studio icon" />
         <img src={perforce} alt="Perforce icon" />
