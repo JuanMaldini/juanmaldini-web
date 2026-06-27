@@ -1,37 +1,27 @@
-import { createBrowserRouter } from 'react-router-dom';
-import App from './App';
-import Curriculum from './Components/01-Curriculum/Curriculum';
-import Aboutme from './Components/Z-pages/Aboutme';
-import Projects from './Components/Z-pages/Projects';
-import QRCodePage from './Components/qrcode/qrcode';
-import CurriculumWeb from './pages/CurriculumWeb';
+import { lazy } from "react";
+import { createBrowserRouter } from "react-router-dom";
+import App from "./App";
+import AboutPage from "@/features/about/AboutPage";
+
+// Heavier routes are code-split so the landing page stays light.
+// The printable CV pulls html2pdf/html2canvas only when visited.
+const CurriculumPage = lazy(() => import("@/features/curriculum/CurriculumPage"));
+const ResumeDocument = lazy(() => import("@/features/curriculum/ResumeDocument"));
+const ProjectsPage = lazy(() => import("@/features/projects/ProjectsPage"));
+const QrCodePage = lazy(() => import("@/features/qrcode/QrCodePage"));
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      {
-        index: true,
-        element: <Aboutme />
-      },
-      {
-        path: "curriculum",
-        element: <Curriculum />
-      },
-      {
-        path: "projects",
-        element: <Projects />
-      },
-      {
-        path: "qrcode",
-        element: <QRCodePage />
-      },
-      {
-        path: "curriculumweb",
-        element: <CurriculumWeb />
-      }
-    ]
-  }
+      { index: true, element: <AboutPage /> },
+      { path: "curriculum", element: <CurriculumPage /> },
+      { path: "curriculumweb", element: <ResumeDocument /> },
+      { path: "projects", element: <ProjectsPage /> },
+      { path: "qrcode", element: <QrCodePage /> },
+    ],
+  },
 ]);
 
 export default router;

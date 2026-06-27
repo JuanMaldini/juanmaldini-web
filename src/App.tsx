@@ -1,17 +1,24 @@
-import { Outlet } from 'react-router-dom';
-import Navbar from "./Components/00-Navbar/Navbar";
-import Footer from "./Components/Z-Footer/Footer";
+import { Suspense } from "react";
+import { Outlet } from "react-router-dom";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-function App() {
+export default function App() {
   return (
-    <div className="app">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="main-content">
-        <Outlet />
+      <main className="flex-1">
+        <Suspense
+          fallback={
+            <div className="flex min-h-[50vh] items-center justify-center text-muted">
+              Loading...
+            </div>
+          }
+        >
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
     </div>
   );
 }
-
-export default App;
