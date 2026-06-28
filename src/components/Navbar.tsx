@@ -55,7 +55,6 @@ export default function Navbar() {
           <span className="text-base font-semibold text-ink">Juan Maldini</span>
         </button>
 
-        {/* Desktop links */}
         <div className="hidden items-center gap-7 md:flex">
           {navItems.map((item) => (
             <NavLink key={item.path} to={item.path} end className={linkClass}>
@@ -70,41 +69,24 @@ export default function Navbar() {
             onClick={toggleTheme}
             aria-pressed={theme === "dark"}
             aria-label={theme === "dark" ? "Activar modo claro" : "Activar modo oscuro"}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-line
-                       bg-chip text-base transition-colors hover:bg-accent-soft
-                       focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-chip text-base transition-colors hover:bg-accent-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             <span aria-hidden="true">{theme === "dark" ? "☀️" : "🌙"}</span>
           </button>
 
-          {/* Hamburger */}
           <button
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle navigation"
             aria-expanded={mobileOpen}
-            className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-md
-                       border border-line bg-chip md:hidden"
+            className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 rounded-md border border-line bg-chip md:hidden"
           >
-            <span
-              className={`h-0.5 w-5 rounded-full bg-ink transition-transform ${
-                mobileOpen ? "translate-y-2 rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`h-0.5 w-5 rounded-full bg-ink transition-opacity ${
-                mobileOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`h-0.5 w-5 rounded-full bg-ink transition-transform ${
-                mobileOpen ? "-translate-y-2 -rotate-45" : ""
-              }`}
-            />
+            <span className={`h-0.5 w-5 rounded-full bg-ink transition-transform ${mobileOpen ? "translate-y-2 rotate-45" : ""}`} />
+            <span className={`h-0.5 w-5 rounded-full bg-ink transition-opacity ${mobileOpen ? "opacity-0" : ""}`} />
+            <span className={`h-0.5 w-5 rounded-full bg-ink transition-transform ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`} />
           </button>
         </div>
       </nav>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="border-t border-line bg-bg2/95 backdrop-blur-md md:hidden">
           <div className="mx-auto flex max-w-[1200px] flex-col items-end px-4 py-2 sm:px-6">

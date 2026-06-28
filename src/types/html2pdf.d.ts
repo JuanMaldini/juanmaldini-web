@@ -10,10 +10,15 @@ declare module "html2pdf.js" {
     };
     jsPDF?: {
       unit?: "pt" | "mm" | "cm" | "in";
-      format?: string | string[];
+      format?: string | string[] | number[];
       orientation?: "portrait" | "landscape";
     };
-    pagebreak?: { mode?: Array<"css" | "legacy" | "avoid-all"> };
+    pagebreak?: {
+      mode?: Array<"css" | "legacy" | "avoid-all">;
+      before?: string | string[];
+      after?: string | string[];
+      avoid?: string | string[];
+    };
   }
   export interface Html2PdfInstance {
     from(element: HTMLElement | string): Html2PdfInstance;

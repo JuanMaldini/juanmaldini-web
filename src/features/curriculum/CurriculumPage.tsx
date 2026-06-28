@@ -79,7 +79,7 @@ export default function CurriculumPage() {
         {activeTab === "education" && (
           <section>
             <h3 className="mb-5 text-xl font-semibold text-ink">
-              Education & Certifications
+              Education &amp; Certifications
             </h3>
             <div className="grid gap-5 sm:grid-cols-2">
               {education.map((edu) => (
@@ -92,7 +92,7 @@ export default function CurriculumPage() {
         {activeTab === "skills" && (
           <section>
             <h3 className="mb-5 text-xl font-semibold text-ink">
-              Skills & Technologies
+              Skills &amp; Technologies
             </h3>
             <div className="flex flex-wrap gap-3">
               {skills.map((skill) => (
