@@ -46,9 +46,13 @@ export default function CurriculumPage() {
 
   return (
     <div className="mx-auto w-full max-w-[1200px] px-4 py-10 sm:px-6 sm:py-14">
-      <header className="mb-6 flex flex-col items-center justify-between gap-4 border-b border-line pb-4 sm:flex-row">
-        <h2 className="text-3xl font-bold text-ink">My Resume</h2>
-        <Button goTo="/curriculumweb" text="Printable CV" />
+      <header className="mb-6 flex flex-row flex-nowrap items-center justify-between gap-3 border-b border-line pb-4">
+        <h2 className="min-w-0 truncate text-2xl font-bold text-ink sm:text-3xl">
+          My Resume
+        </h2>
+        <div className="shrink-0">
+          <Button goTo="/curriculumweb" text="Printable CV" />
+        </div>
       </header>
 
       <div id="tab-content" className="scroll-mt-20">

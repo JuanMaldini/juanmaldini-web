@@ -107,12 +107,12 @@ export default function Navbar() {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="border-t border-line bg-bg2/95 backdrop-blur-md md:hidden">
-          <div className="mx-auto flex max-w-[1200px] flex-col px-4 py-2 sm:px-6">
+          <div className="mx-auto flex max-w-[1200px] flex-col items-end px-4 py-2 sm:px-6">
             {navItems.map((item) => (
               <button
                 key={item.path}
                 onClick={() => go(item.path)}
-                className="py-3 text-left text-sm font-medium text-muted hover:text-ink"
+                className="py-3 text-right text-sm font-medium text-muted hover:text-ink"
               >
                 {item.label}
               </button>

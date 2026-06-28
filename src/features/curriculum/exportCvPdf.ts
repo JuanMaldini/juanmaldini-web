@@ -20,6 +20,7 @@ export async function exportCvPdf(fileName: string) {
   container.style.background = "#fff";
 
   clone.style.transform = "none";
+  clone.style.zoom = "1";
   clone.style.left = "0";
   clone.style.boxShadow = "none";
   clone.style.borderRadius = "0";

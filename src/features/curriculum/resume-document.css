@@ -28,9 +28,9 @@
     1
   );
   margin: 0 auto;
-  transform: scale(var(--scale));
-  transform-origin: top center;
-  will-change: transform;
+  /* zoom scales the layout box (not just the paint), so the page stays
+     centered and never overflows sideways on narrow screens. */
+  zoom: var(--scale);
 }
 
 .cv-grid {
@@ -203,6 +203,6 @@
     box-shadow: none;
     border-radius: 0;
     width: 210mm;
-    transform: none;
+    zoom: 1;
   }
 }
