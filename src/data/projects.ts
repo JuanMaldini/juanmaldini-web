@@ -88,6 +88,7 @@ export const getProjectsByCategory = (category: string): Project[] =>
 /** External, deployed projects shown as badges. */
 export const externalProjects = [
   { label: "HYWorld", url: "https://hyworldweb.vercel.app/" },
+  { label: "Splat capture", url: "https://splat-capture.vercel.app/" },
   { label: "Taggings", url: "https://taggings.vercel.app/" },
   { label: "Woloviz", url: "https://www.woloviz.com/" },
   { label: "Vizor 3D", url: "https://www.vizor3d.com/" },
