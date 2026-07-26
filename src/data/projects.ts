@@ -91,6 +91,6 @@ export const externalProjects = [
   { label: "Splat capture", url: "https://splat-capture.vercel.app/" },
   { label: "Taggings", url: "https://taggings.vercel.app/" },
   { label: "Woloviz", url: "https://www.woloviz.com/" },
-  { label: "Vizor 3D", url: "https://www.vizor3d.com/" },
+  { label: "Vizor 3D", url: "https://vizor3d.vercel.app/" },
   { label: "QR Code", url: "/qrcode" },
 ] as const;
