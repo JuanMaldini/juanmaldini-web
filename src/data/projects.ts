@@ -89,8 +89,9 @@ export const getProjectsByCategory = (category: string): Project[] =>
 export const externalProjects = [
   { label: "HYWorld", url: "https://hyworldweb.vercel.app/" },
   { label: "Splat capture", url: "https://splat-capture.vercel.app/" },
-  { label: "Taggings", url: "https://taggings.vercel.app/" },
   { label: "Woloviz", url: "https://www.woloviz.com/" },
+  { label: "Taggings", url: "https://taggings.vercel.app/" },
   { label: "Vizor 3D", url: "https://vizor3d.vercel.app/" },
-  { label: "QR Code", url: "/qrcode" },
+  { label: "QR code", url: "/qrcode" },
+  { label: "Doc viewer", url: "https://vpviewer.vercel.app/" },
 ] as const;
