@@ -73,24 +73,42 @@ export const projects: Project[] = projectMedia.map((item, idx) => {
   };
 });
 
-/** Category tabs, "all" first, then unique categories in manifest order. */
-export const projectCategories: string[] = [
+/** Top-level slides of the Projects page. */
+export type ProjectGroup = "3d" | "programming";
+
+/** Categories that belong to the Programming slide; everything else is 3D. */
+const PROGRAMMING_CATEGORIES = new Set(["Max Script", "Python"]);
+
+export const groupOf = (category: string): ProjectGroup =>
+  PROGRAMMING_CATEGORIES.has(category) ? "programming" : "3d";
+
+/** Projects of a slide, optionally narrowed to one category ("all" = no filter). */
+export const getProjects = (group: ProjectGroup, category = "all"): Project[] =>
+  projects.filter(
+    (p) =>
+      groupOf(p.category) === group &&
+      (category === "all" || p.category === category),
+  );
+
+/** Filter chips of a slide, "all" first, then unique categories in manifest order. */
+export const getCategories = (group: ProjectGroup): string[] => [
   "all",
-  ...Array.from(new Set(projectMedia.map((item) => item.category))),
+  ...Array.from(
+    new Set(
+      projectMedia
+        .map((item) => item.category)
+        .filter((c) => groupOf(c) === group),
+    ),
+  ),
 ];
 
-/** Filter helper used by the Projects page. */
-export const getProjectsByCategory = (category: string): Project[] =>
-  category === "all"
-    ? projects
-    : projects.filter((project) => project.category === category);
-
-/** External, deployed projects shown as badges. */
+/** Deployed web projects, embedded as live iframes on the Programming slide. */
 export const externalProjects = [
   { label: "HYWorld", url: "https://hyworldweb.vercel.app/" },
   { label: "Woloviz", url: "https://www.woloviz.com/" },
+  { label: "Raiz Matera", url: "https://raizmatera.vercel.app/" },
   { label: "Taggings", url: "https://taggings.vercel.app/" },
   { label: "Vizor 3D", url: "https://vmoliver.cloud/vizor3d" },
-  { label: "QR code", url: "/qrcode" },
-  { label: "Doc viewer", url: "https://vpviewer.vercel.app/" },
+  { label: "QR Code", url: "/qrcode" },
+  { label: "Doc Viewer", url: "https://vpviewer.vercel.app/" },
 ] as const;
