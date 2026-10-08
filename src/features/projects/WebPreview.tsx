@@ -22,37 +22,40 @@ export default function WebPreview({ label, url }: Props) {
   }, []);
 
   return (
-    <article className="overflow-hidden rounded-lg border border-line bg-bg2 shadow-sm">
+    <a
+      href={url}
+      target={external ? "_blank" : "_self"}
+      rel="noopener noreferrer"
+      className="group block overflow-hidden rounded-lg border border-line bg-bg2 shadow-sm
+                 transition-colors hover:border-accent"
+    >
       <div
         ref={frameRef}
         className="relative aspect-video w-full overflow-hidden bg-black"
       >
+        {/* Preview only: the iframe can't be focused or clicked, the card is the link. */}
         <iframe
           src={url}
           title={label}
           loading="lazy"
           referrerPolicy="no-referrer"
+          tabIndex={-1}
+          aria-hidden="true"
           style={{
             width: VIEW_W,
             height: VIEW_H,
             transform: `scale(${scale})`,
           }}
-          className="absolute left-0 top-0 origin-top-left border-0 bg-white"
+          className="pointer-events-none absolute left-0 top-0 origin-top-left border-0 bg-white"
         />
       </div>
 
       <div className="flex items-center justify-between gap-3 px-4 py-3">
         <h4 className="truncate text-sm font-semibold text-ink">{label}</h4>
-        <a
-          href={url}
-          target={external ? "_blank" : "_self"}
-          rel="noopener noreferrer"
-          className="shrink-0 rounded-full border border-line bg-chip px-3 py-1 text-xs font-medium
-                     text-chip-ink transition-colors hover:border-accent hover:text-ink"
-        >
-          Open ↗
-        </a>
+        <span className="shrink-0 text-muted transition-colors group-hover:text-ink">
+          ↗
+        </span>
       </div>
-    </article>
+    </a>
   );
 }

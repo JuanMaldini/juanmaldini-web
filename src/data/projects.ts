@@ -107,7 +107,6 @@ export const externalProjects = [
   { label: "HYWorld", url: "https://hyworldweb.vercel.app/" },
   { label: "Woloviz", url: "https://www.woloviz.com/" },
   { label: "Raiz Matera", url: "https://raizmatera.vercel.app/" },
-  { label: "Taggings", url: "https://taggings.vercel.app/" },
   { label: "Vizor 3D", url: "https://vmoliver.cloud/vizor3d" },
   { label: "QR Code", url: "/qrcode" },
   { label: "Doc Viewer", url: "https://vpviewer.vercel.app/" },
