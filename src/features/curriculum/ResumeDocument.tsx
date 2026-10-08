@@ -49,8 +49,12 @@ export default function ResumeDocument() {
                 <h1>Juan Augusto Maldini</h1>
                 <p className="cv-role">{titulo}</p>
                 <p className="cv-contact">{cvLocation}</p>
-                <p className="cv-contact">{cvEmail}</p>
-                <p className="cv-contact">{cvPhone}</p>
+                <p className="cv-contact">
+                  <a href={`mailto:${cvEmail}`}>{cvEmail}</a>
+                </p>
+                <p className="cv-contact">
+                  <a href={`tel:${cvPhone.replace(/[^\d+]/g, "")}`}>{cvPhone}</a>
+                </p>
               </div>
             </div>
 
