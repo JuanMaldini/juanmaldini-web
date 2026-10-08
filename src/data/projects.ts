@@ -104,10 +104,10 @@ export const getCategories = (group: ProjectGroup): string[] => [
 
 /** Deployed web projects, embedded as live iframes on the Programming slide. */
 export const externalProjects = [
+  { label: "Vizor 3D", url: "https://vmoliver.cloud/vizor3d" },
   { label: "HYWorld", url: "https://hyworldweb.vercel.app/" },
   { label: "Woloviz", url: "https://www.woloviz.com/" },
   { label: "Raiz Matera", url: "https://raizmatera.vercel.app/" },
-  { label: "Vizor 3D", url: "https://vmoliver.cloud/vizor3d" },
-  { label: "QR Code", url: "/qrcode" },
   { label: "Doc Viewer", url: "https://vpviewer.vercel.app/" },
+  { label: "QR Code", url: "/qrcode" },
 ] as const;
