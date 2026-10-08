@@ -62,6 +62,8 @@ export async function exportCvPdf(fileName: string) {
         orientation: "portrait",
       },
       pagebreak: { mode: ["avoid-all"] },
+      // Keep <a> elements (mailto:/tel:) clickable in the PDF.
+      enableLinks: true,
     };
     await html2pdf().from(clone).set(opt).save();
   } finally {
