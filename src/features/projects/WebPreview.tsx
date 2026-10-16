@@ -9,6 +9,7 @@ type Props = { label: string; url: string };
 export default function WebPreview({ label, url }: Props) {
   const frameRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const loadCount = useRef(0);
   const [scale, setScale] = useState(0.5);
   const [blocked, setBlocked] = useState(false);
   const external = url.startsWith("http");
@@ -23,24 +24,22 @@ export default function WebPreview({ label, url }: Props) {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!external) return;
-    // After the iframe has had time to load, check whether it was blocked.
-    // Blocked iframes (X-Frame-Options) are replaced by a same-origin Chrome error
-    // page, so contentDocument is accessible but body is empty.
+  function handleLoad() {
+    loadCount.current += 1;
+    // First onLoad is the initial about:blank; second is the actual target content.
+    // Blocked iframes (X-Frame-Options) get a same-origin Chrome error page on the
+    // second load → contentDocument is accessible but body is empty.
     // Successfully loaded cross-origin iframes throw SecurityError on access.
-    const timer = setTimeout(() => {
-      const iframe = iframeRef.current;
-      if (!iframe) return;
-      try {
-        const doc = iframe.contentDocument;
-        if (!doc || doc.body.innerHTML.trim() === "") setBlocked(true);
-      } catch {
-        // SecurityError → cross-origin content loaded fine
-      }
-    }, 2500);
-    return () => clearTimeout(timer);
-  }, [external]);
+    if (loadCount.current < 2) return;
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+    try {
+      const doc = iframe.contentDocument;
+      if (!doc || doc.body.innerHTML.trim() === "") setBlocked(true);
+    } catch {
+      // SecurityError → cross-origin content loaded fine
+    }
+  }
 
   return (
     <a
@@ -79,10 +78,10 @@ export default function WebPreview({ label, url }: Props) {
             ref={iframeRef}
             src={url}
             title={label}
-            loading="lazy"
             referrerPolicy="no-referrer"
             tabIndex={-1}
             aria-hidden="true"
+            onLoad={handleLoad}
             style={{
               width: VIEW_W,
               height: VIEW_H,
