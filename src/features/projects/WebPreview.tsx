@@ -8,7 +8,9 @@ type Props = { label: string; url: string };
 
 export default function WebPreview({ label, url }: Props) {
   const frameRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [scale, setScale] = useState(0.5);
+  const [blocked, setBlocked] = useState(false);
   const external = url.startsWith("http");
 
   useEffect(() => {
@@ -21,6 +23,25 @@ export default function WebPreview({ label, url }: Props) {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!external) return;
+    // After the iframe has had time to load, check whether it was blocked.
+    // Blocked iframes (X-Frame-Options) are replaced by a same-origin Chrome error
+    // page, so contentDocument is accessible but body is empty.
+    // Successfully loaded cross-origin iframes throw SecurityError on access.
+    const timer = setTimeout(() => {
+      const iframe = iframeRef.current;
+      if (!iframe) return;
+      try {
+        const doc = iframe.contentDocument;
+        if (!doc || doc.body.innerHTML.trim() === "") setBlocked(true);
+      } catch {
+        // SecurityError → cross-origin content loaded fine
+      }
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, [external]);
+
   return (
     <a
       href={url}
@@ -31,23 +52,45 @@ export default function WebPreview({ label, url }: Props) {
     >
       <div
         ref={frameRef}
-        className="relative aspect-video w-full overflow-hidden bg-black"
+        className="relative aspect-video w-full overflow-hidden bg-bg2"
       >
-        {/* Preview only: the iframe can't be focused or clicked, the card is the link. */}
-        <iframe
-          src={url}
-          title={label}
-          loading="lazy"
-          referrerPolicy="no-referrer"
-          tabIndex={-1}
-          aria-hidden="true"
-          style={{
-            width: VIEW_W,
-            height: VIEW_H,
-            transform: `scale(${scale})`,
-          }}
-          className="pointer-events-none absolute left-0 top-0 origin-top-left border-0 bg-white"
-        />
+        {blocked ? (
+          <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-muted">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <span className="text-xs">Preview not available</span>
+            <span className="text-xs opacity-60">Click to open site ↗</span>
+          </div>
+        ) : (
+          /* Preview only: the iframe can't be focused or clicked, the card is the link. */
+          <iframe
+            ref={iframeRef}
+            src={url}
+            title={label}
+            loading="lazy"
+            referrerPolicy="no-referrer"
+            tabIndex={-1}
+            aria-hidden="true"
+            style={{
+              width: VIEW_W,
+              height: VIEW_H,
+              transform: `scale(${scale})`,
+            }}
+            className="pointer-events-none absolute left-0 top-0 origin-top-left border-0 bg-white"
+          />
+        )}
       </div>
 
       <div className="flex items-center justify-between gap-3 px-4 py-3">
